@@ -6,7 +6,10 @@ public class PlayerSheet : MonoBehaviour {
 
     public int playerID = 0;
     public int playerWeaponID = 0;
-    public int currentGold = 500;
+    public int currentGold = 4000;
+
+    public float maxHealth = 50.0f;
+    public float moveSpeed = 6.0f;
 
     public List<Hashtable> weaponDataDict = new List<Hashtable>();
     private Hashtable weaponBasic = new Hashtable();
@@ -35,7 +38,7 @@ public class PlayerSheet : MonoBehaviour {
         weaponBow.Add("ID", 2);
         weaponBow.Add("Name", "Bow");
         weaponBow.Add("Damage", 12.0f);
-        weaponBow.Add("Cooldown", 0.04f);
+        weaponBow.Add("Cooldown", 0.4f);
         weaponBow.Add("Lifetime", 2.0f);
 
         // Add all dictionaries to an array

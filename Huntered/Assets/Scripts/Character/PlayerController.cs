@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour {
     private PlayerSheet playerSheetScript;
 	private CharacterController cc;
 
-    public int charID;
-    private int playerWeaponID = 0;
+    public GameObject statsUI;
+    private bool statsUIActive = false;
 
     public GameObject weaponParent;
     public GameObject attackSpawner;
@@ -18,9 +18,6 @@ public class PlayerController : MonoBehaviour {
     private bool isAttacking = false;
 
     private Vector3 movement;
-    // private float moveSpeed = 2.0f;
-    private float moveSpeed = 10.0f;
-
 
     // REWIRED
 	private float moveHorizontal;
@@ -28,6 +25,8 @@ public class PlayerController : MonoBehaviour {
     private float rotateHorizontal;
     private float rotateVertical;
     private bool interactBtn;
+    private bool menuBtn;
+    private bool attackBtn;
 
 
     private void Awake() {
@@ -40,7 +39,11 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         GetInput();
 
-        if (interactBtn && !isAttacking) {
+        if (menuBtn) {
+            OpenStats();
+        }
+
+        if (attackBtn && !isAttacking) {
             CastAttack();
         }
     }
@@ -53,13 +56,18 @@ public class PlayerController : MonoBehaviour {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void GetInput() {
-        moveHorizontal = ReInput.players.GetPlayer(charID).GetAxis("LS Horizontal");
-		moveVertical = ReInput.players.GetPlayer(charID).GetAxis("LS Vertical");
+        if (!statsUIActive) {
+            moveHorizontal = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Horizontal");
+            moveVertical = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical");
 
-        rotateHorizontal = ReInput.players.GetPlayer(charID).GetAxis("RS Horizontal");
-        rotateVertical = ReInput.players.GetPlayer(charID).GetAxis("RS Vertical");
+            rotateHorizontal = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("RS Horizontal");
+            rotateVertical = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("RS Vertical");
 
-        interactBtn = ReInput.players.GetPlayer(charID).GetButton("X");
+            interactBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("X");
+            attackBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButton("R1");
+        }
+
+        menuBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("Triangle");
     }
 
 
@@ -71,7 +79,7 @@ public class PlayerController : MonoBehaviour {
         movement = Vector3.ClampMagnitude(movement, 1);
 
         // Move character
-        cc.Move(movement * moveSpeed * Time.deltaTime);
+        cc.Move(movement * playerSheetScript.moveSpeed * Time.deltaTime);
 
         // Rotate character in the direction of movement
         if (movement != Vector3.zero) {
@@ -88,12 +96,11 @@ public class PlayerController : MonoBehaviour {
         isAttacking = true;
 
         // Get the weapon the player has selected
-        playerWeaponID = playerSheetScript.playerWeaponID;
-        playerWeapon = weaponParent.transform.GetChild(playerWeaponID).gameObject;
+        playerWeapon = weaponParent.transform.GetChild(playerSheetScript.playerWeaponID).gameObject;
 
         GameObject newAttack = Instantiate(playerWeapon);
-        newAttack.GetComponent<WeaponHandler>().lifetime = (float)GetComponent<PlayerSheet>().weaponDataDict[playerWeaponID]["Lifetime"];
-        newAttack.GetComponent<WeaponHandler>().damage = (float)GetComponent<PlayerSheet>().weaponDataDict[playerWeaponID]["Damage"];
+        newAttack.GetComponent<WeaponHandler>().lifetime = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Lifetime"];
+        newAttack.GetComponent<WeaponHandler>().damage = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Damage"];
         newAttack.transform.parent = this.gameObject.transform;
         newAttack.transform.position = attackSpawner.transform.position;
         newAttack.transform.rotation = attackSpawner.transform.rotation;
@@ -103,10 +110,16 @@ public class PlayerController : MonoBehaviour {
 
 
     private IEnumerator AttackDelay() {
-        float cooldownTime = (float)playerSheetScript.weaponDataDict[playerWeaponID]["Cooldown"];
+        float cooldownTime = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"];
         yield return new WaitForSeconds(cooldownTime);
 
         isAttacking = false;
+    }
+
+
+    private void OpenStats() {
+        statsUIActive = !statsUIActive;
+        statsUI.SetActive(statsUIActive);
     }
 
 }

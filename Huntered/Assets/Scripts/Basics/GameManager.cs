@@ -26,18 +26,9 @@ public class GameManager : MonoBehaviour {
             calculatedGain = calculatedGain + calculatedGain * GameSettings.repMultiplier;
         }
     }
-
-
-    private void Update() {
-        // UpdateReputation();
-    }
-
+    
 
     public static void AddReputation() {
-        // if (currentRep >= neededRepArr[currentRepLevel]) {
-        //     currentRepLevel++;
-        // }
-
         while (currentRep >= neededRepArr[currentRepLevel]) {
             currentRepLevel++;
         }
