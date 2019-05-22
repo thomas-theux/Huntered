@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponHandler : MonoBehaviour {
+public class PlayerWeaponHandler : MonoBehaviour {
 
     public int weaponID;
     public float lifetime;
@@ -14,7 +14,7 @@ public class WeaponHandler : MonoBehaviour {
 
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag != "Player" && other.tag != "Gold" && other.tag != "Attack") {
+        if (other.tag != "Player" && other.tag != "Gold" && other.tag != "Attack" && other.tag != "Ranged" && other.tag != "EnemyAttack" && other.tag != "EnemyRanged" && other.tag != "Trigger") {
             
             if (other.tag == "Enemy") {
                 // Deal damage

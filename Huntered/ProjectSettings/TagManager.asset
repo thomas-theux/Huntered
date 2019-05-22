@@ -10,6 +10,9 @@ TagManager:
   - Ranged
   - Attack
   - Gold
+  - EnemyAttack
+  - EnemyRanged
+  - Trigger
   layers:
   - Default
   - TransparentFX

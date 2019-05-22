@@ -97,6 +97,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraID: 0
-  target: {fileID: 0}
   smoothSpeed: 3
   isoOffset: {x: 0, y: 24, z: -16}

@@ -99,8 +99,8 @@ public class PlayerController : MonoBehaviour {
         playerWeapon = weaponParent.transform.GetChild(playerSheetScript.playerWeaponID).gameObject;
 
         GameObject newAttack = Instantiate(playerWeapon);
-        newAttack.GetComponent<WeaponHandler>().lifetime = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Lifetime"];
-        newAttack.GetComponent<WeaponHandler>().damage = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Damage"];
+        newAttack.GetComponent<PlayerWeaponHandler>().lifetime = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Lifetime"];
+        newAttack.GetComponent<PlayerWeaponHandler>().damage = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Damage"];
         newAttack.transform.parent = this.gameObject.transform;
         newAttack.transform.position = attackSpawner.transform.position;
         newAttack.transform.rotation = attackSpawner.transform.rotation;

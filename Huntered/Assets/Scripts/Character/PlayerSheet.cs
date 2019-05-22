@@ -8,6 +8,7 @@ public class PlayerSheet : MonoBehaviour {
     public int playerWeaponID = 0;
     public int currentGold = 4000;
 
+    public float currentHealth = 0;
     public float maxHealth = 50.0f;
     public float moveSpeed = 6.0f;
 
@@ -18,8 +19,10 @@ public class PlayerSheet : MonoBehaviour {
 
 
     private void Awake() {
-        // Add weapon data to dictionaries
+        // Initialize health
+        currentHealth = maxHealth;
 
+        // Add weapon data to dictionaries
         // BASIC WEAPON
         weaponBasic.Add("ID", 0);
         weaponBasic.Add("Name", "Basic Weapon");

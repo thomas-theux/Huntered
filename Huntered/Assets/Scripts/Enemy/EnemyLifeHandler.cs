@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyLifeHandler : MonoBehaviour {
 
-    private EnemyController enemyControllerScript;
+    private EnemySheet enemyControllerScript;
 
     public GameObject healthGO;
     public Slider healthBar;
@@ -18,7 +18,7 @@ public class EnemyLifeHandler : MonoBehaviour {
 
 
     private void Awake() {
-        enemyControllerScript = GetComponent<EnemyController>();
+        enemyControllerScript = GetComponent<EnemySheet>();
 
         calculatedHealth = GameSettings.enemyBaseHealth;
 

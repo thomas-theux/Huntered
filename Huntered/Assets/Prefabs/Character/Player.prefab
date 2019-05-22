@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9061149353128594029}
   - component: {fileID: 9061149353128594022}
   - component: {fileID: 7037447001450622074}
+  - component: {fileID: 6567482972374108710}
   - component: {fileID: 7786490089325394064}
   m_Layer: 0
   m_Name: Player
@@ -133,8 +134,22 @@ MonoBehaviour:
   playerID: 0
   playerWeaponID: 0
   currentGold: 500
+  currentHealth: 0
   maxHealth: 50
   moveSpeed: 6
+--- !u!114 &6567482972374108710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061149353128594028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c385c2bd98140faa7c4d273220e867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 1415741428949008484}
 --- !u!114 &7786490089325394064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +500,21 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7471383254654402148, guid: 8f41c85e587ef4dc4b54642c691f2f8f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174863194616455773, guid: 8f41c85e587ef4dc4b54642c691f2f8f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174863194616455773, guid: 8f41c85e587ef4dc4b54642c691f2f8f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f41c85e587ef4dc4b54642c691f2f8f, type: 3}
 --- !u!224 &7018541693009658279 stripped
@@ -503,6 +533,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1415741428949008484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1180512032097873822, guid: 8f41c85e587ef4dc4b54642c691f2f8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 272393166895443962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7971801142713893690

@@ -22,8 +22,8 @@ public class GameSettings {
     public static float goldMultiplier = 1.05f;
 
     // How much gold will be dropped minimum and maximum
-    public static int minGoldDrop = 2;
-    public static int maxGoldDrop = 5;
+    public static int minGoldDrop = 3;
+    public static int maxGoldDrop = 7;
 
     // Size of the area where enemies drop loot – in this case 2.0m
     public static float dropAreaSize = 2.0f;
