@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour {
     public bool playerIsClose = false;
     public bool allowedToAttack = false;
 
-    private float attackDelay;
+    public float attackDelay;
     private float attackCooldown;
 
 
@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour {
     private void Update() {
         if (playerIsClose && !allowedToAttack) {
             allowedToAttack = true;
+            AttackDelay();
             attackDelay = attackCooldown;
         }
 

@@ -11,7 +11,7 @@ public class AggroRadius : MonoBehaviour {
     private Rigidbody rb;
 
     private float approachSpeed;
-    private float minDistance = 2.0f;
+    private float minDistance = 3.0f;
 
 
     private void Awake() {
@@ -39,10 +39,12 @@ public class AggroRadius : MonoBehaviour {
                     }
 
                     // Lerp movement towards player
-                    Vector3 desiredPos = new Vector3(other.transform.position.x,  enemyGO.transform.position.y, other.transform.position.z);
-                    Vector3 smoothedPos = Vector3.Lerp(enemyGO.transform.position, desiredPos, approachSpeed * Time.deltaTime);
+                    // Vector3 desiredPos = new Vector3(other.transform.position.x,  enemyGO.transform.position.y, other.transform.position.z);
+                    // Vector3 smoothedPos = Vector3.Lerp(enemyGO.transform.position, desiredPos, approachSpeed * Time.deltaTime);
+                    // enemyGO.transform.position = smoothedPos;
 
-                    enemyGO.transform.position = smoothedPos;
+                    // Move enemy towards player
+                    enemyGO.transform.position = Vector3.MoveTowards(enemyGO.transform.position, other.transform.position, approachSpeed * Time.deltaTime);
                 } else {
                     enemyControllerScript.playerIsClose = true;
                 }
