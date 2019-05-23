@@ -98,6 +98,7 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyLifeHandler.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemySheet.cs" />
+     <Compile Include="Assets\Scripts\Enemy\ReachRadius.cs" />
      <Compile Include="Assets\Scripts\Loot\CollectGold.cs" />
      <Compile Include="Assets\Scripts\Loot\CollectRadius.cs" />
      <Compile Include="Assets\Scripts\Loot\GainRep.cs" />

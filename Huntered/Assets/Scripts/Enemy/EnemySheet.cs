@@ -8,6 +8,9 @@ public class EnemySheet : MonoBehaviour {
     public int enemyClassID = 0;
     public int enemyLevel = 1;
 
+    // 0 = idle ; 1 = aggro ; 2 = in reach and attacking
+    public int actionMode = 0;
+
     public List<Hashtable> classDataDict = new List<Hashtable>();
     private Hashtable classBasic = new Hashtable();
     private Hashtable classRanged = new Hashtable();
