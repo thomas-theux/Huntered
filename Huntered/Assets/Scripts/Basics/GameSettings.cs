@@ -28,4 +28,7 @@ public class GameSettings {
     // Size of the area where enemies drop loot – in this case 2.0m
     public static float dropAreaSize = 2.0f;
 
+    public static float enemySpeedMultiplier = 0.1f;
+    public static float enemyDamageMultiplier = 0.3f;
+
 }

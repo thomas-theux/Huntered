@@ -14,7 +14,12 @@ public class ReachRadius : MonoBehaviour {
 
 
     private void Start() {
+        // Set delay between attacks
         attackCooldown = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Cooldown"];
+
+        // Set radius of aggro
+        int reachScale = (int)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Reach Radius"];
+        transform.localScale = new Vector3(reachScale, transform.localScale.y, reachScale);
     }
 
 
@@ -42,7 +47,11 @@ public class ReachRadius : MonoBehaviour {
                 GameObject newAttack = Instantiate(enemyWeapon);
                 
                 newAttack.GetComponent<EnemyWeaponHandler>().lifetime = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Lifetime"];
-                newAttack.GetComponent<EnemyWeaponHandler>().damage = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Damage"];
+
+                // Calculate damage depending on enemy level
+                float baseDamage = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Damage"];
+                newAttack.GetComponent<EnemyWeaponHandler>().damage = baseDamage + baseDamage * GameSettings.enemyDamageMultiplier * enemySheetScript.enemyLevel;
+                
                 newAttack.transform.parent = this.gameObject.transform;
                 newAttack.transform.position = attackSpawner.transform.position;
                 newAttack.transform.rotation = attackSpawner.transform.rotation;

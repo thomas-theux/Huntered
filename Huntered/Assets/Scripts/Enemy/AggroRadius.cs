@@ -15,7 +15,8 @@ public class AggroRadius : MonoBehaviour {
 
     private void Start() {
         rb = enemyGO.GetComponent<Rigidbody>();
-        approachSpeed = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Move Speed"];
+        float calculatedSpeed = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Move Speed"];
+        approachSpeed = calculatedSpeed + calculatedSpeed * GameSettings.enemySpeedMultiplier * enemySheetScript.enemyLevel;
 
         // Set radius of aggro
         int aggroScale = (int)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Aggro Radius"];
@@ -49,11 +50,16 @@ public class AggroRadius : MonoBehaviour {
     private void Update() {
         if (enemySheetScript.actionMode > 0) {
             // Approach player only if the enemy is not a ranged class
-            if (enemySheetScript.enemyClassID < 2) {
-                // Move enemy towards player
+            if (enemySheetScript.enemyClassID >= 2) {
+                if (enemySheetScript.actionMode < 2) {
+                    enemyGO.transform.position = Vector3.MoveTowards(enemyGO.transform.position, otherCollider.transform.position, approachSpeed * Time.deltaTime);
+                }
+            } else {
                 enemyGO.transform.position = Vector3.MoveTowards(enemyGO.transform.position, otherCollider.transform.position, approachSpeed * Time.deltaTime);
-                enemyGO.transform.LookAt(otherCollider.transform);
             }
+
+            // Move enemy towards player
+            enemyGO.transform.LookAt(otherCollider.transform);
         }
     }
 
