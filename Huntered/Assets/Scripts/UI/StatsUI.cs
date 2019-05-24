@@ -87,11 +87,13 @@ public class StatsUI : MonoBehaviour {
 
 
     private void IncreaseStat() {
-        if (interactBtn && playerSheetScript.currentGold > 0) {
+        if (interactBtn && playerSheetScript.currentGold >= 10) {
             playerSheetScript.currentGold -= 10;
 
             switch (currentIndex) {
                 case 0:
+                    float relativeHealth = playerSheetScript.currentHealth / playerSheetScript.maxHealth;
+                    playerSheetScript.currentHealth += relativeHealth * increaseHealthBy;
                     playerSheetScript.maxHealth += increaseHealthBy;
                     break;
                 case 1:

@@ -50,7 +50,9 @@ public class PlayerController : MonoBehaviour {
 
 
     private void FixedUpdate() {
-        MoveCharacter();
+        if (!statsUIActive) {
+            MoveCharacter();
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

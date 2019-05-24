@@ -25,7 +25,7 @@ public class EnemySheet : MonoBehaviour {
         classBasic.Add("Move Speed", 2.0f);
         classBasic.Add("Aggro Radius", 30);
         classBasic.Add("Reach Radius", 7);
-        classBasic.Add("Damage", 4.0f);
+        classBasic.Add("Damage", 3.0f);
         classBasic.Add("Cooldown", 0.5f);
         classBasic.Add("Lifetime", 0.1f);
         
@@ -35,8 +35,8 @@ public class EnemySheet : MonoBehaviour {
         classTank.Add("Move Speed", 1.5f);
         classTank.Add("Aggro Radius", 20);
         classTank.Add("Reach Radius", 10);
-        classTank.Add("Damage", 6.0f);
-        classTank.Add("Cooldown", 0.6f);
+        classTank.Add("Damage", 8.0f);
+        classTank.Add("Cooldown", 1.5f);
         classTank.Add("Lifetime", 0.2f);
         
         // RANGED ENEMY
