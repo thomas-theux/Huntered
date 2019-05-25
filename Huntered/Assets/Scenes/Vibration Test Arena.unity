@@ -2213,12 +2213,17 @@ PrefabInstance:
     - target: {fileID: 7037447001450622074, guid: d1ae963d91c71401abf3013e92e5869a,
         type: 3}
       propertyPath: moveSpeed
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7037447001450622074, guid: d1ae963d91c71401abf3013e92e5869a,
         type: 3}
       propertyPath: currentGold
-      value: 509
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037447001450622074, guid: d1ae963d91c71401abf3013e92e5869a,
+        type: 3}
+      propertyPath: playerWeaponID
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4906516264871038375, guid: d1ae963d91c71401abf3013e92e5869a,
         type: 3}
