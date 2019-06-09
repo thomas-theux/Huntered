@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 332722609602078644}
   - component: {fileID: 332722609602078645}
+  - component: {fileID: 9116619551315797269}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,3 +46,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundGO: {fileID: 0}
   enemyGO: {fileID: 5752428465112087582, guid: 3c68046b4528e4685ba92dcb78f71499, type: 3}
+--- !u!114 &9116619551315797269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332722609602078642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ce9541b35934a9893da27fe7a836a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerGO: {fileID: 9061149353128594028, guid: d1ae963d91c71401abf3013e92e5869a,
+    type: 3}

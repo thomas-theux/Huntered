@@ -6,7 +6,7 @@ public class EnemySheet : MonoBehaviour {
 
     public int enemyID = 0;
     public int enemyClassID = 0;
-    public int enemyLevel = 1;
+    public int enemyLevel = 0;
 
     // 0 = idle ; 1 = aggro ; 2 = in reach and attacking
     public int actionMode = 0;
@@ -25,10 +25,10 @@ public class EnemySheet : MonoBehaviour {
         classBasic.Add("Move Speed", 2.0f);
         classBasic.Add("Aggro Radius", 30);
         classBasic.Add("Reach Radius", 7);
-        classBasic.Add("Damage", 3.0f);
-        classBasic.Add("Cooldown", 0.5f);
+        classBasic.Add("Damage", 4.0f);
+        classBasic.Add("Cooldown", 1.0f);
         classBasic.Add("Lifetime", 0.1f);
-        
+
         // TANK ENEMY
         classTank.Add("ID", 1);
         classTank.Add("Name", "Tank Class");
@@ -36,17 +36,17 @@ public class EnemySheet : MonoBehaviour {
         classTank.Add("Aggro Radius", 20);
         classTank.Add("Reach Radius", 10);
         classTank.Add("Damage", 8.0f);
-        classTank.Add("Cooldown", 1.5f);
+        classTank.Add("Cooldown", 2.0f);
         classTank.Add("Lifetime", 0.2f);
-        
+
         // RANGED ENEMY
         classRanged.Add("ID", 2);
         classRanged.Add("Name", "Ranged Class");
         classRanged.Add("Move Speed", 3.0f);
         classRanged.Add("Aggro Radius", 60);
         classRanged.Add("Reach Radius", 50);
-        classRanged.Add("Damage", 3.0f);
-        classRanged.Add("Cooldown", 0.4f);
+        classRanged.Add("Damage", 2.0f);
+        classRanged.Add("Cooldown", 0.5f);
         classRanged.Add("Lifetime", 2.0f);
 
         // Add all dictionaries to an array

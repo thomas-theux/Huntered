@@ -9,13 +9,15 @@ public class EnemyWeaponHandler : MonoBehaviour {
     public float damage;
 
     private void Start() {
-        Destroy(this.gameObject, lifetime);
+        Destroy(this.gameObject, 5);
     }
 
 
     private void OnTriggerEnter(Collider other) {
+        print(other.name);
+
         if (other.tag != "Enemy" && other.tag != "Gold" && other.tag != "Attack" && other.tag != "Ranged" && other.tag != "EnemyAttack" && other.tag != "EnemyRanged" && other.tag != "Trigger") {
-            
+
             if (other.tag == "Player") {
                 // Deal damage
                 other.GetComponent<PlayerSheet>().currentHealth -= damage;

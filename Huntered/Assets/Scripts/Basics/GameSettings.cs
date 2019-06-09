@@ -1,6 +1,8 @@
 ﻿
 public class GameSettings {
 
+    public static int PlayerCount = 2;
+
     // Base reputation and multiplier with which every level will be calculated
     public static int baseRepGain = 2;
     public static int baseRepNeeded = 8;

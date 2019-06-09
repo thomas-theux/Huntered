@@ -45,17 +45,17 @@ public class ReachRadius : MonoBehaviour {
             if (attackDelay <= 0) {
                 enemyWeapon = weaponParent.transform.GetChild(enemySheetScript.enemyClassID).gameObject;
                 GameObject newAttack = Instantiate(enemyWeapon);
-                
+
                 newAttack.GetComponent<EnemyWeaponHandler>().lifetime = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Lifetime"];
 
                 // Calculate damage depending on enemy level
                 float baseDamage = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Damage"];
                 newAttack.GetComponent<EnemyWeaponHandler>().damage = baseDamage + baseDamage * GameSettings.enemyDamageMultiplier * enemySheetScript.enemyLevel;
-                
+
                 newAttack.transform.parent = this.gameObject.transform;
                 newAttack.transform.position = attackSpawner.transform.position;
                 newAttack.transform.rotation = attackSpawner.transform.rotation;
-                
+
                 attackDelay = attackCooldown;
             }
         }

@@ -88,6 +88,7 @@
      <Compile Include="Assets\Scripts\_tests\DamageTest.cs" />
      <Compile Include="Assets\Scripts\Basics\GameManager.cs" />
      <Compile Include="Assets\Scripts\Basics\GameSettings.cs" />
+     <Compile Include="Assets\Scripts\Basics\PlayerSpawner.cs" />
      <Compile Include="Assets\Scripts\Character\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Character\NPCLifeHandler.cs" />
      <Compile Include="Assets\Scripts\Character\PlayerController.cs" />

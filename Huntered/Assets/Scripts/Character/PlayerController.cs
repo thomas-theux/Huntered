@@ -5,6 +5,8 @@ using Rewired;
 
 public class PlayerController : MonoBehaviour {
 
+    public Camera PlayerCam;
+
     private PlayerSheet playerSheetScript;
 	private CharacterController cc;
 
