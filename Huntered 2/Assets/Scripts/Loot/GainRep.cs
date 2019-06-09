@@ -5,17 +5,17 @@ using UnityEngine;
 public class GainRep : MonoBehaviour {
 
     public void AddRep() {
-        GameManager.currentRep += GameManager.repGainArr[GameManager.currentRepLevel];
-        GameManager.AddReputation();
+        ReputationManager.currentRep += ReputationManager.repGainArr[ReputationManager.currentRepLevel];
+        ReputationManager.AddReputation();
     }
 
 
     public void SubtractRep() {
-        GameManager.currentRep -= GameManager.repGainArr[GameManager.currentRepLevel] * GameSettings.NPCKillMultiplier;
-        if (GameManager.currentRep < 0) {
-            GameManager.currentRep = 0;
+        ReputationManager.currentRep -= ReputationManager.repGainArr[ReputationManager.currentRepLevel] * GameSettings.NPCKillMultiplier;
+        if (ReputationManager.currentRep < 0) {
+            ReputationManager.currentRep = 0;
         }
-        GameManager.SubtractReputation();
+        ReputationManager.SubtractReputation();
     }
 
 }

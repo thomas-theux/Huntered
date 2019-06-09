@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 332722609602078644}
   - component: {fileID: 332722609602078645}
+  - component: {fileID: 2388857368052751596}
   - component: {fileID: 9116619551315797269}
+  - component: {fileID: 6478089921699311165}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,7 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf96f314da7664a1fa90bd063803afcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundGO: {fileID: 0}
+  DevCam: {fileID: 0}
+--- !u!114 &2388857368052751596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332722609602078642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626e7e48cbb354dab9ccf7075a98feb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &9116619551315797269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,3 +72,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerGO: {fileID: 898870989050275549, guid: c29fddb59fcb642bf84159e2bd4d6746, type: 3}
+--- !u!114 &6478089921699311165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332722609602078642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add97425e9b3e40de8776973c50d0e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -10,8 +10,16 @@ public class CameraFollow : MonoBehaviour {
 	public float smoothSpeed = 5.0f;
 	public Vector3 isoOffset;
 
+    private float posX = 0;
 
-    private void Awake() {
+
+    public void InitializeCamera() {
+        // cameraID = transform.parent.GetComponent<PlayerSheet>().playerID;
+
+        Camera playerCam = this.gameObject.GetComponent<Camera>();
+        if (cameraID == 1) { posX = 0.5f; }
+        playerCam.rect = new Rect(posX, 0, 0.5f, 1.0f);
+
         target = transform.parent.transform;
         transform.parent = null;
     }

@@ -21,6 +21,10 @@ public class StatsUI : MonoBehaviour {
     private int currentIndex = 0;
     private int maxIndex = 3;
 
+	private float minThreshold = 0.5f;
+	private float maxThreshold = 0.5f;
+	private bool axisYActive;
+
     private float increaseHealthBy = 0.025f;
     private float increaseDamageBy = 0.015f;
     private float increaseSpeedBy = 0.002f;
@@ -29,11 +33,12 @@ public class StatsUI : MonoBehaviour {
     // REWIRED
     private bool dpadUp;
     private bool dpadDown;
+    private float verticalAxis;
     private bool interactBtn;
 
 
-    private void Awake() {
-        initialCursorPos = UICursor.transform.position;
+    private void Start() {
+        initialCursorPos = UICursor.transform.localPosition;
         DisplayStats();
     }
 
@@ -50,11 +55,37 @@ public class StatsUI : MonoBehaviour {
         dpadUp = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("DPad Up");
         dpadDown = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("DPad Down");
 
+        verticalAxis = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical");
+
         interactBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButton("X");
     }
 
 
     private void ChangeIndex() {
+        // UI navigation with the analog sticks
+        if (ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") > maxThreshold && !axisYActive) {
+            if (currentIndex > 0) {
+                axisYActive = true;
+                currentIndex--;
+                DisplayCursor();
+            }
+        }
+
+        if (ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") < -maxThreshold && !axisYActive) {
+            if (currentIndex < maxIndex) {
+                axisYActive = true;
+                currentIndex++;
+                DisplayCursor();
+            }
+        }
+
+        if (ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") <= minThreshold && ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") >= -minThreshold) {
+            axisYActive = false;
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // UI navigation with the dpad
         if (dpadUp && currentIndex > 0) {
             currentIndex--;
             DisplayCursor();
@@ -68,7 +99,7 @@ public class StatsUI : MonoBehaviour {
 
 
     private void DisplayCursor() {
-        UICursor.transform.position = new Vector2(initialCursorPos.x, initialCursorPos.y - (currentIndex * menuItemDistance));
+        UICursor.transform.localPosition = new Vector2(initialCursorPos.x, initialCursorPos.y - (currentIndex * menuItemDistance));
     }
 
 

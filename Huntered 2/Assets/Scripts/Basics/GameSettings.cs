@@ -1,7 +1,10 @@
 ﻿
 public class GameSettings {
 
-    public static int PlayerCount = 1;
+    public static int ConnectedGamepads = 0;
+    public static int PlayerCount = 0;
+    public static int PlayerMax = 2;
+
     public static float MoveDelay = 0.01f;
 
     // Base reputation and multiplier with which every level will be calculated

@@ -20,8 +20,8 @@ public class PlayerUIHandler : MonoBehaviour {
 
     private void Update() {
         currentGoldText.text = playerSheetScript.currentGold + "";
-        currentRepText.text = GameManager.currentRep.ToString("F0") + " / " + GameManager.neededRepArr[GameManager.currentRepLevel].ToString("F0");
-        currentRepLevel.text = GameManager.currentRepLevel + "";
+        currentRepText.text = ReputationManager.currentRep.ToString("F0") + " / " + ReputationManager.neededRepArr[ReputationManager.currentRepLevel].ToString("F0");
+        currentRepLevel.text = ReputationManager.currentRepLevel + "";
     }
 
 }

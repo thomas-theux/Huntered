@@ -6,12 +6,14 @@ using Rewired;
 public class PlayerController : MonoBehaviour {
 
     private PlayerSheet playerSheetScript;
-	private CharacterController cc;
 
     private float moveDelayTime = 0;
     private float attackDelayTime = 0;
 
+    public GameObject playerUI;
     public GameObject statsUI;
+    public GameObject playerCam;
+
     public GameObject weaponParent;
     public GameObject attackSpawner;
 
@@ -29,10 +31,18 @@ public class PlayerController : MonoBehaviour {
     private bool attackBtn;
 
 
-    private void Awake() {
-        cc = this.gameObject.GetComponent<CharacterController>();
-
+    public void InitializeCharacter() {
         playerSheetScript = GetComponent<PlayerSheet>();
+
+        playerCam.GetComponent<CameraFollow>().cameraID = playerSheetScript.playerID;
+        playerCam.GetComponent<CameraFollow>().InitializeCamera();
+
+        playerUI.GetComponent<Canvas>().worldCamera = playerCam.GetComponent<Camera>();
+        playerUI.GetComponent<Canvas>().planeDistance = 1;
+
+        statsUI.GetComponent<Canvas>().worldCamera = playerCam.GetComponent<Camera>();
+        statsUI.GetComponent<Canvas>().planeDistance = 1;
+        statsUI.SetActive(false);
     }
 
 

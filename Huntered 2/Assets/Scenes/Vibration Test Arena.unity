@@ -3561,7 +3561,10 @@ MonoBehaviour:
       _name: Player1
       _descriptiveName: Player1
       _startPlaying: 1
-      _defaultJoystickMaps: []
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
       _defaultMouseMaps: []
       _defaultKeyboardMaps:
       - _enabled: 1
@@ -4631,6 +4634,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 332722609602078645, guid: 6c7fae186fdf34218b3e6ae88fbb1435,
+        type: 3}
+      propertyPath: DevCam
+      value: 
+      objectReference: {fileID: 1083026463}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c7fae186fdf34218b3e6ae88fbb1435, type: 3}
 --- !u!4 &2090852176 stripped
@@ -4974,6 +4982,11 @@ PrefabInstance:
     - target: {fileID: 7832224219809976832, guid: 94ce8d7572ac64d1682a2668b5d8954e,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568313053376307764, guid: 94ce8d7572ac64d1682a2668b5d8954e,
+        type: 3}
+      propertyPath: enemyClassID
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

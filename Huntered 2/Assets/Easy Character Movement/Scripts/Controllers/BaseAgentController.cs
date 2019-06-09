@@ -6,11 +6,11 @@ namespace ECM.Controllers
 {
     /// <summary>
     /// Base Agent (NavMesh) Controller.
-    /// 
+    ///
     /// Base class for a 'NavMeshAgent' controlled characters.
     /// It inherits from 'BaseCharacterController' and extends it to control a 'NavMeshAgent'
     /// and intelligently move in response to mouse click (click to move).
-    /// 
+    ///
     /// As the base character controller, this default behaviour can easily be modified completely replaced in a derived class.
     /// </summary>
 
@@ -113,7 +113,7 @@ namespace ECM.Controllers
         /// <summary>
         /// Synchronize the NavMesh Agent simulation position with the character movement position,
         /// we control the agent.
-        /// 
+        ///
         /// NOTE: Must be called in LateUpdate method.
         /// </summary>
 
@@ -150,7 +150,7 @@ namespace ECM.Controllers
             {
                 // If destination is reached,
                 // reset stop agent and clear its path
-                
+
                 agent.ResetPath();
             }
         }
@@ -191,7 +191,7 @@ namespace ECM.Controllers
 
             // Set agent destination to ground hit point
 
-            agent.SetDestination(hitInfo.point);
+            // agent.SetDestination(hitInfo.point);
         }
 
         #endregion
