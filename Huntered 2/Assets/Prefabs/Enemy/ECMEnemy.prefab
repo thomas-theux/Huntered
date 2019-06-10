@@ -277,6 +277,7 @@ MonoBehaviour:
   enemyID: 0
   enemyClassID: 0
   enemyLevel: 0
+  DelayMovement: 0
   actionMode: 0
 --- !u!114 &6475105017402170689
 MonoBehaviour:
@@ -488,7 +489,7 @@ GameObject:
   - component: {fileID: 1395729675275252544}
   - component: {fileID: 609800974060249804}
   m_Layer: 0
-  m_Name: Reach Radius
+  m_Name: Attack Radius
   m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,7 +524,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2847270986244967376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -668,7 +669,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4236850643720067646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
