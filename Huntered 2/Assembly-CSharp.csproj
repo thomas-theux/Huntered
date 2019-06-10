@@ -130,6 +130,7 @@
      <Compile Include="Assets\Scripts\Loot\CollectGold.cs" />
      <Compile Include="Assets\Scripts\Loot\CollectRadius.cs" />
      <Compile Include="Assets\Scripts\Loot\GainRep.cs" />
+     <Compile Include="Assets\Scripts\Manager\ColorManager.cs" />
      <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
      <Compile Include="Assets\Scripts\Manager\GamepadManager.cs" />
      <Compile Include="Assets\Scripts\Manager\GameSettings.cs" />

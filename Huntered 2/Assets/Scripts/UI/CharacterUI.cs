@@ -9,6 +9,7 @@ public class CharacterUI : MonoBehaviour {
     public TMP_Text currentGoldText;
     public Slider healthBar;
     public GameObject BasicsInterface;
+    public Image CharacterIndicator;
 
     private PlayerSheet playerSheetScript;
 
@@ -18,11 +19,15 @@ public class CharacterUI : MonoBehaviour {
     public void InitializeUI() {
         playerSheetScript = GetComponent<PlayerSheet>();
 
+        CharacterIndicator.color = ColorManager.PlayerOne;
+
         // Set the canvas of the second player to the left
         if (playerSheetScript.playerID == 1) {
             BasicsInterface.GetComponent<Image>().rectTransform.anchorMin = new Vector2(1, 0);
             BasicsInterface.GetComponent<Image>().rectTransform.anchorMax = new Vector2(1, 1);
             BasicsInterface.GetComponent<Image>().rectTransform.pivot = new Vector2(1, 0.5f);
+
+            CharacterIndicator.color = ColorManager.PlayerTwo;
         }
 
         initialized = true;
