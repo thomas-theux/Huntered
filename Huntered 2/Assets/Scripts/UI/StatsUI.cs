@@ -33,6 +33,12 @@ public class StatsUI : MonoBehaviour {
     private float increaseSpeedBy = 0.002f;
     private float decreaseCooldownBy = 0.00005f;
 
+    private int statCost = 10;
+    private int costIncreaseMultiplierDef = 1;
+    private int costIncreaseMultiplier = 1;
+    private float costIncreaseDelay = 1.0f;
+    private float t = 0;
+
     private bool initialized = false;
 
     // REWIRED
@@ -58,6 +64,8 @@ public class StatsUI : MonoBehaviour {
 
         StatsParentGO.SetActive(false);
 
+        t = costIncreaseDelay;
+
         initialized = true;
     }
 
@@ -67,7 +75,9 @@ public class StatsUI : MonoBehaviour {
             GetInput();
             ChangeIndex();
             IncreaseStat();
+            IncreaseCosts();
         }
+
     }
 
 
@@ -145,24 +155,42 @@ public class StatsUI : MonoBehaviour {
     }
 
 
+    private void IncreaseCosts() {
+        // Increase costs when player is holding interact button
+        if (interactBtn) {
+            t -= Time.deltaTime;
+
+            if (t <= 0) {
+                costIncreaseMultiplier++;
+                t = costIncreaseDelay;
+            }
+        }
+
+        // Reset gold costs for stats when player is not increasing them
+        if (costIncreaseMultiplier != costIncreaseMultiplierDef && !interactBtn) {
+            costIncreaseMultiplier = costIncreaseMultiplierDef;
+        }
+    }
+
+
     private void IncreaseStat() {
-        if (interactBtn && playerSheetScript.currentGold >= 10) {
-            playerSheetScript.currentGold -= 10;
+        if (interactBtn && playerSheetScript.currentGold >= statCost * costIncreaseMultiplier) {
+            playerSheetScript.currentGold -= statCost * costIncreaseMultiplier;
 
             switch (currentIndex) {
                 case 0:
                     float relativeHealth = playerSheetScript.currentHealth / playerSheetScript.maxHealth;
-                    playerSheetScript.currentHealth += relativeHealth * increaseHealthBy;
-                    playerSheetScript.maxHealth += increaseHealthBy;
+                    playerSheetScript.currentHealth += relativeHealth * (increaseHealthBy * costIncreaseMultiplier);
+                    playerSheetScript.maxHealth += increaseHealthBy * costIncreaseMultiplier;
                     break;
                 case 1:
-                    playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] + increaseDamageBy;
+                    playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] + (increaseDamageBy * costIncreaseMultiplier);
                     break;
                 case 2:
-                    playerSheetScript.moveSpeed += increaseSpeedBy;
+                    playerSheetScript.moveSpeed += increaseSpeedBy * costIncreaseMultiplier;
                     break;
                 case 3:
-                    playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] - decreaseCooldownBy;
+                    playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] - (decreaseCooldownBy * costIncreaseMultiplier);
                     break;
             }
 

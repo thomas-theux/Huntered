@@ -316,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   playerWeaponID: 0
-  currentGold: 500000
+  currentGold: 10000
   currentHealth: 0
   maxHealth: 50
   moveSpeed: 12
