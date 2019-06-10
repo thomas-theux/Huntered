@@ -109,6 +109,12 @@
  <Reference Include="com.unity.multiplayer-hlapi.Runtime">
  <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.AddOns.Editor">
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.1.3f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
