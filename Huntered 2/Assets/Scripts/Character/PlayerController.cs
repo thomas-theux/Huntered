@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject playerUI;
     public GameObject statsUI;
-    public GameObject playerCam;
+    // public GameObject playerCam;
 
     public GameObject weaponParent;
     public GameObject attackSpawner;
@@ -34,14 +34,14 @@ public class PlayerController : MonoBehaviour {
     public void InitializeCharacter() {
         playerSheetScript = GetComponent<PlayerSheet>();
 
-        playerCam.GetComponent<CameraFollow>().cameraID = playerSheetScript.playerID;
-        playerCam.GetComponent<CameraFollow>().InitializeCamera();
+        // playerCam.GetComponent<CameraFollow>().cameraID = playerSheetScript.playerID;
+        // playerCam.GetComponent<CameraFollow>().InitializeCamera();
 
-        playerUI.GetComponent<Canvas>().worldCamera = playerCam.GetComponent<Camera>();
-        playerUI.GetComponent<Canvas>().planeDistance = 1;
+        // playerUI.GetComponent<Canvas>().worldCamera = playerCam.GetComponent<Camera>();
+        // playerUI.GetComponent<Canvas>().planeDistance = 1;
 
-        statsUI.GetComponent<Canvas>().worldCamera = playerCam.GetComponent<Camera>();
-        statsUI.GetComponent<Canvas>().planeDistance = 1;
+        // statsUI.GetComponent<Canvas>().worldCamera = playerCam.GetComponent<Camera>();
+        // statsUI.GetComponent<Canvas>().planeDistance = 1;
         statsUI.SetActive(false);
     }
 

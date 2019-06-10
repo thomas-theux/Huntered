@@ -17,8 +17,11 @@ public class PlayerSpawner : MonoBehaviour {
             GameObject newPlayer = Instantiate(PlayerGO);
             newPlayer.transform.position = playerDistances * i;
 
+            newPlayer.name = "Character" + i;
+
             newPlayer.GetComponent<PlayerSheet>().playerID = i;
             newPlayer.GetComponent<PlayerController>().InitializeCharacter();
+            newPlayer.GetComponent<PlayerUIHandler>().InitializeUI();
         }
     }
 

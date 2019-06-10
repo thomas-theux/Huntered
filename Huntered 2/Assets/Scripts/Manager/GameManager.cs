@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour {
 
 
     private void Awake() {
-        devCam = GameObject.Find("DevCam");
-        Destroy(devCam);
+        // devCam = GameObject.Find("DevCam");
+        // Destroy(devCam);
 
         this.gameObject.GetComponent<GamepadManager>().InitializeGamepads();
         this.gameObject.GetComponent<PlayerSpawner>().SpawnCharacters();
