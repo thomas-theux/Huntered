@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
 
         // statsUI.GetComponent<Canvas>().worldCamera = playerCam.GetComponent<Camera>();
         // statsUI.GetComponent<Canvas>().planeDistance = 1;
-        statsUI.SetActive(false);
+        // statsUI.SetActive(false);
     }
 
 

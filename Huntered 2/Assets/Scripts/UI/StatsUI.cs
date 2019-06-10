@@ -7,7 +7,10 @@ using Rewired;
 
 public class StatsUI : MonoBehaviour {
 
-    public PlayerSheet playerSheetScript;
+    private PlayerSheet playerSheetScript;
+
+    public GameObject StatsParentGO;
+    public GameObject MainContainer;
 
     public TMP_Text healthStat;
     public TMP_Text damageStat;
@@ -30,6 +33,8 @@ public class StatsUI : MonoBehaviour {
     private float increaseSpeedBy = 0.002f;
     private float decreaseCooldownBy = 0.00005f;
 
+    private bool initialized = false;
+
     // REWIRED
     private bool dpadUp;
     private bool dpadDown;
@@ -37,17 +42,32 @@ public class StatsUI : MonoBehaviour {
     private bool interactBtn;
 
 
-    private void Start() {
+    public void InitializeUI() {
+        playerSheetScript = GetComponent<PlayerSheet>();
+
         initialCursorPos = UICursor.transform.localPosition;
+
+        // Set the canvas of the second player to the left
+        if (playerSheetScript.playerID == 1) {
+            MainContainer.GetComponent<Image>().rectTransform.anchorMin = new Vector2(1, 0);
+            MainContainer.GetComponent<Image>().rectTransform.anchorMax = new Vector2(1, 1);
+            MainContainer.GetComponent<Image>().rectTransform.pivot = new Vector2(1, 0.5f);
+        }
+
         DisplayStats();
+
+        StatsParentGO.SetActive(false);
+
+        initialized = true;
     }
 
 
     private void Update() {
-        GetInput();
-        ChangeIndex();
-
-        IncreaseStat();
+        if (initialized && playerSheetScript.StatsUIActive) {
+            GetInput();
+            ChangeIndex();
+            IncreaseStat();
+        }
     }
 
 
@@ -67,16 +87,20 @@ public class StatsUI : MonoBehaviour {
             if (currentIndex > 0) {
                 axisYActive = true;
                 currentIndex--;
-                DisplayCursor();
+            } else {
+                currentIndex = maxIndex;
             }
+            DisplayCursor();
         }
 
         if (ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") < -maxThreshold && !axisYActive) {
             if (currentIndex < maxIndex) {
                 axisYActive = true;
                 currentIndex++;
-                DisplayCursor();
+            } else {
+                currentIndex = 0;
             }
+            DisplayCursor();
         }
 
         if (ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") <= minThreshold && ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") >= -minThreshold) {
@@ -86,13 +110,17 @@ public class StatsUI : MonoBehaviour {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // UI navigation with the dpad
-        if (dpadUp && currentIndex > 0) {
-            currentIndex--;
+        if (dpadUp) {
+            if (currentIndex > 0) currentIndex--;
+            else currentIndex = maxIndex;
+
             DisplayCursor();
         }
 
-        if (dpadDown && currentIndex < maxIndex) {
-            currentIndex++;
+        if (dpadDown) {
+            if (currentIndex < maxIndex) currentIndex++;
+            else currentIndex = 0;
+
             DisplayCursor();
         }
     }

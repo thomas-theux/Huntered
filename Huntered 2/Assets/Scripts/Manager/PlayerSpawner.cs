@@ -21,7 +21,8 @@ public class PlayerSpawner : MonoBehaviour {
 
             newPlayer.GetComponent<PlayerSheet>().playerID = i;
             newPlayer.GetComponent<PlayerController>().InitializeCharacter();
-            newPlayer.GetComponent<PlayerUIHandler>().InitializeUI();
+            newPlayer.GetComponent<CharacterUI>().InitializeUI();
+            newPlayer.GetComponent<StatsUI>().InitializeUI();
         }
     }
 
