@@ -13,6 +13,8 @@ public class AggroRadius : MonoBehaviour {
 
     private float approachSpeed;
 
+    private List<Collider> targets = new List<Collider>();
+
 
     private void Start() {
         // rb = enemyGO.GetComponent<Rigidbody>();
@@ -31,6 +33,8 @@ public class AggroRadius : MonoBehaviour {
         if (other.tag == "Player") {
             // Activate aggro trigger
             enemySheetScript.actionMode = 1;
+
+            targets.Add(other);
         }
     }
 
@@ -38,10 +42,10 @@ public class AggroRadius : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if (other.tag == "Player") {
             if (enemySheetScript.actionMode == 1) {
-                playerTarget.destination = other.transform.position;
+                playerTarget.destination = targets[0].transform.position;
             } else {
                 playerTarget.destination = this.transform.position;
-                enemyGO.transform.LookAt(other.transform, transform.up);
+                enemyGO.transform.LookAt(targets[0].transform, transform.up);
             }
         }
     }
@@ -50,8 +54,13 @@ public class AggroRadius : MonoBehaviour {
     private void OnTriggerExit(Collider other) {
         // Deactivate aggro trigger
         if (other.tag == "Player") {
-            enemySheetScript.actionMode = 0;
-            playerTarget.destination = this.transform.position;
+            // Remove the player that left the aggro trigger
+            targets.Remove(other);
+
+            if (targets.Count == 0) {
+                enemySheetScript.actionMode = 0;
+                playerTarget.destination = this.transform.position;
+            }
         }
     }
 
