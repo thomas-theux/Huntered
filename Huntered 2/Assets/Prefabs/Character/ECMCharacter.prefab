@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 6936218645448132933}
   - component: {fileID: 5544865270729118264}
   - component: {fileID: 6914500496924311736}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ECMCharacter
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _angularSpeed: 540
+  _angularSpeed: 720
   _acceleration: 50
   _deceleration: 20
   _groundFriction: 8
