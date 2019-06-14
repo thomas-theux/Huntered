@@ -14,9 +14,12 @@ public class EnemySheet : MonoBehaviour {
     public int actionMode = 0;
 
     public List<Hashtable> classDataDict = new List<Hashtable>();
+
     private Hashtable classBasic = new Hashtable();
-    private Hashtable classRanged = new Hashtable();
     private Hashtable classTank = new Hashtable();
+    private Hashtable classRanged = new Hashtable();
+    private Hashtable classMage = new Hashtable();
+    private Hashtable classBoss = new Hashtable();
 
 
     private void Awake() {
@@ -57,10 +60,36 @@ public class EnemySheet : MonoBehaviour {
         classRanged.Add("Lifetime", 2.0f);
         classRanged.Add("CastTime", 0.1f);
 
-        // Add all dictionaries to an array
+        // MAGE ENEMY
+        classMage.Add("ID", 3);
+        classMage.Add("Name", "Mage Class");
+        classMage.Add("Move Speed", 2.0f);
+        classMage.Add("Aggro Radius", 28);
+        classMage.Add("Reach Radius", 26);
+        classMage.Add("Damage", 4.0f);
+        classMage.Add("Cooldown", 1.5f);
+        classMage.Add("DamageDelay", 0.2f);
+        classMage.Add("Lifetime", 2.0f);
+        classMage.Add("CastTime", 0.2f);
+
+        // BOSS ENEMY
+        classBoss.Add("ID", 4);
+        classBoss.Add("Name", "Mage Class");
+        classBoss.Add("Move Speed", 1.5f);
+        classBoss.Add("Aggro Radius", 10);
+        classBoss.Add("Reach Radius", 5);
+        classBoss.Add("Damage", 12.0f);
+        classBoss.Add("Cooldown", 2.0f);
+        classBoss.Add("DamageDelay", 0.4f);
+        classBoss.Add("Lifetime", 0.3f);
+        classBoss.Add("CastTime", 0.8f);
+
+        // Add all enemy dictionaries to an array
         classDataDict.Add(classBasic);
         classDataDict.Add(classTank);
         classDataDict.Add(classRanged);
+        classDataDict.Add(classMage);
+        classDataDict.Add(classBoss);
     }
 
 }
