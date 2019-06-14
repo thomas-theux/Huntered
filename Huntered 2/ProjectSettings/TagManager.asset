@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Environment
+  - Gold
+  - Enemy
+  - Trigger
+  - EnemyAttack
+  - EnemyRanged
+  - NPC
+  - Attack
+  - Ranged
   layers:
   - Default
   - TransparentFX
@@ -14,7 +23,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - Character
   - 
   - 
   - 
