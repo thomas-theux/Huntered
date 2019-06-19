@@ -111,6 +111,10 @@ namespace ECM.Controllers
         // OWN CODE
         private PlayerSheet playerSheetScript;
         private EnemySheet enemySheetScript;
+
+        private float dashSpeed = 3000;
+        private Rigidbody rb;
+
         // REWIRED
         private float moveHorizontal;
         private float moveVertical;
@@ -657,6 +661,11 @@ namespace ECM.Controllers
                 moveVertical = 0;
             }
 
+            if (ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("L1")) {
+                // rb.velocity = Vector3.right * dashSpeed;
+                rb.AddRelativeForce(Vector3.forward * dashSpeed);
+            }
+
             moveDirection = new Vector3
             {
                 x = moveHorizontal,
@@ -733,6 +742,9 @@ namespace ECM.Controllers
             } else if (this.gameObject.tag == "Enemy") {
                 enemySheetScript = GetComponent<EnemySheet>();
             }
+
+
+            rb = this.GetComponent<Rigidbody>();
         }
 
         public virtual void FixedUpdate()

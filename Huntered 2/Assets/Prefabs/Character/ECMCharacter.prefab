@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eae04a4fe514bf4789aec1bdb93100b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLateralSpeed: 10
+  _maxLateralSpeed: 100
   _maxRiseSpeed: 20
   _maxFallSpeed: 20
   _useGravity: 1
@@ -378,6 +378,7 @@ MonoBehaviour:
   _jumpToleranceTime: 0
   _maxMidAirJumps: 1
   _useRootMotion: 0
+  dashSpeed: 0
 --- !u!114 &6737107886738630158
 MonoBehaviour:
   m_ObjectHideFlags: 0
