@@ -118,6 +118,7 @@ namespace ECM.Controllers
         // REWIRED
         private float moveHorizontal;
         private float moveVertical;
+        private bool dashBtn;
 
 
         #endregion
@@ -653,15 +654,17 @@ namespace ECM.Controllers
         protected virtual void HandleInput()
         {
             // OWN CODE
-            if (!playerSheetScript.StatsUIActive) {
+            if (!playerSheetScript.StatsUIActive && !playerSheetScript.isDead) {
                 moveHorizontal = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Horizontal");
                 moveVertical = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical");
+                dashBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("L1");
+                jump = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("R1");
             } else {
                 moveHorizontal = 0;
                 moveVertical = 0;
             }
 
-            if (ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("L1")) {
+            if (dashBtn) {
                 // rb.velocity = Vector3.right * dashSpeed;
                 rb.AddRelativeForce(Vector3.forward * dashSpeed);
             }
@@ -672,6 +675,7 @@ namespace ECM.Controllers
                 y = 0.0f,
                 z = moveVertical
             };
+
 
 
             // moveDirection = new Vector3

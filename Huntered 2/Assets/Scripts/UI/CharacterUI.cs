@@ -12,14 +12,24 @@ public class CharacterUI : MonoBehaviour {
     public Image CharacterIndicator;
 
     private PlayerSheet playerSheetScript;
+    private TriggerTest triggerTestScript;
+
+    public GameObject ModelGO;
+    private Collider playerCollider;
+
+    private float respawnTime;
+    private float respawnTimeDef = 5.0f;
+    private int respawnTo = -1;
 
     private bool initialized = false;
 
 
     public void InitializeUI() {
         playerSheetScript = GetComponent<PlayerSheet>();
+        triggerTestScript = GetComponent<TriggerTest>();
 
         CharacterIndicator.color = ColorManager.PlayerOne;
+        playerCollider = this.GetComponent<Collider>();
 
         // Set the canvas of the second player to the left
         if (playerSheetScript.playerID == 1) {
@@ -35,9 +45,13 @@ public class CharacterUI : MonoBehaviour {
 
 
     private void Update() {
-        if (initialized) {
+        if (initialized && !playerSheetScript.isDead) {
             UpdateGold();
             UpdateHealth();
+        }
+
+        if (playerSheetScript.isDead) {
+            RespawnTimer();
         }
     }
 
@@ -58,8 +72,52 @@ public class CharacterUI : MonoBehaviour {
 
         // Kill when health is below 0
         if (playerSheetScript.currentHealth <= 0) {
-            // Player dies
+            // Remove Player from enemies trigger if inside
+            // triggerTestScript.RemoveFromTrigger();
+
+            // Disable all relevant game objects
+            ModelGO.SetActive(false);
+            CharacterIndicator.fillAmount = 0;
+            playerCollider.enabled = false;
+
+            this.transform.rotation = Quaternion.identity;
+
+            respawnTime = respawnTimeDef;
+
+            playerSheetScript.isDead = true;
         }
+    }
+
+
+    private void RespawnTimer() {
+        respawnTime -= Time.deltaTime;
+
+        float currentFill = respawnTime / respawnTimeDef;
+        CharacterIndicator.fillAmount = 1 - currentFill;
+
+        if (respawnTime <= 0) {
+            RespawnPlayer();
+        }
+    }
+
+
+    private void RespawnPlayer() {
+        if (playerSheetScript.playerID == 0) {
+            respawnTo = 1;
+        } else {
+            respawnTo = 0;
+        }
+
+        // Respawn to other players position
+        Transform otherPlayer = GameObject.Find("Character" + respawnTo).transform;
+        this.gameObject.transform.position = otherPlayer.position;
+
+        ModelGO.SetActive(true);
+        playerCollider.enabled = true;
+
+        playerSheetScript.currentHealth = playerSheetScript.maxHealth;
+
+        playerSheetScript.isDead = false;
     }
 
 }

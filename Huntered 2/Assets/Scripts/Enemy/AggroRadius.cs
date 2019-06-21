@@ -29,10 +29,19 @@ public class AggroRadius : MonoBehaviour {
     }
 
 
+    // private void Update() {
+    //     if (this.transform.parent.gameObject.name == "Special Enemy") {
+    //         print(enemySheetScript.actionMode);
+    //     }
+    // }
+
+
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             // Activate aggro trigger
-            enemySheetScript.actionMode = 1;
+            if (enemySheetScript.actionMode == 0) {
+                enemySheetScript.actionMode = 1;
+            }
 
             targets.Add(other);
         }
@@ -54,13 +63,18 @@ public class AggroRadius : MonoBehaviour {
     private void OnTriggerExit(Collider other) {
         // Deactivate aggro trigger
         if (other.tag == "Player") {
-            // Remove the player that left the aggro trigger
-            targets.Remove(other);
+            RemovePlayer(other);
+        }
+    }
 
-            if (targets.Count == 0) {
-                enemySheetScript.actionMode = 0;
-                playerTarget.destination = this.transform.position;
-            }
+
+    public void RemovePlayer(Collider other) {
+        // Remove the player that left the aggro trigger
+        targets.Remove(other);
+
+        if (targets.Count == 0) {
+            enemySheetScript.actionMode = 0;
+            playerTarget.destination = this.transform.position;
         }
     }
 

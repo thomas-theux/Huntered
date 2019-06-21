@@ -15,6 +15,8 @@ public class PlayerSheet : MonoBehaviour {
     public bool StatsUIActive = false;
     public bool DelayMovement = false;
 
+    public bool isDead = false;
+
     public List<Hashtable> weaponDataDict = new List<Hashtable>();
     private Hashtable weaponBasic = new Hashtable();
     private Hashtable weaponSword = new Hashtable();

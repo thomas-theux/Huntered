@@ -14,6 +14,8 @@ public class AttackRadius : MonoBehaviour {
 
     private float moveDelayTime = 0;
 
+    private List<Collider> targets = new List<Collider>();
+
 
     private void Start() {
         // Set delay between attacks
@@ -28,12 +30,21 @@ public class AttackRadius : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             // attackDelayTime = attackCooldown;
+            targets.Add(other);
             enemySheetScript.actionMode = 2;
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.tag == "Player") {
+            RemovePlayer(other);
+        }
+    }
+
+
+    public void RemovePlayer(Collider other) {
+        targets.Remove(other);
+        if (targets.Count == 0) {
             enemySheetScript.actionMode = 1;
         }
     }

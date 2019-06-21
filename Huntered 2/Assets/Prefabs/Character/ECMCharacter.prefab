@@ -66,7 +66,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 29656b1bc37f4463593bc4fdbc716b46, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 6936218645448132933}
   - component: {fileID: 5544865270729118264}
   - component: {fileID: 6914500496924311736}
+  - component: {fileID: 1719325011941402574}
   m_Layer: 9
   m_Name: ECMCharacter
   m_TagString: Player
@@ -375,10 +376,9 @@ MonoBehaviour:
   _baseJumpHeight: 1.5
   _extraJumpTime: 0.5
   _extraJumpPower: 25
-  _jumpToleranceTime: 0
-  _maxMidAirJumps: 1
+  _jumpToleranceTime: 0.5
+  _maxMidAirJumps: 0
   _useRootMotion: 0
-  dashSpeed: 0
 --- !u!114 &6737107886738630158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,13 +392,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
-  playerWeaponID: 0
+  playerWeaponID: 2
   currentGold: 1000
   currentHealth: 0
   maxHealth: 50
   moveSpeed: 6
   StatsUIActive: 0
   DelayMovement: 0
+  isDead: 0
 --- !u!114 &4475628731200101332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +416,7 @@ MonoBehaviour:
   healthBar: {fileID: 110736264333873125}
   BasicsInterface: {fileID: 4615137147453135861}
   CharacterIndicator: {fileID: 3471696130741838347}
+  ModelGO: {fileID: 8039901751461873133}
 --- !u!114 &6936218645448132933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +463,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92715477b01d642d88df7234e6305edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1719325011941402574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898870989050275549}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553b43c8f283a49c48ae4784f46e570d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1040274049595242705

@@ -65,7 +65,7 @@ public class EnemySheet : MonoBehaviour {
         classMage.Add("Name", "Mage Class");
         classMage.Add("Move Speed", 2.0f);
         classMage.Add("Aggro Radius", 28);
-        classMage.Add("Reach Radius", 26);
+        classMage.Add("Reach Radius", 24);
         classMage.Add("Damage", 4.0f);
         classMage.Add("Cooldown", 1.5f);
         classMage.Add("DamageDelay", 0.2f);
