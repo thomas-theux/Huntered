@@ -22,7 +22,7 @@ public class AttackRadius : MonoBehaviour {
         attackCooldown = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Cooldown"];
 
         // Set radius of aggro
-        int reachScale = (int)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Reach Radius"];
+        int reachScale = (int)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Attack Radius"];
         transform.localScale = new Vector3(reachScale, transform.localScale.y, reachScale);
     }
 
@@ -81,7 +81,7 @@ public class AttackRadius : MonoBehaviour {
 
             // Delay movement after an attack
             enemySheetScript.DelayMovement = true;
-            moveDelayTime = GameSettings.MoveDelay + (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["CastTime"];
+            moveDelayTime = GameSettings.MoveDelay + (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Cast Time"];
         }
     }
 
@@ -92,7 +92,7 @@ public class AttackRadius : MonoBehaviour {
 
 
     private IEnumerator DamageDelay() {
-        float delay = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["DamageDelay"];
+        float delay = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Damage Delay"];
 
         yield return new WaitForSeconds(delay);
 

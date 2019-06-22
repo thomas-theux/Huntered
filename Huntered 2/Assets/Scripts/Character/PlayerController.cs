@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour {
     private void CastAttack() {
         // Delay movement after an attack
         playerSheetScript.DelayMovement = true;
-        moveDelayTime = GameSettings.MoveDelay + (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["CastTime"];
+        moveDelayTime = GameSettings.MoveDelay + (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cast Time"];
 
         if (attackDelayTime <= 0) {
             // Delay next attack
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour {
 
 
     private IEnumerator DamageDelay() {
-        float delay = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["DamageDelay"];
+        float delay = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Damage Delay"];
 
         yield return new WaitForSeconds(delay);
 

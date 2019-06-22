@@ -392,11 +392,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
-  playerWeaponID: 2
+  playerWeaponID: 0
   currentGold: 1000
   currentHealth: 0
   maxHealth: 50
   moveSpeed: 6
+  respawnTime: 7
   StatsUIActive: 0
   DelayMovement: 0
   isDead: 0

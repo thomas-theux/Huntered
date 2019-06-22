@@ -12,13 +12,12 @@ public class CharacterUI : MonoBehaviour {
     public Image CharacterIndicator;
 
     private PlayerSheet playerSheetScript;
-    private TriggerTest triggerTestScript;
+    private RemoveFromTrigger removeFromTriggerScript;
 
     public GameObject ModelGO;
     private Collider playerCollider;
 
     private float respawnTime;
-    private float respawnTimeDef = 5.0f;
     private int respawnTo = -1;
 
     private bool initialized = false;
@@ -26,7 +25,7 @@ public class CharacterUI : MonoBehaviour {
 
     public void InitializeUI() {
         playerSheetScript = GetComponent<PlayerSheet>();
-        triggerTestScript = GetComponent<TriggerTest>();
+        removeFromTriggerScript = GetComponent<RemoveFromTrigger>();
 
         CharacterIndicator.color = ColorManager.PlayerOne;
         playerCollider = this.GetComponent<Collider>();
@@ -73,7 +72,7 @@ public class CharacterUI : MonoBehaviour {
         // Kill when health is below 0
         if (playerSheetScript.currentHealth <= 0) {
             // Remove Player from enemies trigger if inside
-            // triggerTestScript.RemoveFromTrigger();
+            removeFromTriggerScript.TellEnemiesToRemove();
 
             // Disable all relevant game objects
             ModelGO.SetActive(false);
@@ -82,7 +81,7 @@ public class CharacterUI : MonoBehaviour {
 
             this.transform.rotation = Quaternion.identity;
 
-            respawnTime = respawnTimeDef;
+            respawnTime = playerSheetScript.respawnTime;
 
             playerSheetScript.isDead = true;
         }
@@ -92,7 +91,7 @@ public class CharacterUI : MonoBehaviour {
     private void RespawnTimer() {
         respawnTime -= Time.deltaTime;
 
-        float currentFill = respawnTime / respawnTimeDef;
+        float currentFill = respawnTime / playerSheetScript.respawnTime;
         CharacterIndicator.fillAmount = 1 - currentFill;
 
         if (respawnTime <= 0) {

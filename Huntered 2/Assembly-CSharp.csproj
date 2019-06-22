@@ -117,12 +117,12 @@
      <Compile Include="Assets\Scripts\_tests\MoveTo.cs" />
      <Compile Include="Assets\Scripts\_tests\ShowEdges.cs" />
      <Compile Include="Assets\Scripts\_tests\Timer.cs" />
-     <Compile Include="Assets\Scripts\_tests\TriggerTest.cs" />
      <Compile Include="Assets\Scripts\Character\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Character\NPCLifeHandler.cs" />
      <Compile Include="Assets\Scripts\Character\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Character\PlayerLifeHandler.cs" />
      <Compile Include="Assets\Scripts\Character\PlayerSheet.cs" />
+     <Compile Include="Assets\Scripts\Character\RemoveFromTrigger.cs" />
      <Compile Include="Assets\Scripts\Enemy\AggroRadius.cs" />
      <Compile Include="Assets\Scripts\Enemy\AttackRadius.cs" />
      <Compile Include="Assets\Scripts\Enemy\DropLoot.cs" />

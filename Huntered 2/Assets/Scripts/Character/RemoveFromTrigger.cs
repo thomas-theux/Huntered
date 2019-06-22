@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerTest : MonoBehaviour {
+public class RemoveFromTrigger : MonoBehaviour {
 
     private PlayerSheet playerSheetScript;
     private List<GameObject> triggerList = new List<GameObject>();
@@ -14,15 +14,9 @@ public class TriggerTest : MonoBehaviour {
     }
 
 
-    public void RemoveFromTrigger() {
+    public void TellEnemiesToRemove() {
         for (int i = 0; i < triggerList.Count; i++) {
-            if (triggerList[i].GetComponent<EnemySheet>().actionMode == 2) {
-                triggerList[i].transform.GetChild(4).GetComponent<AttackRadius>().RemovePlayer(this.GetComponent<Collider>());
-            }
-
-            if (triggerList[i].GetComponent<EnemySheet>().actionMode == 1) {
-                triggerList[i].transform.GetChild(3).GetComponent<AggroRadius>().RemovePlayer(this.GetComponent<Collider>());
-            }
+            triggerList[i].transform.GetChild(3).GetComponent<EnemyController>().RemovePlayer(this.GetComponent<Collider>());
         }
     }
 
