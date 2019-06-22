@@ -21,8 +21,9 @@ public class PlayerSheet : MonoBehaviour {
 
     public List<Hashtable> weaponDataDict = new List<Hashtable>();
     private Hashtable weaponBasic = new Hashtable();
-    private Hashtable weaponSword = new Hashtable();
-    private Hashtable weaponBow = new Hashtable();
+    private Hashtable weaponTank = new Hashtable();
+    private Hashtable weaponRanged = new Hashtable();
+    private Hashtable weaponMage = new Hashtable();
 
 
     private void Awake() {
@@ -39,28 +40,38 @@ public class PlayerSheet : MonoBehaviour {
         weaponBasic.Add("Lifetime", 0.1f);
         weaponBasic.Add("Cast Time", 0.2f);
 
-        // SWORD
-        weaponSword.Add("ID", 1);
-        weaponSword.Add("Name", "Sword");
-        weaponSword.Add("Damage", 18.0f);
-        weaponSword.Add("Cooldown", 0.6f);
-        weaponSword.Add("Damage Delay", 0.2f);
-        weaponSword.Add("Lifetime", 0.3f);
-        weaponSword.Add("Cast Time", 0.5f);
+        // TANK
+        weaponTank.Add("ID", 1);
+        weaponTank.Add("Name", "Sword");
+        weaponTank.Add("Damage", 18.0f);
+        weaponTank.Add("Cooldown", 0.6f);
+        weaponTank.Add("Damage Delay", 0.2f);
+        weaponTank.Add("Lifetime", 0.3f);
+        weaponTank.Add("Cast Time", 0.5f);
 
-        // BOW
-        weaponBow.Add("ID", 2);
-        weaponBow.Add("Name", "Bow");
-        weaponBow.Add("Damage", 12.0f);
-        weaponBow.Add("Cooldown", 0.4f);
-        weaponBow.Add("Damage Delay", 0.1f);
-        weaponBow.Add("Lifetime", 2.0f);
-        weaponBow.Add("Cast Time", 0.1f);
+        // RANGED
+        weaponRanged.Add("ID", 2);
+        weaponRanged.Add("Name", "Bow");
+        weaponRanged.Add("Damage", 12.0f);
+        weaponRanged.Add("Cooldown", 0.4f);
+        weaponRanged.Add("Damage Delay", 0.1f);
+        weaponRanged.Add("Lifetime", 2.0f);
+        weaponRanged.Add("Cast Time", 0.1f);
+
+        // MAGE
+        weaponMage.Add("ID", 3);
+        weaponMage.Add("Name", "Staff");
+        weaponMage.Add("Damage", 16.0f);
+        weaponMage.Add("Cooldown", 0.5f);
+        weaponMage.Add("Damage Delay", 0.2f);
+        weaponMage.Add("Lifetime", 1.0f);
+        weaponMage.Add("Cast Time", 0.4f);
 
         // Add all dictionaries to an array
         weaponDataDict.Add(weaponBasic);
-        weaponDataDict.Add(weaponSword);
-        weaponDataDict.Add(weaponBow);
+        weaponDataDict.Add(weaponTank);
+        weaponDataDict.Add(weaponRanged);
+        weaponDataDict.Add(weaponMage);
     }
 
 }

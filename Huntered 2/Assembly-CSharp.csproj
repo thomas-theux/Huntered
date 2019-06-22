@@ -110,6 +110,8 @@
      <Compile Include="Assets\Rewired\Internal\Scripts\InputManager.cs" />
      <Compile Include="Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
      <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
+     <Compile Include="Assets\Scripts\_archived\AggroRadius.cs" />
+     <Compile Include="Assets\Scripts\_archived\AttackRadius.cs" />
      <Compile Include="Assets\Scripts\_tests\CenterPos.cs" />
      <Compile Include="Assets\Scripts\_tests\DamageTest.cs" />
      <Compile Include="Assets\Scripts\_tests\FollowCenter.cs" />
@@ -123,8 +125,6 @@
      <Compile Include="Assets\Scripts\Character\PlayerLifeHandler.cs" />
      <Compile Include="Assets\Scripts\Character\PlayerSheet.cs" />
      <Compile Include="Assets\Scripts\Character\RemoveFromTrigger.cs" />
-     <Compile Include="Assets\Scripts\Enemy\AggroRadius.cs" />
-     <Compile Include="Assets\Scripts\Enemy\AttackRadius.cs" />
      <Compile Include="Assets\Scripts\Enemy\DropLoot.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyLifeHandler.cs" />
