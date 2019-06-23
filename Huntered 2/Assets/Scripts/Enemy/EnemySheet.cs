@@ -20,6 +20,7 @@ public class EnemySheet : MonoBehaviour {
     private Hashtable classRanged = new Hashtable();
     private Hashtable classMage = new Hashtable();
     private Hashtable classBoss = new Hashtable();
+    private Hashtable classDummy = new Hashtable();
 
 
     private void Awake() {
@@ -84,12 +85,25 @@ public class EnemySheet : MonoBehaviour {
         classBoss.Add("Lifetime", 0.3f);
         classBoss.Add("Cast Time", 0.8f);
 
+        // DUMMY ENEMY
+        classDummy.Add("ID", 5);
+        classDummy.Add("Name", "Dummy");
+        classDummy.Add("Move Speed", 1.0f);
+        classDummy.Add("Aggro Radius", 1.0f);
+        classDummy.Add("Attack Radius", 1.0f);
+        classDummy.Add("Damage", 1.0f);
+        classDummy.Add("Cooldown", 10.0f);
+        classDummy.Add("Damage Delay", 0.5f);
+        classDummy.Add("Lifetime", 0.1f);
+        classDummy.Add("Cast Time", 1.0f);
+
         // Add all enemy dictionaries to an array
         classDataDict.Add(classBasic);
         classDataDict.Add(classTank);
         classDataDict.Add(classRanged);
         classDataDict.Add(classMage);
         classDataDict.Add(classBoss);
+        classDataDict.Add(classDummy);
     }
 
 }

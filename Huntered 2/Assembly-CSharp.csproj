@@ -112,8 +112,10 @@
      <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
      <Compile Include="Assets\Scripts\_archived\AggroRadius.cs" />
      <Compile Include="Assets\Scripts\_archived\AttackRadius.cs" />
+     <Compile Include="Assets\Scripts\_tests\AimAssist.cs" />
      <Compile Include="Assets\Scripts\_tests\CenterPos.cs" />
      <Compile Include="Assets\Scripts\_tests\DamageTest.cs" />
+     <Compile Include="Assets\Scripts\_tests\EnemyPosIndicator.cs" />
      <Compile Include="Assets\Scripts\_tests\FollowCenter.cs" />
      <Compile Include="Assets\Scripts\_tests\LimitMovement.cs" />
      <Compile Include="Assets\Scripts\_tests\MoveTo.cs" />
