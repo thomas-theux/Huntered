@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     private GameObject devCam;
+    public static List<GameObject> AllPlayers = new List<GameObject>();
 
 
     private void Awake() {

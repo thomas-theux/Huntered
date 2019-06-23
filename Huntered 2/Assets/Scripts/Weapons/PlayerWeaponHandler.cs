@@ -14,8 +14,8 @@ public class PlayerWeaponHandler : MonoBehaviour {
 
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag != "Player" && other.tag != "Gold" && other.tag != "Attack" && other.tag != "Ranged" && other.tag != "EnemyAttack" && other.tag != "EnemyRanged" && other.tag != "Trigger") {
-            
+        if (other.tag != "Player" && other.tag != "Gold" && other.tag != "Attack" && other.tag != "Ranged" && other.tag != "EnemyAttack" && other.tag != "EnemyRanged" && other.tag != "Trigger" && other.tag != "CollectRadius") {
+
             if (other.tag == "Enemy") {
                 // Deal damage
                 other.GetComponent<EnemyLifeHandler>().currentHealth -= damage;

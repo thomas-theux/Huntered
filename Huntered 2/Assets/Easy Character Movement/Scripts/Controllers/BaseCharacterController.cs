@@ -2,6 +2,7 @@
 using ECM.Helpers;
 using UnityEngine;
 using Rewired;
+using System.Collections;
 
 namespace ECM.Controllers
 {
@@ -112,13 +113,18 @@ namespace ECM.Controllers
         private PlayerSheet playerSheetScript;
         private EnemySheet enemySheetScript;
 
-        private float dashSpeed = 3000;
         private Rigidbody rb;
+        private float dashSpeed = 3000;
+        private float stickThreshold = 0.8f;
+        private bool dashDelayCountdown = false;
 
         // REWIRED
         private float moveHorizontal;
         private float moveVertical;
-        private bool dashBtn;
+        private float dashHorizontal;
+        private float dashVertical;
+        // private bool dashBtn;
+        private Vector3 dashDirection;
 
 
         #endregion
@@ -657,17 +663,20 @@ namespace ECM.Controllers
             if (!playerSheetScript.StatsUIActive && !playerSheetScript.isDead) {
                 moveHorizontal = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Horizontal");
                 moveVertical = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical");
-                dashBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("L1");
-                jump = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("R1");
+
+                // dashBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("L1");
+
+                dashHorizontal = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("RS Horizontal");
+                dashVertical = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("RS Vertical");
             } else {
                 moveHorizontal = 0;
                 moveVertical = 0;
             }
 
-            if (dashBtn) {
-                // rb.velocity = Vector3.right * dashSpeed;
-                rb.AddRelativeForce(Vector3.forward * dashSpeed);
-            }
+            // if (dashBtn) {
+            //     // rb.velocity = Vector3.right * dashSpeed;
+            //     rb.AddRelativeForce(Vector3.forward * dashSpeed);
+            // }
 
             moveDirection = new Vector3
             {
@@ -675,6 +684,37 @@ namespace ECM.Controllers
                 y = 0.0f,
                 z = moveVertical
             };
+
+
+            // dashDirection = new Vector3(dashHorizontal, 0.0f, 0.0f);
+            dashDirection.x = dashHorizontal;
+            dashDirection.z = dashVertical;
+
+            float minThresh = 0 - stickThreshold;
+            float maxThresh = 0 + stickThreshold;
+
+            if (dashDirection.x <= minThresh || dashDirection.x >= maxThresh || dashDirection.z <= minThresh || dashDirection.z >= maxThresh) {
+                if (!playerSheetScript.isDashing) {
+                    playerSheetScript.isDashing = true;
+                    rb.AddForce(dashDirection * dashSpeed);
+                }
+            }
+
+            // if (dashDirection.z <= minThresh || dashDirection.z >= maxThresh) {
+            //     if (!playerSheetScript.isDashing) {
+            //         playerSheetScript.isDashing = true;
+            //         rb.AddForce(dashDirection * dashSpeed);
+            //     }
+            // }
+
+            if (dashDirection.x == 0 && dashDirection.z == 0) {
+                if (playerSheetScript.isDashing) {
+                    if (!dashDelayCountdown) {
+                        StartCoroutine(DashDelay());
+                    }
+                    // playerSheetScript.isDashing = false;
+                }
+            }
 
 
 
@@ -750,6 +790,14 @@ namespace ECM.Controllers
 
             rb = this.GetComponent<Rigidbody>();
         }
+
+        private IEnumerator DashDelay() {
+            dashDelayCountdown = true;
+            yield return new WaitForSeconds(0.1f);
+            playerSheetScript.isDashing = false;
+            dashDelayCountdown = false;
+        }
+
 
         public virtual void FixedUpdate()
         {

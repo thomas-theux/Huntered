@@ -18,6 +18,11 @@ public class PlayerSheet : MonoBehaviour {
     public bool DelayMovement = false;
 
     public bool isDead = false;
+    public bool isDashing = false;
+
+    public bool PotionCooldownActive = false;
+    public float PotionCooldownTimeDef = 10.0f;
+    public float PotionCooldownTime;
 
     public List<Hashtable> weaponDataDict = new List<Hashtable>();
     private Hashtable weaponBasic = new Hashtable();

@@ -13,6 +13,7 @@ TagManager:
   - NPC
   - Attack
   - Ranged
+  - CollectRadius
   layers:
   - Default
   - TransparentFX

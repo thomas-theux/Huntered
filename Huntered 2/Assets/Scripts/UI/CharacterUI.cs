@@ -6,8 +6,9 @@ using TMPro;
 
 public class CharacterUI : MonoBehaviour {
 
-    public TMP_Text currentGoldText;
-    public Slider healthBar;
+    public TMP_Text CurrentGoldText;
+    public Slider HealthBar;
+    public Slider PotionCooldown;
     public GameObject BasicsInterface;
     public Image CharacterIndicator;
 
@@ -21,6 +22,8 @@ public class CharacterUI : MonoBehaviour {
     private int respawnTo = -1;
 
     private bool initialized = false;
+
+    private float smoothSpeed = 10.0f;
 
 
     public void InitializeUI() {
@@ -52,17 +55,28 @@ public class CharacterUI : MonoBehaviour {
         if (playerSheetScript.isDead) {
             RespawnTimer();
         }
+
+        if (playerSheetScript.PotionCooldownActive) {
+            UpdatePotionCooldown();
+        }
     }
 
 
     private void UpdateGold() {
-        currentGoldText.text = playerSheetScript.currentGold + "";
+        CurrentGoldText.text = playerSheetScript.currentGold + "";
+    }
+
+    private void UpdatePotionCooldown() {
+        float mappedTimeValue = playerSheetScript.PotionCooldownTime / playerSheetScript.PotionCooldownTimeDef;
+        PotionCooldown.value = 1 - mappedTimeValue;
     }
 
 
     private void UpdateHealth() {
         // Update value / health of slider
-        healthBar.value = playerSheetScript.currentHealth / playerSheetScript.maxHealth;
+        float desiredHP = playerSheetScript.currentHealth / playerSheetScript.maxHealth;
+        float smoothedHP = Mathf.Lerp(HealthBar.value, desiredHP, smoothSpeed * Time.deltaTime);
+        HealthBar.value = smoothedHP;
 
         // Limit current health
         if (playerSheetScript.currentHealth > playerSheetScript.maxHealth) {

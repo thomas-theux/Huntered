@@ -6,6 +6,7 @@ public class ReputationManager : MonoBehaviour {
 
     public static float currentRep = 0;
     public static int currentRepLevel = 0;
+    public static int repLevelMax = 0;
 
     public static List<float> neededRepArr = new List<float>();
     public static List<float> repGainArr = new List<float>();
@@ -28,6 +29,16 @@ public class ReputationManager : MonoBehaviour {
     public static void AddReputation() {
         while (currentRep >= neededRepArr[currentRepLevel]) {
             currentRepLevel++;
+
+            if (currentRepLevel > repLevelMax) {
+                // Set indicator to the highest level the players reached
+                repLevelMax = currentRepLevel;
+
+                // Heal all characters
+                for (int i = 0; i < GameManager.AllPlayers.Count; i++) {
+                    GameManager.AllPlayers[i].GetComponent<PlayerSheet>().currentHealth = GameManager.AllPlayers[i].GetComponent<PlayerSheet>().maxHealth;
+                }
+            }
         }
     }
 

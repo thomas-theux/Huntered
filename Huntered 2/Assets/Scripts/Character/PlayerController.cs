@@ -6,6 +6,7 @@ using Rewired;
 public class PlayerController : MonoBehaviour {
 
     private PlayerSheet playerSheetScript;
+    private SkillSheet skillSheetScript;
 
     private float moveDelayTime = 0;
     private float attackDelayTime = 0;
@@ -29,10 +30,12 @@ public class PlayerController : MonoBehaviour {
     private bool interactBtn;
     private bool menuBtn;
     private bool attackBtn;
+    private bool potionBtn;
 
 
     public void InitializeCharacter() {
         playerSheetScript = GetComponent<PlayerSheet>();
+        skillSheetScript = GetComponent<SkillSheet>();
 
         // playerCam.GetComponent<CameraFollow>().cameraID = playerSheetScript.playerID;
         // playerCam.GetComponent<CameraFollow>().InitializeCamera();
@@ -57,6 +60,18 @@ public class PlayerController : MonoBehaviour {
             CastAttack();
         }
 
+        if (potionBtn) {
+            if (playerSheetScript.currentHealth != playerSheetScript.maxHealth) {
+                if (!playerSheetScript.PotionCooldownActive) {
+                    HealCharacter();
+                }
+            }
+        }
+
+        if (playerSheetScript.PotionCooldownActive) {
+            PotionCooldown();
+        }
+
         if (attackDelayTime > 0) {
             DelayAttack();
         }
@@ -72,6 +87,7 @@ public class PlayerController : MonoBehaviour {
         if (!playerSheetScript.StatsUIActive) {
             interactBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("R1");
             attackBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButton("X");
+            potionBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("L1");
         }
 
         menuBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("Triangle");
@@ -130,6 +146,26 @@ public class PlayerController : MonoBehaviour {
     private void OpenStats() {
         playerSheetScript.StatsUIActive = !playerSheetScript.StatsUIActive;
         statsUI.SetActive(playerSheetScript.StatsUIActive);
+    }
+
+
+    private void HealCharacter() {
+        playerSheetScript.PotionCooldownTime = playerSheetScript.PotionCooldownTimeDef;
+        playerSheetScript.PotionCooldownActive = true;
+
+        float healAmount = playerSheetScript.maxHealth * (skillSheetScript.SkillHealPercentage / 100);
+        playerSheetScript.currentHealth += healAmount;
+    }
+
+
+    private void PotionCooldown() {
+        playerSheetScript.PotionCooldownTime -= Time.deltaTime;
+
+        if (playerSheetScript.PotionCooldownTime <= 0) {
+            playerSheetScript.PotionCooldownActive = false;
+
+            // Potion is ready again
+        }
     }
 
 }
