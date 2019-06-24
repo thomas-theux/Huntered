@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour {
 
     private PlayerSheet playerSheetScript;
     private SkillSheet skillSheetScript;
-    private AimAssist aimAssistScript;
 
     public GameObject DetectionArea;
 
@@ -38,7 +37,6 @@ public class PlayerController : MonoBehaviour {
     public void InitializeCharacter() {
         playerSheetScript = GetComponent<PlayerSheet>();
         skillSheetScript = GetComponent<SkillSheet>();
-        aimAssistScript = DetectionArea.GetComponent<AimAssist>();
 
         // playerCam.GetComponent<CameraFollow>().cameraID = playerSheetScript.playerID;
         // playerCam.GetComponent<CameraFollow>().InitializeCamera();
@@ -98,11 +96,6 @@ public class PlayerController : MonoBehaviour {
 
 
     private void CastAttack() {
-        // Aim assist: look toward closest enemy
-        if (aimAssistScript.ClosestEnemy) {
-            this.transform.LookAt(aimAssistScript.ClosestEnemy.transform, transform.up);
-        }
-
         // Delay movement after an attack
         playerSheetScript.DelayMovement = true;
         moveDelayTime = GameSettings.MoveDelay + (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cast Time"];
