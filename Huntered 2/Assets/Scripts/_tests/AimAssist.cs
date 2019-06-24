@@ -32,6 +32,11 @@ public class AimAssist : MonoBehaviour {
 
 
     private void OnTriggerExit(Collider other) {
+        RemoveEnemy(other);
+    }
+
+
+    public void RemoveEnemy(Collider other) {
         if (other.tag == "Enemy") {
             int removeEnemy = enemyColliderList.IndexOf(other);
 
