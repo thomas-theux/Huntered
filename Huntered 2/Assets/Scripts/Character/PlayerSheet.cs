@@ -19,6 +19,7 @@ public class PlayerSheet : MonoBehaviour {
 
     public bool isDead = false;
     public bool isDashing = false;
+    public bool isIdle = false;
 
     public bool PotionCooldownActive = false;
     public float PotionCooldownTimeDef = 10.0f;

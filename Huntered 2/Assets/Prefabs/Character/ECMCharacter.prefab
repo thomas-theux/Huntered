@@ -1151,6 +1151,7 @@ GameObject:
   - component: {fileID: 5271402337174370901}
   - component: {fileID: 6358077184928800855}
   - component: {fileID: 2999749050587421485}
+  - component: {fileID: 8830656498384546265}
   - component: {fileID: 324040547683713321}
   - component: {fileID: 7601328539445459833}
   - component: {fileID: 820977794550903096}
@@ -1161,6 +1162,7 @@ GameObject:
   - component: {fileID: 5544865270729118264}
   - component: {fileID: 6914500496924311736}
   - component: {fileID: 1719325011941402574}
+  - component: {fileID: 6976202601136569465}
   m_Layer: 9
   m_Name: ECMCharacter
   m_TagString: Player
@@ -1221,6 +1223,28 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!195 &8830656498384546265
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898870989050275549}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &324040547683713321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,6 +1337,7 @@ MonoBehaviour:
   DelayMovement: 0
   isDead: 0
   isDashing: 0
+  isIdle: 0
   PotionCooldownActive: 0
   PotionCooldownTimeDef: 10
   PotionCooldownTime: 0
@@ -1406,6 +1431,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 553b43c8f283a49c48ae4784f46e570d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6976202601136569465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898870989050275549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56642c4bb8b80415594ddadfb86a1d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1040274049595242705
