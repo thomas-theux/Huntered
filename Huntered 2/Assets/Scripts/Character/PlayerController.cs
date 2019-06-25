@@ -61,6 +61,13 @@ public class PlayerController : MonoBehaviour {
             CastAttack();
         }
 
+        // Detect if player is attacking
+        if (attackBtn) {
+            if (!playerSheetScript.isAttacking) { playerSheetScript.isAttacking = true; }
+        } else {
+            if (playerSheetScript.isAttacking) { playerSheetScript.isAttacking = false; }
+        }
+
         if (potionBtn) {
             if (playerSheetScript.currentHealth != playerSheetScript.maxHealth) {
                 if (!playerSheetScript.PotionCooldownActive) {

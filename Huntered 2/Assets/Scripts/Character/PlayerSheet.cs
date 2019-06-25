@@ -20,6 +20,9 @@ public class PlayerSheet : MonoBehaviour {
     public bool isDead = false;
     public bool isDashing = false;
     public bool isIdle = false;
+    public bool isWalking = false;
+    public bool isAttacking = false;
+    public bool isTalking = false;      // If player talks to an NPC – we need this for auto follow so that the player doesn't start following the other player
 
     public bool PotionCooldownActive = false;
     public float PotionCooldownTimeDef = 10.0f;

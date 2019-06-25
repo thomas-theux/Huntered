@@ -118,6 +118,10 @@ namespace ECM.Controllers
         private float stickThreshold = 0.8f;
         private bool dashDelayCountdown = false;
 
+        private bool startIdleCountdown = false;
+        private float idleCountdownDef = 5.0f;
+        private float idleCountdown;
+
         // REWIRED
         private float moveHorizontal;
         private float moveVertical;
@@ -685,6 +689,23 @@ namespace ECM.Controllers
                 z = moveVertical
             };
 
+            // Detect if player is walking
+            if (moveDirection != Vector3.zero) {
+                if (!playerSheetScript.isWalking) { playerSheetScript.isWalking = true; }
+            } else {
+                if (playerSheetScript.isWalking) { playerSheetScript.isWalking = false; }
+            }
+
+            // Check for idle players
+            if (!playerSheetScript.isWalking && !playerSheetScript.isAttacking && !playerSheetScript.isTalking && !playerSheetScript.StatsUIActive) {
+                if (!startIdleCountdown) {
+                    startIdleCountdown = true;
+                    idleCountdown = idleCountdownDef;
+                }
+            } else {
+                startIdleCountdown = false;
+                playerSheetScript.isIdle = false;
+            }
 
             // dashDirection = new Vector3(dashHorizontal, 0.0f, 0.0f);
             dashDirection.x = dashHorizontal;
@@ -799,6 +820,15 @@ namespace ECM.Controllers
         }
 
 
+        private void IdleCountdown() {
+            idleCountdown -= Time.deltaTime;
+
+            if (idleCountdown <= 0) {
+                playerSheetScript.isIdle = true;
+            }
+        }
+
+
         public virtual void FixedUpdate()
         {
             // OWN CODE
@@ -827,6 +857,11 @@ namespace ECM.Controllers
             // Perform character animation
 
             Animate();
+
+            // Count down for idle status
+            if (startIdleCountdown) {
+                IdleCountdown();
+            }
         }
 
         #endregion

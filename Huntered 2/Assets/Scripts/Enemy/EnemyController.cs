@@ -30,6 +30,8 @@ public class EnemyController : MonoBehaviour {
 
         attackRadius = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Attack Radius"] / 2;
         attackCooldown = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Cooldown"];
+
+        enemyAgent.stoppingDistance = attackRadius;
     }
 
 

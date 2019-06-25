@@ -8,8 +8,6 @@ public class AutoFollow : MonoBehaviour {
     private GameObject otherPlayerGO;
     private UnityEngine.AI.NavMeshAgent playerAgent;
 
-    private float minDistance = 3.0f;
-
 
     private void Start() {
         playerSheetScript = this.GetComponent<PlayerSheet>();
@@ -25,15 +23,24 @@ public class AutoFollow : MonoBehaviour {
 
 
     private void Update() {
+        FollowPlayer();
+    }
+
+
+    private void FollowPlayer() {
         if (playerSheetScript.isIdle) {
-            playerAgent.enabled = true;
+
+            if (!playerAgent.enabled) {
+                playerAgent.enabled = true;
+                playerAgent.speed = playerSheetScript.moveSpeed;
+            }
 
             float distanceToPlayer = Vector3.Distance(this.transform.position, otherPlayerGO.transform.position);
+            playerAgent.destination = otherPlayerGO.transform.position;
 
-            if (distanceToPlayer > minDistance) {
-                playerAgent.destination = otherPlayerGO.transform.position;
-            } else {
-                playerAgent.destination = this.transform.position;
+        } else {
+            if (playerAgent.enabled) {
+                playerAgent.enabled = false;
             }
         }
     }
