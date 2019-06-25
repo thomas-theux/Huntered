@@ -8,12 +8,18 @@ public class CollectGold : MonoBehaviour {
     private Transform collectingPlayer;
     private float collectSpeed = 5.0f;
 
+    public GameObject CollectGoldSound;
+
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             // Formula for gold gain
             int addGold = Mathf.RoundToInt(GameSettings.baseGoldGain + (ReputationManager.currentRepLevel * GameSettings.goldMultiplier));
             other.GetComponent<PlayerSheet>().currentGold += addGold;
+
+            float rndPitch = Random.Range(0.95f, 1.0f);
+            CollectGoldSound.GetComponent<AudioSource>().pitch = rndPitch;
+            Instantiate(CollectGoldSound);
 
             Destroy(this.gameObject);
         }

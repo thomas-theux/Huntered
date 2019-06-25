@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d377edb55a6f4492d8ef3163d52f02ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CollectGoldSound: {fileID: 6770187735683673345, guid: 62a1200ef7a05457baf4eaddcfa4c03e,
+    type: 3}
 --- !u!1 &466291003391769464
 GameObject:
   m_ObjectHideFlags: 0

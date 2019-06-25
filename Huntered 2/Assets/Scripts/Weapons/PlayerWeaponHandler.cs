@@ -11,10 +11,16 @@ public class PlayerWeaponHandler : MonoBehaviour {
     public GameObject AttackCastGO;
     public GameObject AttackImpactGO;
 
+    float rndPitch;
+
 
     private void Start() {
         Destroy(this.gameObject, lifetime);
+
+        rndPitch = Random.Range(0.8f, 1.2f);
+
         GameObject castAttackSound = AttackCastGO.transform.GetChild(weaponID).gameObject;
+        castAttackSound.GetComponent<AudioSource>().pitch = rndPitch;
         Instantiate(castAttackSound);
     }
 
@@ -38,6 +44,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
 
     private void OnDestroy() {
         GameObject castImpactSound = AttackImpactGO.transform.GetChild(weaponID).gameObject;
+        castImpactSound.GetComponent<AudioSource>().pitch = rndPitch;
         Instantiate(castImpactSound);
     }
 
