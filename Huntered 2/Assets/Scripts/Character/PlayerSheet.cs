@@ -74,7 +74,7 @@ public class PlayerSheet : MonoBehaviour {
         weaponMage.Add("Cooldown", 0.5f);
         weaponMage.Add("Damage Delay", 0.2f);
         weaponMage.Add("Lifetime", 1.0f);
-        weaponMage.Add("Cast Time", 0.4f);
+        weaponMage.Add("Cast Time", 0.2f);
 
         // Add all dictionaries to an array
         weaponDataDict.Add(weaponBasic);

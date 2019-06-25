@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ using Rewired;
 public class StatsUI : MonoBehaviour {
 
     private PlayerSheet playerSheetScript;
+    private AudioManager audioManagerScript;
 
     public GameObject StatsParentGO;
     public GameObject MainContainer;
@@ -39,6 +41,10 @@ public class StatsUI : MonoBehaviour {
     private float costIncreaseDelay = 1.0f;
     private float t = 0;
 
+    private bool playIncreaseSound = false;
+    private Sound s;
+    private float pitchDef;
+
     private bool initialized = false;
 
     // REWIRED
@@ -50,8 +56,12 @@ public class StatsUI : MonoBehaviour {
 
     public void InitializeUI() {
         playerSheetScript = GetComponent<PlayerSheet>();
+        audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         initialCursorPos = UICursor.transform.localPosition;
+
+        s = Array.Find(audioManagerScript.sounds, sound => sound.name == "UIIncreaseStat");
+        pitchDef = s.source.pitch;
 
         // Set the canvas of the second player to the left
         if (playerSheetScript.playerID == 1) {
@@ -138,6 +148,7 @@ public class StatsUI : MonoBehaviour {
 
     private void DisplayCursor() {
         UICursor.transform.localPosition = new Vector2(initialCursorPos.x, initialCursorPos.y - (currentIndex * menuItemDistance));
+        audioManagerScript.Play("UINavigateMenu");
     }
 
 
@@ -177,6 +188,13 @@ public class StatsUI : MonoBehaviour {
         if (interactBtn && playerSheetScript.currentGold >= statCost * costIncreaseMultiplier) {
             playerSheetScript.currentGold -= statCost * costIncreaseMultiplier;
 
+            if (!playIncreaseSound) {
+                playIncreaseSound = true;
+                audioManagerScript.Play("UIIncreaseStat");
+            }
+
+            s.source.pitch += 0.005f;
+
             switch (currentIndex) {
                 case 0:
                     float relativeHealth = playerSheetScript.currentHealth / playerSheetScript.maxHealth;
@@ -195,7 +213,23 @@ public class StatsUI : MonoBehaviour {
             }
 
             DisplayStats();
+        } else {
+            if (playIncreaseSound) {
+                playIncreaseSound = false;
+                audioManagerScript.Stop("UIIncreaseStat");
+                s.source.pitch = pitchDef;
+            }
         }
+    }
+
+
+    private IEnumerator IncreaseSound() {
+        playIncreaseSound = true;
+
+        audioManagerScript.Play("UIIncreaseStat");
+        yield return new WaitForSeconds(0.05f);
+
+        playIncreaseSound = false;
     }
 
 }

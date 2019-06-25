@@ -29,6 +29,8 @@ public class ReputationManager : MonoBehaviour {
     public static void AddReputation() {
         while (currentRep >= neededRepArr[currentRepLevel]) {
             currentRepLevel++;
+            // FindObjectOfType<AudioManager>().Play("LevelUp1");
+            FindObjectOfType<AudioManager>().Play("LevelUp2");
 
             if (currentRepLevel > repLevelMax) {
                 // Set indicator to the highest level the players reached
@@ -46,6 +48,7 @@ public class ReputationManager : MonoBehaviour {
     public static void SubtractReputation() {
         while (currentRepLevel > 0 && currentRep < neededRepArr[currentRepLevel-1]) {
             currentRepLevel--;
+            FindObjectOfType<AudioManager>().Play("LevelDown");
         }
     }
 }

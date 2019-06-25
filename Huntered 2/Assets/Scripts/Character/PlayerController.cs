@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 
     private PlayerSheet playerSheetScript;
     private SkillSheet skillSheetScript;
+    private AudioManager audioManagerScript;
 
     public GameObject DetectionArea;
 
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour {
     public void InitializeCharacter() {
         playerSheetScript = GetComponent<PlayerSheet>();
         skillSheetScript = GetComponent<SkillSheet>();
+        audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         // playerCam.GetComponent<CameraFollow>().cameraID = playerSheetScript.playerID;
         // playerCam.GetComponent<CameraFollow>().InitializeCamera();
@@ -131,6 +133,7 @@ public class PlayerController : MonoBehaviour {
         GameObject newAttack = Instantiate(playerWeapon);
         newAttack.GetComponent<PlayerWeaponHandler>().lifetime = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Lifetime"];
         newAttack.GetComponent<PlayerWeaponHandler>().damage = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Damage"];
+        newAttack.GetComponent<PlayerWeaponHandler>().weaponID = playerSheetScript.playerWeaponID;
         newAttack.transform.parent = this.gameObject.transform;
         newAttack.transform.position = attackSpawner.transform.position;
         newAttack.transform.rotation = attackSpawner.transform.rotation;
@@ -154,6 +157,12 @@ public class PlayerController : MonoBehaviour {
     private void OpenStats() {
         playerSheetScript.StatsUIActive = !playerSheetScript.StatsUIActive;
         statsUI.SetActive(playerSheetScript.StatsUIActive);
+
+        if (playerSheetScript.StatsUIActive) {
+            audioManagerScript.Play("UIOpenStatsMenu");
+        } else {
+            audioManagerScript.Play("UICloseStatsMenu");
+        }
     }
 
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2140333545847474145}
   - component: {fileID: 493696218137723737}
   m_Layer: 0
-  m_Name: Weapon Basic
+  m_Name: Weapon Light
   m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,6 +107,10 @@ MonoBehaviour:
   weaponID: 0
   lifetime: 0
   damage: 0
+  AttackCastGO: {fileID: 8746491618734899400, guid: 0a5e2830fa06a46da845d9decf011014,
+    type: 3}
+  AttackImpactGO: {fileID: 8746491618734899400, guid: 5067c215266a74c31999ff3b8946e26f,
+    type: 3}
 --- !u!1 &2140333545921467174
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +125,7 @@ GameObject:
   - component: {fileID: 2140333545921467176}
   - component: {fileID: 4164690678612618089}
   m_Layer: 0
-  m_Name: Weapon Tank
+  m_Name: Weapon Heavy
   m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,6 +218,10 @@ MonoBehaviour:
   weaponID: 0
   lifetime: 0
   damage: 0
+  AttackCastGO: {fileID: 8746491618734899400, guid: 0a5e2830fa06a46da845d9decf011014,
+    type: 3}
+  AttackImpactGO: {fileID: 8746491618734899400, guid: 5067c215266a74c31999ff3b8946e26f,
+    type: 3}
 --- !u!1 &2140333545966493744
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +381,10 @@ MonoBehaviour:
   weaponID: 0
   lifetime: 0
   damage: 0
+  AttackCastGO: {fileID: 8746491618734899400, guid: 0a5e2830fa06a46da845d9decf011014,
+    type: 3}
+  AttackImpactGO: {fileID: 8746491618734899400, guid: 5067c215266a74c31999ff3b8946e26f,
+    type: 3}
 --- !u!114 &484159516082683571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +413,7 @@ GameObject:
   - component: {fileID: 4875854666474223431}
   - component: {fileID: 4373189960962761757}
   m_Layer: 0
-  m_Name: Weapon Mage
+  m_Name: Weapon Magic
   m_TagString: Ranged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,6 +522,10 @@ MonoBehaviour:
   weaponID: 0
   lifetime: 0
   damage: 0
+  AttackCastGO: {fileID: 8746491618734899400, guid: 0a5e2830fa06a46da845d9decf011014,
+    type: 3}
+  AttackImpactGO: {fileID: 8746491618734899400, guid: 5067c215266a74c31999ff3b8946e26f,
+    type: 3}
 --- !u!114 &4373189960962761757
 MonoBehaviour:
   m_ObjectHideFlags: 0

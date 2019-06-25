@@ -8,8 +8,14 @@ public class PlayerWeaponHandler : MonoBehaviour {
     public float lifetime;
     public float damage;
 
+    public GameObject AttackCastGO;
+    public GameObject AttackImpactGO;
+
+
     private void Start() {
         Destroy(this.gameObject, lifetime);
+        GameObject castAttackSound = AttackCastGO.transform.GetChild(weaponID).gameObject;
+        Instantiate(castAttackSound);
     }
 
 
@@ -27,6 +33,12 @@ public class PlayerWeaponHandler : MonoBehaviour {
                 Destroy(this.gameObject);
             }
         }
+    }
+
+
+    private void OnDestroy() {
+        GameObject castImpactSound = AttackImpactGO.transform.GetChild(weaponID).gameObject;
+        Instantiate(castImpactSound);
     }
 
 }
