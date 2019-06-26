@@ -138,7 +138,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 125
+  controlID: 14
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 344}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 90
+  controlID: 117
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 494}
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
-  controlID: 126
+  controlID: 15
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.4514189, y: 0.041476026, z: -0.020987349, w: 0.8911097}
     speed: 2
-    m_Value: {x: 0.45141524, y: 0.04147569, z: -0.02098718, w: 0.8911025}
+    m_Value: {x: -0.45141894, y: -0.041476026, z: 0.020987349, w: -0.89110976}
   m_Size:
     m_Target: 15.488738
     speed: 2
@@ -677,9 +677,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 384a0c00
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1c42fcff56f0fdff1c25feff6c65feffbe7ffeffa496fefffa96feffe4adfeffcac7feff7cdefeff3cf5feff4cf6feff8cfbfffff4ffffff30d90200
+      m_ExpandedIDs: 48f7ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -741,19 +741,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Sounds/Attacks
+    - Assets/Scripts/Enemy
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: /Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2
+  m_LastProjectPath: /Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: fa080000
     m_LastClickedID: 2298
-    m_ExpandedIDs: 00000000142f0000ec2f0000b2300000ac3100004c3200007c330000a436000070370000763700007238000096380000
+    m_ExpandedIDs: 00000000a4440000f8440000bc450000fa450000004600004a460000d4460000404900006c4a0000584c0000104d00002a4d0000144e0000344e0000584e0000b04e000082580000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -778,10 +778,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 56.99933}
+    scrollPos: {x: 0, y: 149}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000142f0000662f000028300000b2300000a2330000a4360000583700007037000072380000963800008ac6020090c602007aed080080ed08007a0a0b0074f90c0080f90c00
+    m_ExpandedIDs: ffffffff00000000a4440000f8440000bc450000fa450000004600004a460000d446000040490000804900006c4a0000584c0000104d00002a4d0000144e0000344e0000584e0000b04e000082580000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
