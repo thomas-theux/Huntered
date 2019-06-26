@@ -138,7 +138,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 14
+  controlID: 68
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 344}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 117
+  controlID: 33
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,8 +212,8 @@ MonoBehaviour:
     y: 339
     width: 1021
     height: 616
-  m_MinSize: {x: 202, y: 222}
-  m_MaxSize: {x: 4002, y: 4022}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 494}
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
-  controlID: 15
+  controlID: 69
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.4514189, y: 0.041476026, z: -0.020987349, w: 0.8911097}
     speed: 2
-    m_Value: {x: -0.45141894, y: -0.041476026, z: 0.020987349, w: -0.89110976}
+    m_Value: {x: 0.45141524, y: 0.04147569, z: -0.02098718, w: 0.8911025}
   m_Size:
     m_Target: 15.488738
     speed: 2
@@ -677,9 +677,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 6a270000
       m_LastClickedID: 0
-      m_ExpandedIDs: 48f7ffff
+      m_ExpandedIDs: 44f7ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -741,19 +741,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Enemy
+    - Assets/Scripts/Weapons
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: /Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2
+  m_LastProjectPath: /Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: fa080000
     m_LastClickedID: 2298
-    m_ExpandedIDs: 00000000a4440000f8440000bc450000fa450000004600004a460000d4460000404900006c4a0000584c0000104d00002a4d0000144e0000344e0000584e0000b04e000082580000
+    m_ExpandedIDs: 000000009c440000f0440000b4450000f2450000f845000042460000cc4600003a4900007a490000664a0000524c00000a4d0000244d0000104e0000304e0000544e0000ac4e000080580000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -778,24 +778,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 149}
+    scrollPos: {x: 0, y: 245}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000a4440000f8440000bc450000fa450000004600004a460000d446000040490000804900006c4a0000584c0000104d00002a4d0000144e0000344e0000584e0000b04e000082580000
+    m_ExpandedIDs: ffffffff000000009c440000f0440000b445000042460000cc46000014490000304900003a4900004e4a0000524c00000a4d0000244d0000104e0000304e0000544e000080580000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: EnemyWeaponHandler
+      m_OriginalName: EnemyWeaponHandler
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 10090
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_SearchString: 

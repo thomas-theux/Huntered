@@ -8,6 +8,8 @@ public class PlayerWeaponHandler : MonoBehaviour {
     public float lifetime;
     public float damage;
 
+    private float damageRandomizer = 0.10f;
+
     public GameObject AttackCastGO;
     public GameObject AttackImpactGO;
 
@@ -28,11 +30,18 @@ public class PlayerWeaponHandler : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag != "Player" && other.tag != "Gold" && other.tag != "Attack" && other.tag != "Ranged" && other.tag != "EnemyAttack" && other.tag != "EnemyRanged" && other.tag != "Trigger" && other.tag != "CollectRadius") {
 
+            // Randomize damage
+            float dmgMin = damage - damage * damageRandomizer;
+            float dmgMax = damage + damage * damageRandomizer;
+
+            float rndDmg = Random.Range(dmgMin, dmgMax);
+            rndDmg = Mathf.Round(rndDmg);
+
             if (other.tag == "Enemy") {
                 // Deal damage
-                other.GetComponent<EnemyLifeHandler>().currentHealth -= damage;
+                other.GetComponent<EnemyLifeHandler>().currentHealth -= rndDmg;
             } else if (other.tag == "NPC") {
-                other.GetComponent<NPCLifeHandler>().currentHealth -= damage;
+                other.GetComponent<NPCLifeHandler>().currentHealth -= rndDmg;
             }
 
             if (this.gameObject.tag == "Ranged") {
