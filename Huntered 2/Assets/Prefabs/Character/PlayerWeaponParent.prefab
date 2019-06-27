@@ -111,6 +111,8 @@ MonoBehaviour:
     type: 3}
   AttackImpactGO: {fileID: 8746491618734899400, guid: 5067c215266a74c31999ff3b8946e26f,
     type: 3}
+  DamageTextCanvas: {fileID: 376053037096579784, guid: d3de296cb28c5490b9bcec30ec678044,
+    type: 3}
 --- !u!1 &2140333545921467174
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +223,8 @@ MonoBehaviour:
   AttackCastGO: {fileID: 8746491618734899400, guid: 0a5e2830fa06a46da845d9decf011014,
     type: 3}
   AttackImpactGO: {fileID: 8746491618734899400, guid: 5067c215266a74c31999ff3b8946e26f,
+    type: 3}
+  DamageTextCanvas: {fileID: 376053037096579784, guid: d3de296cb28c5490b9bcec30ec678044,
     type: 3}
 --- !u!1 &2140333545966493744
 GameObject:
@@ -385,6 +389,8 @@ MonoBehaviour:
     type: 3}
   AttackImpactGO: {fileID: 8746491618734899400, guid: 5067c215266a74c31999ff3b8946e26f,
     type: 3}
+  DamageTextCanvas: {fileID: 376053037096579784, guid: d3de296cb28c5490b9bcec30ec678044,
+    type: 3}
 --- !u!114 &484159516082683571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,6 +531,8 @@ MonoBehaviour:
   AttackCastGO: {fileID: 8746491618734899400, guid: 0a5e2830fa06a46da845d9decf011014,
     type: 3}
   AttackImpactGO: {fileID: 8746491618734899400, guid: 5067c215266a74c31999ff3b8946e26f,
+    type: 3}
+  DamageTextCanvas: {fileID: 376053037096579784, guid: d3de296cb28c5490b9bcec30ec678044,
     type: 3}
 --- !u!114 &4373189960962761757
 MonoBehaviour:

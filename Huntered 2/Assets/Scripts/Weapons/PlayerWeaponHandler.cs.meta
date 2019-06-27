@@ -3,7 +3,11 @@ guid: 8900f18b0679b4cd5b95e0643637aeae
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - AttackCastGO: {instanceID: 0}
+  - AttackImpactGO: {instanceID: 0}
+  - DamageTextCanvas: {fileID: 376053037096579784, guid: d3de296cb28c5490b9bcec30ec678044,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

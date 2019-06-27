@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerWeaponHandler : MonoBehaviour {
 
@@ -12,6 +14,8 @@ public class PlayerWeaponHandler : MonoBehaviour {
 
     public GameObject AttackCastGO;
     public GameObject AttackImpactGO;
+    public Canvas DamageTextCanvas;
+    private TMP_Text damageText;
 
     float rndPitch;
 
@@ -38,9 +42,15 @@ public class PlayerWeaponHandler : MonoBehaviour {
             rndDmg = Mathf.Round(rndDmg);
 
             if (other.tag == "Enemy") {
+                // Spawn damage text above enemy's head
+                SpawnDamageText(other, rndDmg);
+
                 // Deal damage
                 other.GetComponent<EnemyLifeHandler>().currentHealth -= rndDmg;
             } else if (other.tag == "NPC") {
+                // Spawn damage text above enemy's head
+                SpawnDamageText(other, rndDmg);
+
                 other.GetComponent<NPCLifeHandler>().currentHealth -= rndDmg;
             }
 
@@ -55,6 +65,14 @@ public class PlayerWeaponHandler : MonoBehaviour {
         GameObject castImpactSound = AttackImpactGO.transform.GetChild(weaponID).gameObject;
         castImpactSound.GetComponent<AudioSource>().pitch = rndPitch;
         Instantiate(castImpactSound);
+    }
+
+
+    private void SpawnDamageText(Collider other, float rndDmg) {
+        Canvas newDamageText = Instantiate(DamageTextCanvas);
+        newDamageText.transform.SetParent(other.transform);
+        newDamageText.transform.position = other.transform.position;
+        newDamageText.transform.GetChild(0).GetComponent<TMP_Text>().text = rndDmg + "";
     }
 
 }
