@@ -11,6 +11,8 @@ public class PlayerSheet : MonoBehaviour {
     public float currentHealth = 0;
     public float maxHealth = 50.0f;
     public float moveSpeed = 6.0f;
+    public int critChance = 2;
+    public float critDamage = 1.5f;
 
     public float respawnTime = 10.0f;
 

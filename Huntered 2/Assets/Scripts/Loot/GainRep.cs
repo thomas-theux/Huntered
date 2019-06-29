@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class GainRep : MonoBehaviour {
 
+    private int enemyLevel;
+
+    private void Awake() {
+        if (this.tag == "Enemy") {
+            enemyLevel = GetComponent<EnemySheet>().enemyLevel;
+        }
+    }
+
+
     public void AddRep() {
-        ReputationManager.currentRep += ReputationManager.repGainArr[ReputationManager.currentRepLevel];
+        float getRep = ReputationManager.repGainArr[ReputationManager.currentRepLevel];
+        ReputationManager.currentRep += getRep + getRep * enemyLevel;
         ReputationManager.AddReputation();
     }
 

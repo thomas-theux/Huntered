@@ -56,7 +56,7 @@ public class EnemySheet : MonoBehaviour {
         classRanged.Add("Aggro Radius", 40.0f);
         classRanged.Add("Attack Radius", 36.0f);
         classRanged.Add("Damage", 1.5f);
-        classRanged.Add("Cooldown", 0.5f);
+        classRanged.Add("Cooldown", 0.8f);
         classRanged.Add("Damage Delay", 0.1f);
         classRanged.Add("Lifetime", 2.0f);
         classRanged.Add("Cast Time", 0.1f);

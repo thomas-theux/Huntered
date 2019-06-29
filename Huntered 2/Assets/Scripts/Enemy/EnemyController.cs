@@ -86,8 +86,11 @@ public class EnemyController : MonoBehaviour {
             // Instantiate damage trigger
             StartCoroutine(DamageDelay());
 
-            // Delay next attack
-            attackDelayTime = attackCooldown;
+            // Delay next attack with random cooldown
+            float minCooldown = attackCooldown - attackCooldown * 0.1f;
+            float maxCooldown = attackCooldown + attackCooldown * 0.1f;
+            float rndCooldown = Random.Range(minCooldown, maxCooldown);
+            attackDelayTime = rndCooldown;
 
             // Delay movement after an attack
             enemySheetScript.DelayMovement = true;

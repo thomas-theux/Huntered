@@ -18,6 +18,7 @@ public class CollectGold : MonoBehaviour {
             other.GetComponent<PlayerSheet>().currentGold += addGold;
 
             float rndPitch = Random.Range(0.95f, 1.0f);
+            rndPitch = 1.0f;
             CollectGoldSound.GetComponent<AudioSource>().pitch = rndPitch;
             Instantiate(CollectGoldSound);
 

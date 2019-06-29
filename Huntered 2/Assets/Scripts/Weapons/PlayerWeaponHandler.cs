@@ -9,6 +9,10 @@ public class PlayerWeaponHandler : MonoBehaviour {
     public int weaponID;
     public float lifetime;
     public float damage;
+    public float critChance;
+    public float critDamage;
+
+    private bool didCrit = false;
 
     private float damageRandomizer = 0.10f;
 
@@ -39,6 +43,14 @@ public class PlayerWeaponHandler : MonoBehaviour {
             float dmgMax = damage + damage * damageRandomizer;
 
             float rndDmg = Random.Range(dmgMin, dmgMax);
+
+            // Check for crit chance and apply crit damage
+            float rndCrit = Random.Range(0, 100);
+            if (rndCrit < critChance) {
+                rndDmg *= critDamage;
+                didCrit = true;
+            }
+
             rndDmg = Mathf.Round(rndDmg);
 
             if (other.tag == "Enemy") {
@@ -73,6 +85,11 @@ public class PlayerWeaponHandler : MonoBehaviour {
         newDamageText.transform.SetParent(other.transform);
         newDamageText.transform.position = other.transform.position;
         newDamageText.transform.GetChild(0).GetComponent<TMP_Text>().text = rndDmg + "";
+
+        // Apply different text color for crit hits
+        if (didCrit) {
+            newDamageText.transform.GetChild(0).GetComponent<TMP_Text>().color = ColorManager.CritHit;
+        }
     }
 
 }
