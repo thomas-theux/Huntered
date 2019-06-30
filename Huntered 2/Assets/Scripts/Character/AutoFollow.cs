@@ -23,7 +23,9 @@ public class AutoFollow : MonoBehaviour {
 
 
     private void Update() {
-        FollowPlayer();
+        if (!playerSheetScript.isDead) {
+            FollowPlayer();
+        }
     }
 
 

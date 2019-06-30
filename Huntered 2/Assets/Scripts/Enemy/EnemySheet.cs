@@ -31,7 +31,7 @@ public class EnemySheet : MonoBehaviour {
         classBasic.Add("Move Speed", 2.0f);
         classBasic.Add("Aggro Radius", 26.0f);
         classBasic.Add("Attack Radius", 5.0f);
-        classBasic.Add("Damage", 3.0f);
+        classBasic.Add("Damage", 13.0f);
         classBasic.Add("Cooldown", 1.0f);
         classBasic.Add("Damage Delay", 0.1f);
         classBasic.Add("Lifetime", 0.1f);

@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour {
     public GameObject weaponParent;
     private GameObject enemyWeapon;
 
-    private List<Collider> playerTargets = new List<Collider>();
+    public List<Collider> playerTargets = new List<Collider>();
 
     private float attackRadius;
     private float attackCooldown;
@@ -66,12 +66,13 @@ public class EnemyController : MonoBehaviour {
                 if (attackDelayTime > 0) {
                     CoolDown();
                 }
-
-                // Delay movement
-                if (enemySheetScript.DelayMovement) {
-                    DelayMovement();
-                }
             }
+
+            // Delay movement
+            if (enemySheetScript.DelayMovement) {
+                DelayMovement();
+            }
+
         } else {
             enemyAgent.destination = this.transform.position;
         }

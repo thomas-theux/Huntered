@@ -47,9 +47,13 @@ public class CharacterUI : MonoBehaviour {
 
 
     private void Update() {
-        if (initialized && !playerSheetScript.isDead) {
+        if (initialized) {
             UpdateGold();
             UpdateHealth();
+        }
+
+        if (initialized && !playerSheetScript.isDead) {
+            KillPlayer();
         }
 
         if (playerSheetScript.isDead) {
@@ -82,7 +86,10 @@ public class CharacterUI : MonoBehaviour {
         if (playerSheetScript.currentHealth > playerSheetScript.maxHealth) {
             playerSheetScript.currentHealth = playerSheetScript.maxHealth;
         }
+    }
 
+
+    private void KillPlayer() {
         // Kill when health is below 0
         if (playerSheetScript.currentHealth <= 0) {
             // Remove Player from enemies trigger if inside
