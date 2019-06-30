@@ -37,14 +37,18 @@ public class EnemyController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
-            playerTargets.Add(other);
+            if (!playerTargets.Contains(other)) {
+                playerTargets.Add(other);
+            }
         }
     }
 
 
     private void OnTriggerExit(Collider other) {
         if (other.tag == "Player") {
-            RemovePlayer(other);
+            if (playerTargets.Contains(other)) {
+                RemovePlayer(other);
+            }
         }
     }
 
@@ -136,7 +140,9 @@ public class EnemyController : MonoBehaviour {
 
     // Remove the player that left the aggro trigger
     public void RemovePlayer(Collider other) {
-        playerTargets.Remove(other);
+        if (playerTargets.Contains(other)) {
+            playerTargets.Remove(other);
+        }
     }
 
 }

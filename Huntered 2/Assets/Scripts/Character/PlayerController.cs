@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour {
 
         GameObject newAttack = Instantiate(playerWeapon);
         newAttack.GetComponent<PlayerWeaponHandler>().weaponID = playerSheetScript.playerWeaponID;
+        newAttack.GetComponent<PlayerWeaponHandler>().casterID = playerSheetScript.playerID;
         newAttack.GetComponent<PlayerWeaponHandler>().lifetime = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Lifetime"];
         newAttack.GetComponent<PlayerWeaponHandler>().damage = (float)GetComponent<PlayerSheet>().weaponDataDict[playerSheetScript.playerWeaponID]["Damage"];
         newAttack.GetComponent<PlayerWeaponHandler>().critChance = playerSheetScript.critChance;

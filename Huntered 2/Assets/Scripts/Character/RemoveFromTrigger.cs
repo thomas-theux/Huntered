@@ -16,7 +16,8 @@ public class RemoveFromTrigger : MonoBehaviour {
 
     public void TellEnemiesToRemove() {
         for (int i = 0; i < triggerList.Count; i++) {
-            triggerList[i].transform.GetChild(3).GetComponent<EnemyController>().RemovePlayer(this.GetComponent<Collider>());
+            GameObject aggroRadius = triggerList[i].transform.Find("Aggro Radius").gameObject;
+            aggroRadius.GetComponent<EnemyController>().RemovePlayer(this.GetComponent<Collider>());
         }
     }
 
@@ -31,9 +32,15 @@ public class RemoveFromTrigger : MonoBehaviour {
 
 
     private void OnTriggerExit(Collider other) {
+        RemoveEnemyFromList(other);
+    }
+
+
+    public void RemoveEnemyFromList(Collider other) {
         if (other.tag == "Trigger") {
             if (triggerList.Contains(other.transform.parent.gameObject)) {
                 triggerList.Remove(other.transform.parent.gameObject);
+            } else {
             }
         }
     }

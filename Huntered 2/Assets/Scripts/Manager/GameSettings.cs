@@ -1,6 +1,9 @@
 ﻿
 public class GameSettings {
 
+    // Game language // 0 = english ; 1 = german ; 2 = swabian
+    public static int language = 2;
+
     public static int ConnectedGamepads = 0;
     public static int PlayerCount = 0;
     public static int PlayerMax = 2;

@@ -1332,6 +1332,8 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 50
   moveSpeed: 6
+  critChance: 2
+  critDamage: 1.5
   respawnTime: 7
   StatsUIActive: 0
   DelayMovement: 0
@@ -1389,6 +1391,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StatsParentGO: {fileID: 8216580180152173750}
   MainContainer: {fileID: 2123385988000662070}
+  StatsTexts:
+  - {fileID: 1649781640729241956}
+  - {fileID: 6117094842001452118}
+  - {fileID: 7835273647331348387}
+  - {fileID: 149017040203905709}
   healthStat: {fileID: 4777318382818877374}
   damageStat: {fileID: 3364506435316779693}
   speedStat: {fileID: 5319474223230441456}

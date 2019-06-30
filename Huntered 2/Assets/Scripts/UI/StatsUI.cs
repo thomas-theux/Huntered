@@ -14,6 +14,9 @@ public class StatsUI : MonoBehaviour {
     public GameObject StatsParentGO;
     public GameObject MainContainer;
 
+    // Game language
+    public TMP_Text[] StatsTexts;
+
     public TMP_Text healthStat;
     public TMP_Text damageStat;
     public TMP_Text speedStat;
@@ -57,6 +60,12 @@ public class StatsUI : MonoBehaviour {
     public void InitializeUI() {
         playerSheetScript = GetComponent<PlayerSheet>();
         audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
+        // Set language
+        StatsTexts[0].text = TextsUI.StatsTextHealth[GameSettings.language];
+        StatsTexts[1].text = TextsUI.StatsTextDamage[GameSettings.language];
+        StatsTexts[2].text = TextsUI.StatsTextSpeed[GameSettings.language];
+        StatsTexts[3].text = TextsUI.StatsTextCooldown[GameSettings.language];
 
         initialCursorPos = UICursor.transform.localPosition;
 

@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerWeaponHandler : MonoBehaviour {
 
     public int weaponID;
+    public int casterID;
     public float lifetime;
     public float damage;
     public float critChance;
@@ -56,6 +57,11 @@ public class PlayerWeaponHandler : MonoBehaviour {
             if (other.tag == "Enemy") {
                 // Spawn damage text above enemy's head
                 SpawnDamageText(other, rndDmg);
+
+                // Tell enemy who's attacking
+                GameObject aggroRadius = other.transform.Find("Aggro Radius").gameObject;
+                Collider attackingPlayer = GameManager.AllPlayers[casterID].GetComponent<Collider>();
+                aggroRadius.GetComponent<EnemyController>().playerTargets.Add(attackingPlayer);
 
                 // Deal damage
                 other.GetComponent<EnemyLifeHandler>().currentHealth -= rndDmg;

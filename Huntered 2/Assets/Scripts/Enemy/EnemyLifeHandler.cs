@@ -37,7 +37,7 @@ public class EnemyLifeHandler : MonoBehaviour {
             healthBarActive = true;
             healthGO.gameObject.SetActive(true);
         }
-        
+
         // Update value / health of slider
         if (healthBarActive) {
             healthBar.value = currentHealth / maxHealth;
@@ -52,6 +52,13 @@ public class EnemyLifeHandler : MonoBehaviour {
         if (currentHealth <= 0) {
             GetComponent<DropLoot>().DropGold();
             GetComponent<GainRep>().AddRep();
+
+            for (int i = 0; i < GameManager.AllPlayers.Count; i++) {
+                // print(transform.Find("Aggro Radius").gameObject);
+                Collider aggroRadius = transform.Find("Aggro Radius").GetComponent<Collider>();
+                GameManager.AllPlayers[i].GetComponent<RemoveFromTrigger>().RemoveEnemyFromList(aggroRadius);
+            }
+
             Destroy(this.gameObject);
         }
     }

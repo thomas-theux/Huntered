@@ -152,6 +152,7 @@
      <Compile Include="Assets\Scripts\UI\DamageText.cs" />
      <Compile Include="Assets\Scripts\UI\ReputationUI.cs" />
      <Compile Include="Assets\Scripts\UI\StatsUI.cs" />
+     <Compile Include="Assets\Scripts\UI\TextsUI.cs" />
      <Compile Include="Assets\Scripts\Weapons\DestroyAfterPlay.cs" />
      <Compile Include="Assets\Scripts\Weapons\EnemyWeaponHandler.cs" />
      <Compile Include="Assets\Scripts\Weapons\PlayerWeaponHandler.cs" />
