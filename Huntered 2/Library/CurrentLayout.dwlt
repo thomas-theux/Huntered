@@ -135,10 +135,10 @@ MonoBehaviour:
     y: 30
     width: 1680
     height: 955
-  m_MinSize: {x: 711, y: 494}
+  m_MinSize: {x: 713, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 92
+  controlID: 144
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -160,10 +160,10 @@ MonoBehaviour:
     y: 0
     width: 1021
     height: 955
-  m_MinSize: {x: 200, y: 322}
-  m_MaxSize: {x: 4002, y: 8022}
+  m_MinSize: {x: 202, y: 344}
+  m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 93
+  controlID: 145
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,8 +212,8 @@ MonoBehaviour:
     y: 339
     width: 1021
     height: 616
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 222}
+  m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 494}
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
-  controlID: 114
+  controlID: 15
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -434,16 +434,16 @@ MonoBehaviour:
   m_ShowContextualTools: 0
   m_WindowGUID: 17d533a6a0df6493698f45dd5465c28d
   m_Gizmos: 0
-  m_SceneIsLit: 0
+  m_SceneIsLit: 1
   m_SceneLighting: 1
   m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 510.5, y: 288, z: 0}
+    m_Target: {x: 47.42729, y: 2.0012348, z: -5.55644}
     speed: 2
-    m_Value: {x: 510.5, y: 288, z: 0}
+    m_Value: {x: 47.42729, y: 2.0012348, z: -5.55644}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_SceneViewState:
     showFog: 1
     showMaterialUpdate: 0
-    showSkybox: 0
+    showSkybox: 1
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -472,13 +472,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.10711586, y: -0.03727367, z: 0.0040393015, w: 0.99354905}
+    m_Target: {x: 0.3277173, y: -0.008496381, z: 0.0029693332, w: 0.94474334}
     speed: 2
-    m_Value: {x: 0.10711484, y: -0.037273318, z: 0.004039263, w: 0.9935396}
+    m_Value: {x: 0.32771412, y: -0.008496298, z: 0.002969304, w: 0.9447341}
   m_Size:
-    m_Target: 233.34525
+    m_Target: 17.631535
     speed: 2
-    m_Value: 233.34525
+    m_Value: 17.631535
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 128992
+  m_LastSelectedObjectID: 448762
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -677,9 +677,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e0f70100
-      m_LastClickedID: 128992
-      m_ExpandedIDs: 3a8bffff488bffffd8f70100
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 9ec9feffa6c9feffb0c9fefff4c9feff2efffeff44f7ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -741,19 +741,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/UI
+    - Assets/Prefabs/Character
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: /Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2
+  m_LastProjectPath: /Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: fa080000
     m_LastClickedID: 2298
-    m_ExpandedIDs: 00000000a0440000f4440000b845000046460000d046000016490000324900003c490000504a0000544c00000c4d0000264d0000104e0000304e0000544e00007e580000
+    m_ExpandedIDs: 00000000a4440000f844000080450000bc4500004a460000d44600001a490000344900003649000040490000544a00005a4c0000144d00002e4d0000184e0000384e00005c4e00009e580000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -778,21 +778,21 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 373}
+    scrollPos: {x: 0, y: 293}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000a0440000f44400007c450000b845000046460000d04600001649000030490000324900003c490000504a0000544c00000c4d0000264d0000104e0000304e0000544e00007e580000
+    m_ExpandedIDs: ffffffff00000000a4440000f84400002845000080450000bc450000fa4500004a460000d44600001a490000364900004049000080490000544a00005a4c0000144d00002e4d0000184e0000384e00005c4e00009e580000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: DamageText
-      m_OriginalName: DamageText
+      m_Name: TextsUI
+      m_OriginalName: TextsUI
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 40930
+      m_UserData: 448724
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
