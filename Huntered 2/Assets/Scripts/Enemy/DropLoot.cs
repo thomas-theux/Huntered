@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DropLoot : MonoBehaviour {
 
-    public GameObject goldLoot;
+    public GameObject GoldLoot;
+    public GameObject GhostLoot;
 
 
     public void DropGold() {
@@ -21,9 +22,14 @@ public class DropLoot : MonoBehaviour {
             float dropPosX = Random.Range(minPosX, maxPosX);
             float dropPosZ = Random.Range(minPosZ, maxPosZ);
 
-            GameObject newGoldDrop = Instantiate(goldLoot);
+            GameObject newGoldDrop = Instantiate(GoldLoot);
             newGoldDrop.transform.position = new Vector3(dropPosX, newGoldDrop.transform.position.y, dropPosZ);
         }
+    }
+
+
+    public void DropGhosts() {
+        // int dropChance = GameManager.AllPlayers[]
     }
 
 }

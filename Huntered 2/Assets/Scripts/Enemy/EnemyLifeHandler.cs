@@ -51,6 +51,8 @@ public class EnemyLifeHandler : MonoBehaviour {
         // Kill when health is below 0
         if (currentHealth <= 0) {
             GetComponent<DropLoot>().DropGold();
+            GetComponent<DropLoot>().DropGhosts();
+
             GetComponent<GainRep>().AddRep();
 
             for (int i = 0; i < GameManager.AllPlayers.Count; i++) {

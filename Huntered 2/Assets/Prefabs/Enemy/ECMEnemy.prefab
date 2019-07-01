@@ -306,7 +306,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027689b2e3d5544c391f18c29c4369ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldLoot: {fileID: 466291002630647738, guid: ec61817ed7050400385faaedad6c8fd7, type: 3}
+  GoldLoot: {fileID: 466291002630647738, guid: ec61817ed7050400385faaedad6c8fd7, type: 3}
+  GhostLoot: {fileID: 8064968807939864638, guid: 64833210c31fb4074aa49b64489c1994,
+    type: 3}
 --- !u!114 &1024623451862683412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,6 +621,7 @@ MonoBehaviour:
   attackSpawner: {fileID: 6976083861952546332}
   weaponParent: {fileID: 2140333545966493744, guid: be55b9511c82e4c53b40a7e2b14e2542,
     type: 3}
+  playerTargets: []
 --- !u!1 &4519015884221140167
 GameObject:
   m_ObjectHideFlags: 0
