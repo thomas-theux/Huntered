@@ -1159,6 +1159,7 @@ GameObject:
   - component: {fileID: 8351684276295381811}
   - component: {fileID: 4475628731200101332}
   - component: {fileID: 6936218645448132933}
+  - component: {fileID: 4030324524943935684}
   - component: {fileID: 5544865270729118264}
   - component: {fileID: 6914500496924311736}
   - component: {fileID: 1719325011941402574}
@@ -1334,6 +1335,7 @@ MonoBehaviour:
   moveSpeed: 6
   critChance: 2
   critDamage: 1.5
+  DiamondDropChance: 20
   respawnTime: 7
   StatsUIActive: 0
   DelayMovement: 0
@@ -1401,6 +1403,18 @@ MonoBehaviour:
   speedStat: {fileID: 5319474223230441456}
   cooldownStat: {fileID: 8274997304937141991}
   UICursor: {fileID: 690891865150099490}
+--- !u!114 &4030324524943935684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898870989050275549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86c681b95bd2429a97b9bbef8fc6c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5544865270729118264
 MonoBehaviour:
   m_ObjectHideFlags: 0

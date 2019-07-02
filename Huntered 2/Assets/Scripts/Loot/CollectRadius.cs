@@ -8,6 +8,10 @@ public class CollectRadius : MonoBehaviour {
         if (other.tag == "Gold") {
             other.GetComponent<CollectGold>().SetPlayerTarget(this.transform.parent.GetComponent<Collider>());
         }
+
+        if (other.tag == "Ghost") {
+            other.GetComponent<CollectGhosts>().SetPlayerTarget(this.transform.parent.GetComponent<Collider>());
+        }
     }
 
 }

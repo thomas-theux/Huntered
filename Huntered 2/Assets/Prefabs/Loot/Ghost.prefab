@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8064968807939864637}
   - component: {fileID: 8064968807939864636}
+  - component: {fileID: 3751550547200282908}
   m_Layer: 0
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +47,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3751550547200282908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8064968807939864638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd595f5bd6cb546819af0e5bd5ea382e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectGhostSound: {fileID: 6770187735683673345, guid: 1c01a99bc73d14c2abb27490b2f72036,
+    type: 3}
 --- !u!1 &8064968808587671402
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ TagManager:
   - Attack
   - Ranged
   - CollectRadius
+  - Ghost
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,8 @@ public class PlayerSheet : MonoBehaviour {
     public int critChance = 2;
     public float critDamage = 1.5f;
 
+    public float DiamondDropChance = 50;
+
     public float respawnTime = 10.0f;
 
     public bool StatsUIActive = false;
