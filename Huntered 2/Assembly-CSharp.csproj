@@ -151,6 +151,7 @@
      <Compile Include="Assets\Scripts\Manager\ReputationManager.cs" />
      <Compile Include="Assets\Scripts\UI\CameraFacing.cs" />
      <Compile Include="Assets\Scripts\UI\CharacterUI.cs" />
+     <Compile Include="Assets\Scripts\UI\CharUIManager.cs" />
      <Compile Include="Assets\Scripts\UI\DamageText.cs" />
      <Compile Include="Assets\Scripts\UI\ReputationUI.cs" />
      <Compile Include="Assets\Scripts\UI\StatsUI.cs" />

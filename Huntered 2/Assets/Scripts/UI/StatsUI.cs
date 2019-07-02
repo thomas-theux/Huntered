@@ -81,8 +81,6 @@ public class StatsUI : MonoBehaviour {
 
         DisplayStats();
 
-        StatsParentGO.SetActive(false);
-
         t = costIncreaseDelay;
 
         initialized = true;
@@ -90,7 +88,7 @@ public class StatsUI : MonoBehaviour {
 
 
     private void Update() {
-        if (initialized && playerSheetScript.StatsUIActive) {
+        if (initialized && playerSheetScript.CharMenuUI) {
             GetInput();
             ChangeIndex();
             IncreaseStat();

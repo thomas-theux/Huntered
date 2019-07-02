@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     private float attackDelayTime = 0;
 
     public GameObject playerUI;
-    public GameObject statsUI;
+    public GameObject CharUI;
     // public GameObject playerCam;
 
     public GameObject weaponParent;
@@ -39,16 +39,6 @@ public class PlayerController : MonoBehaviour {
         playerSheetScript = GetComponent<PlayerSheet>();
         skillSheetScript = GetComponent<SkillSheet>();
         audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-
-        // playerCam.GetComponent<CameraFollow>().cameraID = playerSheetScript.playerID;
-        // playerCam.GetComponent<CameraFollow>().InitializeCamera();
-
-        // playerUI.GetComponent<Canvas>().worldCamera = playerCam.GetComponent<Camera>();
-        // playerUI.GetComponent<Canvas>().planeDistance = 1;
-
-        // statsUI.GetComponent<Canvas>().worldCamera = playerCam.GetComponent<Camera>();
-        // statsUI.GetComponent<Canvas>().planeDistance = 1;
-        // statsUI.SetActive(false);
     }
 
 
@@ -56,7 +46,7 @@ public class PlayerController : MonoBehaviour {
         GetInput();
 
         if (menuBtn) {
-            OpenStats();
+            OpenCharMenu();
         }
 
         if (attackBtn) {
@@ -94,7 +84,7 @@ public class PlayerController : MonoBehaviour {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void GetInput() {
-        if (!playerSheetScript.StatsUIActive) {
+        if (!playerSheetScript.CharMenuUI) {
             interactBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("R1");
             attackBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButton("X");
             potionBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("L1");
@@ -157,11 +147,11 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    private void OpenStats() {
-        playerSheetScript.StatsUIActive = !playerSheetScript.StatsUIActive;
-        statsUI.SetActive(playerSheetScript.StatsUIActive);
+    private void OpenCharMenu() {
+        playerSheetScript.CharMenuUI = !playerSheetScript.CharMenuUI;
+        CharUI.SetActive(playerSheetScript.CharMenuUI);
 
-        if (playerSheetScript.StatsUIActive) {
+        if (playerSheetScript.CharMenuUI) {
             audioManagerScript.Play("UIOpenStatsMenu");
         } else {
             audioManagerScript.Play("UICloseStatsMenu");

@@ -18,7 +18,7 @@ public class PlayerSheet : MonoBehaviour {
 
     public float respawnTime = 10.0f;
 
-    public bool StatsUIActive = false;
+    public bool CharMenuUI = false;
     public bool DelayMovement = false;
 
     public bool isDead = false;

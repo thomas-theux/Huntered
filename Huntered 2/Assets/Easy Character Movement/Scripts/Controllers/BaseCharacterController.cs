@@ -664,7 +664,7 @@ namespace ECM.Controllers
         protected virtual void HandleInput()
         {
             // OWN CODE
-            if (!playerSheetScript.StatsUIActive && !playerSheetScript.isDead) {
+            if (!playerSheetScript.CharMenuUI && !playerSheetScript.isDead) {
                 moveHorizontal = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Horizontal");
                 moveVertical = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical");
 
@@ -697,7 +697,7 @@ namespace ECM.Controllers
             }
 
             // Check for idle players
-            if (!playerSheetScript.isWalking && !playerSheetScript.isAttacking && !playerSheetScript.isTalking && !playerSheetScript.StatsUIActive) {
+            if (!playerSheetScript.isWalking && !playerSheetScript.isAttacking && !playerSheetScript.isTalking && !playerSheetScript.CharMenuUI) {
                 if (!startIdleCountdown) {
                     startIdleCountdown = true;
                     idleCountdown = idleCountdownDef;
