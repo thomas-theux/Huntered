@@ -16,7 +16,7 @@ public class EnemyWeaponHandler : MonoBehaviour {
 
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag != "Enemy" && other.tag != "Gold" && other.tag != "Attack" && other.tag != "Ranged" && other.tag != "EnemyAttack" && other.tag != "EnemyRanged" && other.tag != "Trigger" && other.tag != "CollectRadius") {
+        if (other.tag != "Enemy" && other.tag != "Gold" && other.tag != "Attack" && other.tag != "Ranged" && other.tag != "EnemyAttack" && other.tag != "EnemyRanged" && other.tag != "Trigger" && other.tag != "CollectRadius" && other.tag != "Ghost") {
 
             // Randomize damage
             float dmgMin = damage - damage * damageRandomizer;

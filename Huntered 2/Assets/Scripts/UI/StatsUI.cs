@@ -16,6 +16,7 @@ public class StatsUI : MonoBehaviour {
 
     // Game language
     public TMP_Text[] StatsTexts;
+    public TMP_Text[] ValueTexts;
 
     public TMP_Text healthStat;
     public TMP_Text damageStat;
@@ -57,40 +58,43 @@ public class StatsUI : MonoBehaviour {
     private bool interactBtn;
 
 
-    public void InitializeUI() {
-        playerSheetScript = GetComponent<PlayerSheet>();
-        audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+    public void OnEnable() {
+        if (!initialized) {
+            playerSheetScript = transform.root.GetComponent<PlayerSheet>();
+            audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
-        // Set language
-        StatsTexts[0].text = TextsUI.StatsTextHealth[GameSettings.language];
-        StatsTexts[1].text = TextsUI.StatsTextDamage[GameSettings.language];
-        StatsTexts[2].text = TextsUI.StatsTextSpeed[GameSettings.language];
-        StatsTexts[3].text = TextsUI.StatsTextCooldown[GameSettings.language];
+            // Set language
+            StatsTexts[0].text = TextsUI.StatsTextHealth[GameSettings.language];
+            StatsTexts[1].text = TextsUI.StatsTextDamage[GameSettings.language];
+            StatsTexts[2].text = TextsUI.StatsTextSpeed[GameSettings.language];
+            StatsTexts[3].text = TextsUI.StatsTextCooldown[GameSettings.language];
 
-        initialCursorPos = UICursor.transform.localPosition;
+            initialCursorPos = UICursor.transform.localPosition;
 
-        s = Array.Find(audioManagerScript.sounds, sound => sound.name == "UIIncreaseStat");
-        pitchDef = s.source.pitch;
+            s = Array.Find(audioManagerScript.sounds, sound => sound.name == "UIIncreaseStat");
+            pitchDef = s.source.pitch;
 
-        // Set the canvas of the second player to the left
-        if (playerSheetScript.playerID == 1) {
-            MainContainer.GetComponent<Image>().rectTransform.anchorMin = new Vector2(1, 0);
-            MainContainer.GetComponent<Image>().rectTransform.anchorMax = new Vector2(1, 1);
-            MainContainer.GetComponent<Image>().rectTransform.pivot = new Vector2(1, 0.5f);
+            // Set the canvas of the second player to the left
+            if (playerSheetScript.playerID == 1) {
+                MainContainer.GetComponent<Image>().rectTransform.anchorMin = new Vector2(1, 0);
+                MainContainer.GetComponent<Image>().rectTransform.anchorMax = new Vector2(1, 1);
+                MainContainer.GetComponent<Image>().rectTransform.pivot = new Vector2(1, 0.5f);
+            }
+
+            t = costIncreaseDelay;
+
+            initialized = true;
         }
 
         DisplayStats();
-
-        t = costIncreaseDelay;
-
-        initialized = true;
+        DisplayCursor();
     }
 
 
     private void Update() {
         if (initialized && playerSheetScript.CharMenuUI) {
             GetInput();
-            ChangeIndex();
+            UpdateIndex();
             IncreaseStat();
             IncreaseCosts();
         }
@@ -108,14 +112,12 @@ public class StatsUI : MonoBehaviour {
     }
 
 
-    private void ChangeIndex() {
+    private void UpdateIndex() {
         // UI navigation with the analog sticks
         if (ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") > maxThreshold && !axisYActive) {
             if (currentIndex > 0) {
                 axisYActive = true;
                 currentIndex--;
-            } else {
-                currentIndex = maxIndex;
             }
             DisplayCursor();
         }
@@ -124,8 +126,6 @@ public class StatsUI : MonoBehaviour {
             if (currentIndex < maxIndex) {
                 axisYActive = true;
                 currentIndex++;
-            } else {
-                currentIndex = 0;
             }
             DisplayCursor();
         }
@@ -139,23 +139,31 @@ public class StatsUI : MonoBehaviour {
         // UI navigation with the dpad
         if (dpadUp) {
             if (currentIndex > 0) currentIndex--;
-            else currentIndex = maxIndex;
-
             DisplayCursor();
         }
 
         if (dpadDown) {
             if (currentIndex < maxIndex) currentIndex++;
-            else currentIndex = 0;
-
             DisplayCursor();
         }
     }
 
 
     private void DisplayCursor() {
+        // Cursor position
         UICursor.transform.localPosition = new Vector2(initialCursorPos.x, initialCursorPos.y - (currentIndex * menuItemDistance));
         audioManagerScript.Play("UINavigateMenu");
+
+        // Nav text colors
+        for (int i = 0; i < ValueTexts.Length; i++) {
+            if (currentIndex == i) {
+                StatsTexts[i].color = ColorManager.KeyBlue10;
+                ValueTexts[i].color = ColorManager.KeyBlue10;
+            } else {
+                StatsTexts[i].color = ColorManager.KeyWhite50;
+                ValueTexts[i].color = ColorManager.KeyWhite50;
+            }
+        }
     }
 
 

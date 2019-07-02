@@ -37,7 +37,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
 
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag != "Player" && other.tag != "Gold" && other.tag != "Attack" && other.tag != "Ranged" && other.tag != "EnemyAttack" && other.tag != "EnemyRanged" && other.tag != "Trigger" && other.tag != "CollectRadius") {
+        if (other.tag != "Player" && other.tag != "Gold" && other.tag != "Attack" && other.tag != "Ranged" && other.tag != "EnemyAttack" && other.tag != "EnemyRanged" && other.tag != "Trigger" && other.tag != "CollectRadius" && other.tag != "Ghost") {
 
             // Randomize damage
             float dmgMin = damage - damage * damageRandomizer;
@@ -94,7 +94,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
 
         // Apply different text color for crit hits
         if (didCrit) {
-            newDamageText.transform.GetChild(0).GetComponent<TMP_Text>().color = ColorManager.CritHit;
+            newDamageText.transform.GetChild(0).GetComponent<TMP_Text>().color = ColorManager.KeyGold50;
         }
     }
 

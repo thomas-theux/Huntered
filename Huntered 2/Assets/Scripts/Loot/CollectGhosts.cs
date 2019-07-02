@@ -42,8 +42,13 @@ public class CollectGhosts : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             if ((int)GhostData["Player Access"] == other.GetComponent<PlayerSheet>().playerID) {
+
                 // Add this Ghost to the collecting players inventory
-                other.GetComponent<PlayerInventory>().GhostsInventory.Add(GhostData);
+                int ghostType = (int)GhostData["Type"];
+                other.GetComponent<PlayerInventory>().AllGhosts[ghostType].Add(GhostData);
+
+                // Add to one big array
+                // other.GetComponent<PlayerInventory>().GhostsInventory.Add(GhostData);
 
                 float rndPitch = Random.Range(0.95f, 1.0f);
                 rndPitch = 1.0f;

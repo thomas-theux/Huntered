@@ -22,7 +22,6 @@ public class PlayerSpawner : MonoBehaviour {
             newPlayer.GetComponent<PlayerSheet>().playerID = i;
             newPlayer.GetComponent<PlayerController>().InitializeCharacter();
             newPlayer.GetComponent<CharacterUI>().InitializeUI();
-            newPlayer.GetComponent<StatsUI>().InitializeUI();
 
             // Add the just spawned character to the player array
             GameManager.AllPlayers.Add(newPlayer);
