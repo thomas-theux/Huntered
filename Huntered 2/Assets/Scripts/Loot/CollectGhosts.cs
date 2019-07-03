@@ -126,6 +126,13 @@ public class CollectGhosts : MonoBehaviour {
         int calculatedEnemyLevel = Mathf.RoundToInt(enemyLevel / maxLevel);
 
         int ghostLevel = calculatedEnemyLevel + levelModifier;
+
+        if (ghostLevel < 1) {
+            ghostLevel = 1;
+        } else if (ghostLevel > 10) {
+            ghostLevel = 10;
+        }
+        
         return ghostLevel;
     }
 

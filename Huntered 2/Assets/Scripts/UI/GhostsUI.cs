@@ -35,7 +35,9 @@ public class GhostsUI : MonoBehaviour {
                 0 - (itemDistance * j)
             );
 
-            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[j]["Type"] + "";
+            newGhost.transform.GetChild(1).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.GhostsInventory[j]["Name"];
+            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = "" + (int)PlayerInventoryScript.GhostsInventory[j]["Type"];
+            newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = "LVL " + (int)PlayerInventoryScript.GhostsInventory[j]["Level"];
 
             // Add texts to array that then can be accessed to display the Ghost's data
             // foreach (Hashtable child in PlayerInventoryScript.GhostsInventory) {   
