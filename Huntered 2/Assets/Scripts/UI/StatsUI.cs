@@ -58,16 +58,19 @@ public class StatsUI : MonoBehaviour {
     private bool interactBtn;
 
 
+    private void Awake() {
+        // Set language
+        StatsTexts[0].text = TextsUI.StatsTextHealth[GameSettings.language];
+        StatsTexts[1].text = TextsUI.StatsTextDamage[GameSettings.language];
+        StatsTexts[2].text = TextsUI.StatsTextSpeed[GameSettings.language];
+        StatsTexts[3].text = TextsUI.StatsTextCooldown[GameSettings.language];
+    }
+
+
     public void OnEnable() {
         if (!initialized) {
             playerSheetScript = transform.root.GetComponent<PlayerSheet>();
             audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-
-            // Set language
-            StatsTexts[0].text = TextsUI.StatsTextHealth[GameSettings.language];
-            StatsTexts[1].text = TextsUI.StatsTextDamage[GameSettings.language];
-            StatsTexts[2].text = TextsUI.StatsTextSpeed[GameSettings.language];
-            StatsTexts[3].text = TextsUI.StatsTextCooldown[GameSettings.language];
 
             initialCursorPos = UICursor.transform.localPosition;
 

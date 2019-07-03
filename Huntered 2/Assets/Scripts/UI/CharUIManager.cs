@@ -18,10 +18,19 @@ public class CharUIManager : MonoBehaviour {
     private float buttonDistance = 140;
     private float cursorStartX;
 
+    // Game language
+    public TMP_Text[] MenuNavTexts;
+
 
     private void Awake() {
         audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         cursorStartX = cursorImage.transform.localPosition.x;
+
+        // Set language
+        MenuNavTexts[0].text = TextsUI.CharMenuHero[GameSettings.language];
+        MenuNavTexts[1].text = TextsUI.CharMenuSkills[GameSettings.language];
+        MenuNavTexts[2].text = TextsUI.CharMenuGhosts[GameSettings.language];
+        MenuNavTexts[3].text = TextsUI.CharMenuQuests[GameSettings.language];
     }
 
 

@@ -30,7 +30,7 @@ public class CollectGhosts : MonoBehaviour {
     };
 
 
-    private void Awake() {
+    public void InitializeGhost() {
         // TYPES
         // 0 = Strength
         // 1 = Speed
@@ -132,7 +132,7 @@ public class CollectGhosts : MonoBehaviour {
         } else if (ghostLevel > 10) {
             ghostLevel = 10;
         }
-        
+
         return ghostLevel;
     }
 
