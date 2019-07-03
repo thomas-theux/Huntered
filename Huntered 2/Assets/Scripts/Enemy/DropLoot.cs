@@ -53,6 +53,7 @@ public class DropLoot : MonoBehaviour {
                     newGhostDrop.transform.position = new Vector3(dropPosX, newGhostDrop.transform.position.y, dropPosZ);
                     // newGhostDrop.GetComponent<CollectGhosts>().PlayerAccess = i;
                     newGhostDrop.GetComponent<CollectGhosts>().GhostData["Player Access"] = i;
+                    newGhostDrop.GetComponent<CollectGhosts>().enemyLevel = enemyLevel;
                 }
             }
         }

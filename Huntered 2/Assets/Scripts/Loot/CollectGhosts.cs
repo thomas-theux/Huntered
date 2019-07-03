@@ -11,6 +11,24 @@ public class CollectGhosts : MonoBehaviour {
     public Hashtable GhostData = new Hashtable();
     public GameObject CollectGhostSound;
 
+    public int enemyLevel;
+    private int levelModifier;
+
+    private int[] modifierTiers = {
+        0,
+        19,
+        78,
+        98,
+        99
+    };
+
+    private int[] tierLevel = {
+        -1,
+        0,
+        1,
+        3
+    };
+
 
     private void Awake() {
         // TYPES
@@ -92,11 +110,23 @@ public class CollectGhosts : MonoBehaviour {
 
 
     private int RandomizeLevel() {
-        int rndLevel;
+        int rndModifier = Random.Range(0, 100);
 
-        rndLevel = 1;
+        if (rndModifier >= modifierTiers[0] && rndModifier < modifierTiers[1]) {
+            levelModifier = tierLevel[0];
+        } else if (rndModifier >= modifierTiers[1] && rndModifier < modifierTiers[2]) {
+            levelModifier = tierLevel[1];
+        } else if (rndModifier >= modifierTiers[2] && rndModifier < modifierTiers[3]) {
+            levelModifier = tierLevel[2];
+        } else if (rndModifier >= modifierTiers[3] && rndModifier < modifierTiers[4]) {
+            levelModifier = tierLevel[3];
+        }
 
-        return rndLevel;
+        float maxLevel = GameSettings.maxRepLevel / 10;
+        int calculatedEnemyLevel = Mathf.RoundToInt(enemyLevel / maxLevel);
+
+        int ghostLevel = calculatedEnemyLevel + levelModifier;
+        return ghostLevel;
     }
 
 }
