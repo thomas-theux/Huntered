@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour {
 
+    // public List<Hashtable> GhostsInventory = new List<Hashtable>();
+
     public List<List<Hashtable>> AllGhosts = new List<List<Hashtable>>();
-    public List<Hashtable> GhostsInventory = new List<Hashtable>();
 
     public List<Hashtable> StrengthGhosts = new List<Hashtable>();
     public List<Hashtable> SpeedGhosts = new List<Hashtable>();

@@ -3223,10 +3223,6 @@ MonoBehaviour:
   GhostsContainer: {fileID: 9070664245008802057}
   ListedGhost: {fileID: 4468393526815404699, guid: 2e513073f86f749b0b4ecdecfd19a5ac,
     type: 3}
-  ListedGhostTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &4320695536384327038
 GameObject:
   m_ObjectHideFlags: 0
