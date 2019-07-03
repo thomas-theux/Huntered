@@ -27,6 +27,18 @@ public class GhostsUI : MonoBehaviour {
                 0,
                 0 - (itemDistance * j)
             );
+<<<<<<< HEAD
+=======
+
+            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[j]["Type"] + "";
+
+            // Add texts to array that then can be accessed to display the Ghost's data
+            // foreach (Hashtable child in PlayerInventoryScript.GhostsInventory) {   
+            //     if (child.GetComponent<TMP_Text>()) {
+            //         ListedGhostTexts.Add(child.GetComponent<TMP_Text>());
+            //     }
+            // }
+>>>>>>> parent of fb2e8d5... ms
         }
     }
 

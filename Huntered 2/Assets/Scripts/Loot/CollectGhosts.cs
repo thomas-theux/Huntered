@@ -94,9 +94,14 @@ public class CollectGhosts : MonoBehaviour {
     private int RandomizeLevel() {
         int rndLevel;
 
+<<<<<<< HEAD
         rndLevel = 1;
 
         return rndLevel;
+=======
+        int ghostLevel = calculatedEnemyLevel + levelModifier;
+        return ghostLevel;
+>>>>>>> parent of fb2e8d5... ms
     }
 
 }
