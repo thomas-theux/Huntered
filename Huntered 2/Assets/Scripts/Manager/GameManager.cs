@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour {
 
         this.gameObject.GetComponent<GamepadManager>().InitializeGamepads();
         this.gameObject.GetComponent<PlayerSpawner>().SpawnCharacters();
+
+        // Initialize language texts
+        TextsGhosts.InitializeTexts();
     }
 
 }

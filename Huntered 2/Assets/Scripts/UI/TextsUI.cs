@@ -10,20 +10,23 @@ public class TextsUI {
         "Held",
         "Held"
     };
+
     public static string[] CharMenuSkills = {
         "Skills",
         "Fähigkeiten",
         "Wa kahsch"
     };
+
     public static string[] CharMenuGhosts = {
         "Ghosts",
         "Geister",
         "Goischt"
     };
+
     public static string[] CharMenuQuests = {
         "Quests",
         "Aufgaben",
-        "Wa mu ma do"
+        "Wa goht?"
     };
 
 

@@ -11,6 +11,8 @@ public class CollectGhosts : MonoBehaviour {
     public Hashtable GhostData = new Hashtable();
     public GameObject CollectGhostSound;
 
+    private int articleDrawChance = 40;
+
     public int enemyLevel;
     private int levelModifier;
 
@@ -111,11 +113,31 @@ public class CollectGhosts : MonoBehaviour {
 
 
     private string RandomizeName() {
-        string rndName;
+        string generatedName = "";
 
-        rndName = "Manu";
+        string rndArticle = "";
+        string rndAdjective = "";
+        string rndName = "";
 
-        return rndName;
+        // Check for chance to add an article and get it from the Ghost texts script
+        int articleChance = Random.Range(0, 100);
+        if (articleChance < articleDrawChance) {
+            int getRndArticle = Random.Range(0, TextsGhosts.GhostArticles[GameSettings.language].Length);
+            rndArticle = TextsGhosts.GhostArticles[GameSettings.language][getRndArticle];
+            rndArticle = rndArticle + " ";
+        }
+
+        // Get random adjective from Ghost texts script
+        int getRndAdjective = Random.Range(0, TextsGhosts.GhostAdjectives[GameSettings.language].Length);
+        rndAdjective = TextsGhosts.GhostAdjectives[GameSettings.language][getRndAdjective];
+
+        // Get random name from Ghost texts script
+        int getRndName = Random.Range(0, TextsGhosts.GhostNames[GameSettings.language].Length);
+        rndName = TextsGhosts.GhostNames[GameSettings.language][getRndName];
+
+        generatedName = rndArticle + rndAdjective + " " + rndName;
+
+        return generatedName;
     }
 
 
