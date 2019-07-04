@@ -3,31 +3,75 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Rewired;
 
 public class GhostsUI : MonoBehaviour {
 
     public PlayerInventory PlayerInventoryScript;
+    public PlayerSheet PlayerSheetScript;
     public GameObject GhostsContainer;
     public Image ListedGhost;
 
     private List<GameObject> displayedGhosts = new List<GameObject>();
 
     private float itemDistance = 100;
+    private int currentIndex = 0;
+    public GameObject[] GhostFilters;
+    
+    // REWIRED
+    private bool navigateLeft = false;
+    private bool navigateRight = false;
 
 
     private void OnEnable() {
         // Liste mit allen Ghosts löschen
-        PlayerInventoryScript.GhostsInventory.Clear();
+        // PlayerInventoryScript.GhostsInventory.Clear();
 
         // Go through all dictionaries and write the Ghosts in a master list
-        for (int i = 0; i < 4; i++) {
-            foreach (Hashtable child in PlayerInventoryScript.AllGhosts[i]) {
-                PlayerInventoryScript.GhostsInventory.Add(child);
+        // for (int i = 0; i < 4; i++) {
+        //     foreach (Hashtable child in PlayerInventoryScript.AllGhosts[i]) {
+        //         PlayerInventoryScript.GhostsInventory.Add(child);
+        //     }
+        // }
+
+        if (currentIndex == 0) {
+            DisplayAllGhosts();
+        } else {
+            DisplayFilteredGhosts();
+        }
+    }
+
+
+    private void Update() {
+        GetInput();
+        UpdateIndex();
+    }
+
+
+    private void GetInput() {
+        navigateLeft = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Left");
+        navigateRight = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Right");
+    }
+
+
+    private void UpdateIndex() {
+        if (navigateLeft) {
+            if (currentIndex > 0) {
+                currentIndex--;
             }
         }
 
+        if (navigateRight) {
+            if (currentIndex < GhostFilters.Length - 1) {
+                currentIndex++;
+            }
+        }
+    }
+
+
+    private void DisplayAllGhosts() {
         // Instantiate Ghosts with proper position
-        for (int j = 0; j < PlayerInventoryScript.GhostsInventory.Count; j++) {
+        for (int j = 0; j < PlayerInventoryScript.AllGhosts.Count; j++) {
             Image newGhost = Instantiate(ListedGhost, GhostsContainer.transform);
             displayedGhosts.Add(newGhost.gameObject);
             newGhost.transform.SetParent(GhostsContainer.transform);
@@ -36,10 +80,9 @@ public class GhostsUI : MonoBehaviour {
                 0 - (itemDistance * j)
             );
 
-            // Check for types and assign proper text
+            // Check for types and apply language
             string typeText = "";
-
-            switch ((int)PlayerInventoryScript.GhostsInventory[j]["Type"]) {
+            switch ((int)PlayerInventoryScript.AllGhosts[j]["Type"]) {
                 case 0:
                     typeText = TextsUI.GhostsTypeStrength[GameSettings.language];
                     break;
@@ -54,10 +97,15 @@ public class GhostsUI : MonoBehaviour {
                     break;
             }
 
-            newGhost.transform.GetChild(1).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.GhostsInventory[j]["Name"];
+            newGhost.transform.GetChild(1).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.AllGhosts[j]["Name"];
             newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = typeText;
-            newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = "LVL " + (int)PlayerInventoryScript.GhostsInventory[j]["Level"];
+            newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = "LVL " + (int)PlayerInventoryScript.AllGhosts[j]["Level"];
         }
+    }
+
+
+    private void DisplayFilteredGhosts() {
+
     }
 
 

@@ -39,16 +39,23 @@ public class CollectGhosts : MonoBehaviour {
 
         // Randomize attributes
         string rndName = RandomizeName();
+        int ghostUID = GameManager.GhostUID;
         int rndType = Random.Range(0, 4);
         int rndLevel = RandomizeLevel();
         int rndEffect = Random.Range(0, 2);
+        int rndChance = Random.Range(0, 100);
 
         // Add data to dictionary
         GhostData.Add("Name", rndName);                     // The randomly generated name of the Ghost
+        GhostData.Add("UID", ghostUID);                     // The unique ID for the Ghost
         GhostData.Add("Type", rndType);                     // What stat type does the Ghost have? (see above)
         GhostData.Add("Level", rndLevel);                   // What level does the Ghost have? Ranging from 1-10
         GhostData.Add("Effect", rndEffect);                 // What effect does this Ghost apply? Move Speed, Damage, ..
+        GhostData.Add("Chance", rndChance);                 // The chance to link a Ghost to your equipment
         GhostData.Add("Player Access", 0);                  // Which player can pick it up?
+
+        // Increment UID for Ghosts
+        GameManager.GhostUID++;
 
         // Set color depending on type
         int getType = (int)GhostData["Type"];
@@ -61,9 +68,12 @@ public class CollectGhosts : MonoBehaviour {
         if (other.tag == "Player") {
             if ((int)GhostData["Player Access"] == other.GetComponent<PlayerSheet>().playerID) {
 
-                // Add this Ghost to the collecting players inventory
+                // Add this Ghost to the collecting players inventory master array
+                other.GetComponent<PlayerInventory>().AllGhosts.Add(GhostData);
+
+                // Add this Ghost to the sub arrays (for later filtering)
                 int ghostType = (int)GhostData["Type"];
-                other.GetComponent<PlayerInventory>().AllGhosts[ghostType].Add(GhostData);
+                other.GetComponent<PlayerInventory>().GhostsInventory[ghostType].Add(GhostData);
 
                 // Add to one big array
                 // other.GetComponent<PlayerInventory>().GhostsInventory.Add(GhostData);

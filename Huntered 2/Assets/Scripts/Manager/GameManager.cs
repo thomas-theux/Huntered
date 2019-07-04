@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
     private GameObject devCam;
     public static List<GameObject> AllPlayers = new List<GameObject>();
 
+    public static int GhostUID = 0;
+
 
     private void Awake() {
         // devCam = GameObject.Find("DevCam");
