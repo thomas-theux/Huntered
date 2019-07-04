@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class TextsGhosts {
 
@@ -71,6 +72,76 @@ public class TextsGhosts {
         "Dümmlicher",
         "Auneitiger",
         "Augriabiger",
+        "Auleidiger",
+        "Affiger",
+        "Dämlicher",
+        "Ranziger",
+        "Rattiger",
+        "Ralliger",
+        "Lumpiger",
+        "Dicker",
+        "Dünner",
+        "Farbiger",
+        "Bunter",
+        "Hohler",
+        "Besoffener",
+        "Versoffener",
+        "Liadriger",
+        "Verspielter",
+        "Verhunzter",
+        "Verlogener",
+        "Unnötiger",
+        "Kauziger",
+        "Biestiger",
+        "Nackter",
+        "Siffiger",
+        "Versiffter",
+        "Intellektueller",
+        "Gelehrter",
+        "Kluger",
+        "Studierter",
+        "Belesener",
+        "Gschickter",
+        "Begabter",
+        "Erfahrener",
+        "Wilder",
+        "Kräftiger",
+        "Runder",
+        "Eckiger",
+        "Üppiger",
+        "Stämmiger",
+        "Harter",
+        "Weicher",
+        "Scharfer",
+        "Schlechter",
+        "Guter",
+        "Grantiger",
+        "Bruddeliger",
+        "Gereizter",
+        "Wütender",
+        "Erboster",
+        "Gwalttätiger",
+        "Griesgrämiger",
+        "Aufgebrachter",
+        "Entrüsteter",
+        "Aufdringlicher",
+        "Unsympathischer",
+        "Sympathischer",
+        "Gemütlicher",
+        "Herber",
+        "Widerwilliger",
+        "Zorniger",
+        "Verärgerter",
+        "Hässlicher",
+        "Scheener",
+        "Erregter",
+        "Aggressiver",
+        "Mürrischer",
+        "Gehässiger",
+        "Nörglerischer",
+        "Schussliger",
+        "Fetter",
+        "Adipöser",
     };
 
 
@@ -102,6 +173,18 @@ public class TextsGhosts {
         "Jockel",
         "Depp",
         "Aff",
+        "Nille",
+        "Marc",
+        "Bleedsau",
+        "Seckel",
+        "Lump",
+        "Penner",
+        "Ingenieur",
+        "Hemmer",
+        "Raket",
+        "Fettsack",
+        "Arschaffe",
+        "Stinkesack",
     };
 
 
@@ -111,6 +194,11 @@ public class TextsGhosts {
 
 
     public static void InitializeTexts() {
+        Debug.Log("Adjectives: " + GhostAdjectivesSW.Length);
+        Debug.Log("Names: " + GhostNamesSW.Length);
+        int maxnames = GhostAdjectivesSW.Length * GhostNamesSW.Length;
+        Debug.Log("Kombinationen: " + maxnames);
+
         GhostArticles.Add(GhostArticlesEN);
         GhostArticles.Add(GhostArticlesDE);
         GhostArticles.Add(GhostArticlesSW);

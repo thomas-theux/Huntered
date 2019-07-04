@@ -27,10 +27,12 @@ public class ScrollView : MonoBehaviour {
 
 
     private void Update() {
+        // scroll down
         if (Input.GetKey("g")) {
             scrollRectangle.verticalNormalizedPosition -= scrollAmount;
         }
 
+        // scroll up
         if (Input.GetKey("t")) {
             scrollRectangle.verticalNormalizedPosition += scrollAmount;
         }
