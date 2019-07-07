@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667588, g: 0.48427194, b: 0.564524, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667588, g: 0.48427188, b: 0.564524, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6179,7 +6179,7 @@ PrefabInstance:
     - target: {fileID: 2568313053376307764, guid: 94ce8d7572ac64d1682a2668b5d8954e,
         type: 3}
       propertyPath: enemyLevel
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ce8d7572ac64d1682a2668b5d8954e, type: 3}
@@ -7041,7 +7041,7 @@ PrefabInstance:
     - target: {fileID: 2568313053376307764, guid: 94ce8d7572ac64d1682a2668b5d8954e,
         type: 3}
       propertyPath: enemyLevel
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ce8d7572ac64d1682a2668b5d8954e, type: 3}
@@ -15682,7 +15682,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7904
+  m_Name: pb_Mesh-6056
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16934,7 +16934,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7902
+  m_Name: pb_Mesh-6054
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17906,7 +17906,7 @@ PrefabInstance:
     - target: {fileID: 2568313053376307764, guid: 94ce8d7572ac64d1682a2668b5d8954e,
         type: 3}
       propertyPath: enemyLevel
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ce8d7572ac64d1682a2668b5d8954e, type: 3}
@@ -19559,6 +19559,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potion
       objectReference: {fileID: 0}
+    - target: {fileID: 4252017021074415328, guid: 40221153cf47143bd808c31b69388525,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4252017021074415333, guid: 40221153cf47143bd808c31b69388525,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19945,6 +19950,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064968807939864638, guid: 64833210c31fb4074aa49b64489c1994,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8064968807939864637, guid: 64833210c31fb4074aa49b64489c1994,
         type: 3}
