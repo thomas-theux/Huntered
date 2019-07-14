@@ -45,7 +45,11 @@ public class CollectGhosts : MonoBehaviour {
         int rndType = Random.Range(0, 4);
         int rndLevel = RandomizeLevel();
         int rndEffect = Random.Range(0, 2);
-        int rndChance = Random.Range(0, 100);
+        int rndChance = Random.Range(1, 101);
+        int rndValue = Random.Range(
+            GameSettings.minGhostValue * rndLevel,
+            GameSettings.maxGhostValue * rndLevel
+        );
 
         // Add data to dictionary
         GhostData.Add("Name", rndName);                     // The randomly generated name of the Ghost
@@ -54,6 +58,7 @@ public class CollectGhosts : MonoBehaviour {
         GhostData.Add("Level", rndLevel);                   // What level does the Ghost have? Ranging from 1-10
         GhostData.Add("Effect", rndEffect);                 // What effect does this Ghost apply? Move Speed, Damage, ..
         GhostData.Add("Chance", rndChance);                 // The chance to link a Ghost to your equipment
+        GhostData.Add("Value", rndValue);                   // How much gold do you get for this Ghost?
         GhostData.Add("Player Access", 0);                  // Which player can pick it up?
 
         // Increment UID for Ghosts
@@ -134,6 +139,9 @@ public class CollectGhosts : MonoBehaviour {
         // Get random name from Ghost texts script
         int getRndName = Random.Range(0, TextsGhosts.GhostNames[GameSettings.language].Length);
         rndName = TextsGhosts.GhostNames[GameSettings.language][getRndName];
+
+        // Remove articles
+        rndArticle = "";
 
         generatedName = rndArticle + rndAdjective + " " + rndName;
 

@@ -2,7 +2,7 @@
 public class GameSettings {
 
     // Game language // 0 = english ; 1 = german ; 2 = swabian
-    public static int language = 0;
+    public static int language = 2;
 
     public static int ConnectedGamepads = 0;
     public static int PlayerCount = 0;
@@ -33,6 +33,10 @@ public class GameSettings {
     // How much gold will be dropped minimum and maximum
     public static int minGoldDrop = 4;
     public static int maxGoldDrop = 8;
+
+    // Set the min and max for a Ghosts worth
+    public static int minGhostValue = 500;
+    public static int maxGhostValue = 1000;
 
     // Size of the area where enemies drop loot – in this case 2.0m
     public static float dropAreaSize = 2.0f;

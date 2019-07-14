@@ -194,10 +194,11 @@ public class TextsGhosts {
 
 
     public static void InitializeTexts() {
-        Debug.Log("Adjectives: " + GhostAdjectivesSW.Length);
-        Debug.Log("Names: " + GhostNamesSW.Length);
-        int maxnames = GhostAdjectivesSW.Length * GhostNamesSW.Length;
-        Debug.Log("Kombinationen: " + maxnames);
+        // Display the amount of possible combinations
+        // Debug.Log("Adjectives: " + GhostAdjectivesSW.Length);
+        // Debug.Log("Names: " + GhostNamesSW.Length);
+        // int maxnames = GhostAdjectivesSW.Length * GhostNamesSW.Length;
+        // Debug.Log("Kombinationen: " + maxnames);
 
         GhostArticles.Add(GhostArticlesEN);
         GhostArticles.Add(GhostArticlesDE);

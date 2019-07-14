@@ -84,7 +84,7 @@ public class TextsUI {
     public static string[] GhostsTypeWisdom = {
         "Wisdom",
         "Weisheit",
-        "Käpselesmäßigkeit"
+        "Gscheitheit"
     };
 
 }

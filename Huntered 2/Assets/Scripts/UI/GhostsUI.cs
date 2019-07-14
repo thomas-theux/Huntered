@@ -12,24 +12,30 @@ public class GhostsUI : MonoBehaviour {
     private AudioManager audioManagerScript;
 
     public GameObject GhostsContainer;
+    public Image[] GhostFilters;
     public Image ListedGhost;
+    public Image GhostNavCursor;
+    public Image ContentContainer;
 
     private List<GameObject> displayedGhosts = new List<GameObject>();
 
-    private int listItemHeight = 100;
-    private int listItemMargin = 2;
+    private float initialCursorPos;
 
-    private float itemDistance = 102;
+    private int listItemHeight = 100;
+    private int childrenCount = 0;
+
     private int currentIndex = 0;
-    public Image[] GhostFilters;
+    private int cursorIndex = 0;
+    private int cursorPos = 0;
+    private int minCursorIndex = 1;
+    private int maxCursorIndex = 4;
+
+    private bool scrollIsDelayed = false;
+    private float tDef = 0.15f;
+    private float t;
 
     // public Image ButtonUpImage;
     // public Image ButtonDownImage;
-
-    private ScrollRect scrollRectangle;
-    public GameObject ScrollMask;
-    private float scrollSpeed = 8;
-    private float scrollAmount;
 
     // REWIRED
     private bool navigateLeft = false;
@@ -40,7 +46,8 @@ public class GhostsUI : MonoBehaviour {
 
     private void Awake() {
         audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        scrollRectangle = ScrollMask.GetComponent<ScrollRect>();
+
+        initialCursorPos = GhostNavCursor.transform.localPosition.y;
     }
 
 
@@ -63,13 +70,25 @@ public class GhostsUI : MonoBehaviour {
 
         UpdateIconTransparency();
         AdjustScrollView();
+
+        ResetGhostCursor();
+        MoveCursor();
     }
 
 
     private void Update() {
         GetInput();
-        ScrollContent();
         UpdateIndex();
+
+        if (!scrollIsDelayed) {
+            ContentNavigation();
+        }
+
+        if (scrollIsDelayed) {
+            ScrollDelay();
+        }
+
+        DisableScrollDelay();
     }
 
 
@@ -79,6 +98,38 @@ public class GhostsUI : MonoBehaviour {
 
         scrollUp = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButton("DPad Up");
         scrollDown = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButton("DPad Down");
+    }
+
+
+    private void ScrollDelay() {
+        t -= Time.deltaTime;
+
+        if (t <= 0) {
+            scrollIsDelayed = false;
+        }
+    }
+
+
+    private void DisableScrollDelay() {
+        if (ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonUp("DPad Up") || ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonUp("DPad Down")) {
+            scrollIsDelayed = false;
+        }
+    }
+
+
+    private void ResetGhostCursor() {
+        cursorIndex = 0;
+        cursorPos = 0;
+        ContentContainer.transform.localPosition = Vector2.zero;
+    }
+
+
+    private void CheckForContent() {
+        if (childrenCount == 0) {
+            GhostNavCursor.enabled = false;
+        } else {
+            GhostNavCursor.enabled = true;
+        }
     }
 
 
@@ -115,6 +166,9 @@ public class GhostsUI : MonoBehaviour {
         }
 
         AdjustScrollView();
+        ResetGhostCursor();
+        CheckForContent();
+        MoveCursor();
     }
 
 
@@ -130,43 +184,78 @@ public class GhostsUI : MonoBehaviour {
     }
 
 
-    private void ScrollContent() {
-        // Scroll content up and down
+    private void ContentNavigation() {
         if (scrollUp) {
-            scrollRectangle.verticalNormalizedPosition += scrollAmount;
+            if (cursorIndex > 0) {
+                cursorIndex--;
+                MoveCursor();
+                audioManagerScript.Play("UINavigateMenu");
+
+                // Delay scrolling to prevent that scrolling is too fast
+                t = tDef;
+                scrollIsDelayed = true;
+
+                if (cursorPos > minCursorIndex) {
+                    cursorPos--;
+                } else {
+                    ScrollContent(-1);
+                }
+
+                if (cursorIndex == 0) {
+                    cursorPos = 0;
+                }
+            }
         }
 
         if (scrollDown) {
-            scrollRectangle.verticalNormalizedPosition -= scrollAmount;
+            if (cursorIndex < childrenCount - 1) {
+                cursorIndex++;
+                MoveCursor();
+                audioManagerScript.Play("UINavigateMenu");
+
+                // Delay scrolling to prevent that scrolling is too fast
+                t = tDef;
+                scrollIsDelayed = true;
+
+                if (cursorPos < maxCursorIndex) {
+                    cursorPos++;
+                } else {
+                    ScrollContent(1);
+                }
+
+                if (cursorIndex == childrenCount - 1) {
+                    cursorPos = maxCursorIndex + 1;
+                }
+            }
         }
 
         // Display scroll arrow buttons
-        // if (scrollRectangle.verticalNormalizedPosition == 1) {
-        //     ButtonUpImage.color = ColorManager.ImageTransparent100;
-        // } else {
-        //     ButtonUpImage.color = ColorManager.ImageTransparent0;
-        // }
+    }
 
-        // if (scrollRectangle.verticalNormalizedPosition == 0) {
-        //     ButtonDownImage.color = ColorManager.ImageTransparent100;
-        // } else {
-        //     ButtonDownImage.color = ColorManager.ImageTransparent0;
-        // }
+
+    private void MoveCursor() {
+        GhostNavCursor.transform.localPosition = new Vector2(
+            GhostNavCursor.transform.localPosition.x,
+            initialCursorPos - (cursorIndex * listItemHeight)
+        );
+    }
+
+
+    private void ScrollContent(int scrollDirection) {
+        ContentContainer.transform.localPosition = new Vector2(
+            ContentContainer.transform.localPosition.x,
+            ContentContainer.transform.localPosition.y + (listItemHeight * scrollDirection)
+        );
     }
 
 
     private void AdjustScrollView() {
-        float children = displayedGhosts.Count;
+        cursorIndex = 0;
+        childrenCount = displayedGhosts.Count;
 
-        scrollRectangle.verticalNormalizedPosition = 1;
-
-        float newHeight = (children * listItemHeight) + ((children - 1) * listItemMargin);
+        // Set the height of cthe ontainer depending on the Ghost count
+        float newHeight = childrenCount * listItemHeight;
         GhostsContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(100, newHeight);
-
-        float contentHeight = GhostsContainer.GetComponent<RectTransform>().sizeDelta.y;
-        print(contentHeight);
-        scrollAmount = 1 / (contentHeight);
-        print(scrollAmount);
     }
 
 
@@ -178,12 +267,14 @@ public class GhostsUI : MonoBehaviour {
             newGhost.transform.SetParent(GhostsContainer.transform);
             newGhost.transform.localPosition = new Vector2(
                 0,
-                0 - (itemDistance * j)
+                0 - (listItemHeight * j)
             );
 
             // Check for types and apply language
             string typeText = "";
-            switch ((int)PlayerInventoryScript.AllGhosts[j]["Type"]) {
+            int ghostType = (int)PlayerInventoryScript.AllGhosts[j]["Type"];
+
+            switch (ghostType) {
                 case 0:
                     typeText = TextsUI.GhostsTypeStrength[GameSettings.language];
                     break;
@@ -198,9 +289,12 @@ public class GhostsUI : MonoBehaviour {
                     break;
             }
 
-            newGhost.transform.GetChild(1).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.AllGhosts[j]["Name"];
+            newGhost.transform.GetChild(1).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
             newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = typeText;
-            newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = "LVL " + (int)PlayerInventoryScript.AllGhosts[j]["Level"];
+            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().color = ColorManager.GhostColors[ghostType];
+            newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.AllGhosts[j]["Name"];
+            newGhost.transform.GetChild(4).GetComponent<TMP_Text>().text = "LVL " + (int)PlayerInventoryScript.AllGhosts[j]["Level"];
+            newGhost.transform.GetChild(5).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Chance"] + "%";
         }
     }
 
@@ -212,12 +306,14 @@ public class GhostsUI : MonoBehaviour {
             newGhost.transform.SetParent(GhostsContainer.transform);
             newGhost.transform.localPosition = new Vector2(
                 0,
-                0 - (itemDistance * k)
+                0 - (listItemHeight * k)
             );
 
             // Check for types and apply language
             string typeText = "";
-            switch ((int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Type"]) {
+            int ghostType = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Type"];
+
+            switch (ghostType) {
                 case 0:
                     typeText = TextsUI.GhostsTypeStrength[GameSettings.language];
                     break;
@@ -232,9 +328,12 @@ public class GhostsUI : MonoBehaviour {
                     break;
             }
 
-            newGhost.transform.GetChild(1).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Name"];
+            newGhost.transform.GetChild(1).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
             newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = typeText;
-            newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = "LVL " + (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Level"];
+            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().color = ColorManager.GhostColors[ghostType];
+            newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Name"];
+            newGhost.transform.GetChild(4).GetComponent<TMP_Text>().text = "LVL " + (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Level"];
+            newGhost.transform.GetChild(5).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Chance"] + "%";
         }
     }
 
