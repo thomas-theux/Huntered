@@ -20,7 +20,7 @@ public class TextsUI {
     public static string[] CharMenuGhosts = {
         "Ghosts",
         "Geister",
-        "Goischt"
+        "Geischt"
     };
 
     public static string[] CharMenuQuests = {

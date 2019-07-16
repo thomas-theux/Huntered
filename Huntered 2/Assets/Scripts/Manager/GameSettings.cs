@@ -1,7 +1,7 @@
 ﻿
 public class GameSettings {
 
-    // Game language // 0 = english ; 1 = german ; 2 = swabian
+    // Game language // 0 = english ; 1 = german ; 2 = developers edition (swabian)
     public static int language = 2;
 
     public static int ConnectedGamepads = 0;

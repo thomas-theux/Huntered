@@ -142,6 +142,11 @@ public class TextsGhosts {
         "Schussliger",
         "Fetter",
         "Adipöser",
+        "Schlaffer",
+        "Sexy",
+        "Freudiger",
+        "Dreckliger",
+        "Dreckiger",
     };
 
 
@@ -185,6 +190,29 @@ public class TextsGhosts {
         "Fettsack",
         "Arschaffe",
         "Stinkesack",
+        "Gangster",
+        "Gauner",
+        "Ganove",
+        "Bandit",
+        "Kasper",
+        "Dieter",
+        "Karsten",
+        "Pimml",
+        "Dietrich",
+        "Sepp",
+        "Manumarc",
+        "Manuwurf",
+        "Bennidick",
+        "Schreiner",
+        "Kiri",
+        "Feick",
+        "Bieger",
+        "Uteg",
+        "Frank T.",
+        "Hobler",
+        "Dickbauch",
+        "Pillemann",
+        "Stinkestiefel",
     };
 
 
