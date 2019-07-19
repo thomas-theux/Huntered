@@ -147,6 +147,35 @@ public class TextsGhosts {
         "Freudiger",
         "Dreckliger",
         "Dreckiger",
+        "Gewitzter",
+        "Gewichster",
+        "Heiliger",
+        "Teuflischer",
+        "Gehörnter",
+        "Freizügiger",
+        "Mordsmäßiger",
+        "Schmieriger",
+        "Hooriger",
+        "Schleckiger",
+        "Verzogener",
+        "Aktiver",
+        "Großartiger",
+        "Verkotzter",
+        "Verkackter",
+        "Verplanter",
+        "Verpeilter",
+        "Verstunkener",
+        "Hohle",
+        "Scheiß",
+        "Dicknasiger",
+        "Übler",
+        "Dermaßener",
+        "Ordentlicher",
+        "Reachter",
+        "Gegrillter",
+        "Fickriger",
+        "Frecher",
+        "Verrückter",
     };
 
 
@@ -213,6 +242,81 @@ public class TextsGhosts {
         "Dickbauch",
         "Pillemann",
         "Stinkestiefel",
+        "Sack",
+        "Sailer",
+        "Pille",
+        "Gymnasiast",
+        "Student",
+        "Gwaltsack",
+        "Vater",
+        "Chines",
+        "Japaner",
+        "Jud",
+        "Türk",
+        "Russe",
+        "Igel",
+        "Postbote",
+        "Quentin",
+        "Vogel",
+        "Jogi",
+        "Turnschuh",
+        "Oppa",
+        "Junge",
+        "Eber",
+        "Everhart",
+        "König",
+        "Baggerfahrer",
+        "Käsekopf",
+        "Quadratdepp",
+        "Dummkopf",
+        "Schwager",
+        "Schwiegervater",
+        "Bruder",
+        "Junge",
+        "Kollege",
+        "Kumpel",
+        "Bro",
+        "Froind",
+        "Kater",
+        "Hund",
+        "Vogel",
+        "Loschko",
+        "Bernd",
+        "Amsterloschko",
+        "Drogi",
+        "Druffi",
+        "Profi",
+        "Brizzel",
+        "Oppe",
+        "DJ Obert",
+        "Birne",
+        "Stinker",
+        "Scheißer",
+        "Flasche",
+        "Pfeife",
+        "Pfeiffadeckel",
+        "Ficknase",
+        "Arschaffe",
+        "Dickbär",
+        "Popo",
+        "Schwengel",
+        "Klöppel",
+        "Eiersack",
+        "Sack",
+        "Nazi",
+        "Ade",
+        "Pamml",
+        "Piller",
+        "Paller",
+        "Lümmel",
+        "Lörres",
+        "Designer",
+        "Developer",
+        "Inder",
+        "Seckel",
+        "Kalle",
+        "Jürgen",
+        "Busfahrer",
     };
 
 
@@ -227,6 +331,23 @@ public class TextsGhosts {
         // Debug.Log("Names: " + GhostNamesSW.Length);
         // int maxnames = GhostAdjectivesSW.Length * GhostNamesSW.Length;
         // Debug.Log("Kombinationen: " + maxnames);
+
+        // Check for duplicates
+        // int doubleCount = 0;
+        // for (int i = 0; i < GhostAdjectivesSW.Length; i++) {
+        //     string itemName = GhostAdjectivesSW[i];
+        //     for (int j = 0; j < GhostAdjectivesSW.Length; i++) {
+        //         if (itemName == GhostAdjectivesSW[j]) {
+        //             doubleCount++;
+        //         }
+        //     }
+
+        //     if (doubleCount > 1) {
+        //         Debug.Log(itemName);
+        //     }
+
+        //     doubleCount = 0;
+        // }
 
         GhostArticles.Add(GhostArticlesEN);
         GhostArticles.Add(GhostArticlesDE);
