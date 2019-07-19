@@ -302,7 +302,6 @@ public class TextsGhosts {
         "Schwengel",
         "Klöppel",
         "Eiersack",
-        "Sack",
         "Nazi",
         "Ade",
         "Pamml",
