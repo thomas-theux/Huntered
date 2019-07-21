@@ -165,7 +165,7 @@ public class TextsGhosts {
         "Verplanter",
         "Verpeilter",
         "Verstunkener",
-        "Hohle",
+        "Hohler",
         "Scheiß",
         "Dicknasiger",
         "Übler",
@@ -176,6 +176,8 @@ public class TextsGhosts {
         "Fickriger",
         "Frecher",
         "Verrückter",
+        "Russischer",
+        "Türkischer",
     };
 
 
@@ -272,14 +274,12 @@ public class TextsGhosts {
         "Schwager",
         "Schwiegervater",
         "Bruder",
-        "Junge",
         "Kollege",
         "Kumpel",
         "Bro",
         "Froind",
         "Kater",
         "Hund",
-        "Vogel",
         "Loschko",
         "Bernd",
         "Amsterloschko",
@@ -296,7 +296,6 @@ public class TextsGhosts {
         "Pfeife",
         "Pfeiffadeckel",
         "Ficknase",
-        "Arschaffe",
         "Dickbär",
         "Popo",
         "Schwengel",
@@ -312,10 +311,15 @@ public class TextsGhosts {
         "Designer",
         "Developer",
         "Inder",
-        "Seckel",
         "Kalle",
         "Jürgen",
         "Busfahrer",
+        "Mistkerl",
+        "Störenfried",
+        "Nichtsnutz",
+        "Schlingel",
+        "Hipster",
+        "Unhold",
     };
 
 
@@ -326,26 +330,21 @@ public class TextsGhosts {
 
     public static void InitializeTexts() {
         // Display the amount of possible combinations
-        // Debug.Log("Adjectives: " + GhostAdjectivesSW.Length);
-        // Debug.Log("Names: " + GhostNamesSW.Length);
         // int maxnames = GhostAdjectivesSW.Length * GhostNamesSW.Length;
         // Debug.Log("Kombinationen: " + maxnames);
 
+        // Display the number of adjectives and names
+        // Debug.Log("Adjectives: " + GhostAdjectivesSW.Length);
+        // Debug.Log("Names: " + GhostNamesSW.Length);
+
         // Check for duplicates
-        // int doubleCount = 0;
-        // for (int i = 0; i < GhostAdjectivesSW.Length; i++) {
-        //     string itemName = GhostAdjectivesSW[i];
-        //     for (int j = 0; j < GhostAdjectivesSW.Length; i++) {
-        //         if (itemName == GhostAdjectivesSW[j]) {
-        //             doubleCount++;
-        //         }
+        // int twice = 0;
+        // for (int h = 0; h < GhostAdjectivesSW.Length; h++) {
+        //     for (int i = 0; i < GhostAdjectivesSW.Length; i++) {
+        //         if (GhostAdjectivesSW[h] == GhostAdjectivesSW[i]) { twice++; }
         //     }
-
-        //     if (doubleCount > 1) {
-        //         Debug.Log(itemName);
-        //     }
-
-        //     doubleCount = 0;
+        //     if (twice > 1) { Debug.Log(GhostAdjectivesSW[h]); }
+        //     twice = 0;
         // }
 
         GhostArticles.Add(GhostArticlesEN);

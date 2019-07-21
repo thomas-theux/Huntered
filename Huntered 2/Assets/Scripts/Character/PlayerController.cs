@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject playerUI;
     public GameObject CharUI;
+    public GameObject LinkingUI;
     // public GameObject playerCam;
 
     public GameObject weaponParent;
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 	private float moveVertical;
     private float rotateHorizontal;
     private float rotateVertical;
-    private bool interactBtn;
+    public bool interactBtn;
     private bool menuBtn;
     private bool attackBtn;
     private bool potionBtn;
@@ -152,6 +153,18 @@ public class PlayerController : MonoBehaviour {
         CharUI.SetActive(playerSheetScript.CharMenuUI);
 
         if (playerSheetScript.CharMenuUI) {
+            audioManagerScript.Play("UIOpenStatsMenu");
+        } else {
+            audioManagerScript.Play("UICloseStatsMenu");
+        }
+    }
+
+
+    public void OpenLinkingMenu() {
+        playerSheetScript.LinkingMenuUI = !playerSheetScript.LinkingMenuUI;
+        LinkingUI.SetActive(playerSheetScript.LinkingMenuUI);
+
+        if (playerSheetScript.LinkingMenuUI) {
             audioManagerScript.Play("UIOpenStatsMenu");
         } else {
             audioManagerScript.Play("UICloseStatsMenu");

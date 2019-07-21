@@ -27,8 +27,8 @@ public class CharUIManager : MonoBehaviour {
         cursorStartX = cursorImage.transform.localPosition.x;
 
         // Set language
-        MenuNavTexts[0].text = TextsUI.CharMenuHero[GameSettings.language];
-        MenuNavTexts[1].text = TextsUI.CharMenuSkills[GameSettings.language];
+        MenuNavTexts[0].text = TextsUI.CharMenuSkills[GameSettings.language];
+        MenuNavTexts[1].text = TextsUI.CharMenuHero[GameSettings.language];
         MenuNavTexts[2].text = TextsUI.CharMenuGhosts[GameSettings.language];
         MenuNavTexts[3].text = TextsUI.CharMenuQuests[GameSettings.language];
     }

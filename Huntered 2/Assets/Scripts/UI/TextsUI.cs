@@ -14,7 +14,7 @@ public class TextsUI {
     public static string[] CharMenuSkills = {
         "Skills",
         "Fähigkeiten",
-        "Wa kahsch"
+        "Skills"
     };
 
     public static string[] CharMenuGhosts = {
