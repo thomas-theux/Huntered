@@ -115,6 +115,7 @@ public class TextsGhosts {
         "Scharfer",
         "Schlechter",
         "Guter",
+        "Böser",
         "Grantiger",
         "Bruddeliger",
         "Gereizter",
