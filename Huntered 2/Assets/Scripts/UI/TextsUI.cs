@@ -17,16 +17,16 @@ public class TextsUI {
         "Skills"
     };
 
-    public static string[] CharMenuGhosts = {
-        "Ghosts",
-        "Geister",
-        "Geischt"
+    public static string[] CharMenuGear = {
+        "Gear",
+        "Zeugs",
+        "Zeigs"
     };
 
-    public static string[] CharMenuQuests = {
-        "Quests",
-        "Aufgaben",
-        "Wa goht?"
+    public static string[] CharMenuGhosts = {
+        "Ghosts",
+        "Ghosts",
+        "Ghosts"
     };
 
 
@@ -34,28 +34,56 @@ public class TextsUI {
     // CHAR STATS UI
     //////////////////////////////
 
-    public static string[] StatsTextHealth = {
+    public static string[] StatsTitleHealth = {
         "Health",
         "Gesundheit",
         "Zondheit"
     };
 
-    public static string[] StatsTextDamage = {
+    public static string[] StatsTitleDamage = {
         "Damage",
         "Schaden",
         "Schada"
     };
 
-    public static string[] StatsTextSpeed = {
+    public static string[] StatsTitleSpeed = {
         "Move Speed",
         "Bewegungsgeschwindigkeit",
-        "Gib Gas"
+        "Laufgeschwindigkeit"
+    };
+
+    public static string[] StatsTitleCooldown = {
+        "Cooldown",
+        "Cooldown",
+        "Cooldown"
+    };
+
+
+    //////////////////////////////
+
+
+    public static string[] StatsTextHealth = {
+        "Increases your HP",
+        "Increases your HP",
+        "Increases your HP"
+    };
+
+    public static string[] StatsTextDamage = {
+        "Increases your weapon's damage",
+        "Increases your weapon's damage",
+        "Increases your weapon's damage"
+    };
+
+    public static string[] StatsTextSpeed = {
+        "Increases your move speed",
+        "Increases your move speed",
+        "Increases your move speed"
     };
 
     public static string[] StatsTextCooldown = {
-        "Attack Speed",
-        "Angriffsgeschwindigkeit",
-        "Schlag zu"
+        "Decreases your attack's cooldown time",
+        "Decreases your attack's cooldown time",
+        "Decreases your attack's cooldown time"
     };
 
 

@@ -14,21 +14,30 @@ public class StatsUI : MonoBehaviour {
     public GameObject StatsParentGO;
     public GameObject MainContainer;
 
-    // Game language
-    public TMP_Text[] StatsTexts;
-    public TMP_Text[] ValueTexts;
+    public TMP_Text StatsTitle;
+    public TMP_Text StatsText;
 
-    public TMP_Text healthStat;
-    public TMP_Text damageStat;
-    public TMP_Text speedStat;
-    public TMP_Text cooldownStat;
+    public Slider[] StatsSliders;
+
+    // Game language
+    // public TMP_Text[] StatsTexts;
+    public GameObject[] StatMenuItems;
+    private List<Image> StatIcons = new List<Image>();
+    private List<TMP_Text> StatValues = new List<TMP_Text>();
+
+    // public TMP_Text healthStat;
+    // public TMP_Text damageStat;
+    // public TMP_Text speedStat;
+    // public TMP_Text cooldownStat;
 
     public Image UICursor;
     private Vector2 initialCursorPos;
-    private float menuItemDistance = 60.0f;
+    private float menuItemDistance = 110.0f;
 
     private int currentIndex = 0;
     private int maxIndex = 3;
+
+    private bool canIncrease = true;
 
 	private float minThreshold = 0.5f;
 	private float maxThreshold = 0.5f;
@@ -60,10 +69,16 @@ public class StatsUI : MonoBehaviour {
 
     private void Awake() {
         // Set language
-        StatsTexts[0].text = TextsUI.StatsTextHealth[GameSettings.language];
-        StatsTexts[1].text = TextsUI.StatsTextDamage[GameSettings.language];
-        StatsTexts[2].text = TextsUI.StatsTextSpeed[GameSettings.language];
-        StatsTexts[3].text = TextsUI.StatsTextCooldown[GameSettings.language];
+        // StatsTexts[0].text = TextsUI.StatsTextHealth[GameSettings.language];
+        // StatsTexts[1].text = TextsUI.StatsTextDamage[GameSettings.language];
+        // StatsTexts[2].text = TextsUI.StatsTextSpeed[GameSettings.language];
+        // StatsTexts[3].text = TextsUI.StatsTextCooldown[GameSettings.language];
+
+        // Get all stats texts
+        for (int i = 0; i < StatMenuItems.Length; i++) {
+            StatIcons.Add(StatMenuItems[i].transform.GetChild(0).GetComponent<Image>());
+            StatValues.Add(StatMenuItems[i].transform.GetChild(1).GetComponent<TMP_Text>());
+        }
     }
 
 
@@ -91,6 +106,7 @@ public class StatsUI : MonoBehaviour {
 
         DisplayStats();
         DisplayCursor();
+        DisplayTexts();
     }
 
 
@@ -101,7 +117,6 @@ public class StatsUI : MonoBehaviour {
             IncreaseStat();
             IncreaseCosts();
         }
-
     }
 
 
@@ -123,6 +138,7 @@ public class StatsUI : MonoBehaviour {
                 currentIndex--;
             }
             DisplayCursor();
+            DisplayTexts();
         }
 
         if (ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") < -maxThreshold && !axisYActive) {
@@ -131,6 +147,7 @@ public class StatsUI : MonoBehaviour {
                 currentIndex++;
             }
             DisplayCursor();
+            DisplayTexts();
         }
 
         if (ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") <= minThreshold && ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical") >= -minThreshold) {
@@ -143,11 +160,13 @@ public class StatsUI : MonoBehaviour {
         if (dpadUp) {
             if (currentIndex > 0) currentIndex--;
             DisplayCursor();
+            DisplayTexts();
         }
 
         if (dpadDown) {
             if (currentIndex < maxIndex) currentIndex++;
             DisplayCursor();
+            DisplayTexts();
         }
     }
 
@@ -158,29 +177,72 @@ public class StatsUI : MonoBehaviour {
         audioManagerScript.Play("UINavigateMenu");
 
         // Nav text colors
-        for (int i = 0; i < ValueTexts.Length; i++) {
+        for (int i = 0; i < StatMenuItems.Length; i++) {
             if (currentIndex == i) {
-                StatsTexts[i].color = ColorManager.KeyBlue10;
-                ValueTexts[i].color = ColorManager.KeyBlue10;
+                // StatsTexts[i].color = ColorManager.KeyBlue10;
+                StatValues[i].color = ColorManager.KeyGold50;
+                StatIcons[i].color = ColorManager.KeyGold50;
             } else {
-                StatsTexts[i].color = ColorManager.KeyWhite50;
-                ValueTexts[i].color = ColorManager.KeyWhite50;
+                // StatsTexts[i].color = ColorManager.KeyWhite50;
+                StatValues[i].color = ColorManager.KeyWhite40;
+                StatIcons[i].color = ColorManager.KeyWhite40;
             }
         }
     }
 
 
     private void DisplayStats() {
-        healthStat.text = playerSheetScript.maxHealth.ToString("F2");
+        // Display the current stats values
+        // healthStat.text = playerSheetScript.maxHealth.ToString("F2");
+        StatValues[0].text = playerSheetScript.maxHealth.ToString("F1");
 
         float damage = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"];
-        damageStat.text = damage.ToString("F2");
+        // damageStat.text = damage.ToString("F2");
+        StatValues[1].text = damage.ToString("F2");
 
-        speedStat.text = playerSheetScript.moveSpeed.ToString("F2");
+        // speedStat.text = playerSheetScript.moveSpeed.ToString("F2");
+        StatValues[2].text = playerSheetScript.moveSpeed.ToString("F2");
 
         float cooldown = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"];
         cooldown *= 1000;
-        cooldownStat.text = cooldown.ToString("F0");
+        // cooldownStat.text = cooldown.ToString("F0");
+        StatValues[3].text = cooldown.ToString("F1");
+
+
+        // Adjust the sliders values
+        float currentHealthValue = 1 / (GameSettings.MaxHealthStat / playerSheetScript.maxHealth);
+        StatsSliders[0].value = currentHealthValue;
+
+        float currentDamageValue = 1 / (GameSettings.MaxDamageStat / (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"]);
+        StatsSliders[1].value = currentDamageValue;
+
+        float currentSpeedValue = 1 / (GameSettings.MaxSpeedStat / playerSheetScript.moveSpeed);
+        StatsSliders[2].value = currentSpeedValue;
+
+        float currentCooldownValue = 1 / (((float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] * 1000) / GameSettings.MaxCooldownStat);
+        StatsSliders[3].value = currentCooldownValue;
+    }
+
+
+    private void DisplayTexts() {
+        switch (currentIndex) {
+            case 0:
+                StatsTitle.text = TextsUI.StatsTitleHealth[GameSettings.language];
+                StatsText.text = TextsUI.StatsTextHealth[GameSettings.language];
+                break;
+            case 1:
+                StatsTitle.text = TextsUI.StatsTitleDamage[GameSettings.language];
+                StatsText.text = TextsUI.StatsTextDamage[GameSettings.language];
+                break;
+            case 2:
+                StatsTitle.text = TextsUI.StatsTitleSpeed[GameSettings.language];
+                StatsText.text = TextsUI.StatsTextSpeed[GameSettings.language];
+                break;
+            case 3:
+                StatsTitle.text = TextsUI.StatsTitleCooldown[GameSettings.language];
+                StatsText.text = TextsUI.StatsTextCooldown[GameSettings.language];
+                break;
+        }
     }
 
 
@@ -204,30 +266,56 @@ public class StatsUI : MonoBehaviour {
 
     private void IncreaseStat() {
         if (interactBtn && playerSheetScript.currentGold >= statCost * costIncreaseMultiplier) {
-            playerSheetScript.currentGold -= statCost * costIncreaseMultiplier;
 
-            if (!playIncreaseSound) {
-                playIncreaseSound = true;
-                audioManagerScript.Play("UIIncreaseStat");
-            }
-
-            s.source.pitch += 0.005f;
+            canIncrease = true;
 
             switch (currentIndex) {
                 case 0:
-                    float relativeHealth = playerSheetScript.currentHealth / playerSheetScript.maxHealth;
-                    playerSheetScript.currentHealth += relativeHealth * (increaseHealthBy * costIncreaseMultiplier);
-                    playerSheetScript.maxHealth += increaseHealthBy * costIncreaseMultiplier;
+                    if (playerSheetScript.maxHealth >= GameSettings.MaxHealthStat)
+                        canIncrease = false;
                     break;
                 case 1:
-                    playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] + (increaseDamageBy * costIncreaseMultiplier);
+                    if ((float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] >= GameSettings.MaxDamageStat)
+                        canIncrease = false;
                     break;
                 case 2:
-                    playerSheetScript.moveSpeed += increaseSpeedBy * costIncreaseMultiplier;
+                    if (playerSheetScript.moveSpeed >= GameSettings.MaxSpeedStat)
+                        canIncrease = false;
                     break;
                 case 3:
-                    playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] - (decreaseCooldownBy * costIncreaseMultiplier);
+                    if (((float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] * 1000) <= GameSettings.MaxCooldownStat)
+                        canIncrease = false;
                     break;
+            }
+
+            if (canIncrease) {
+                playerSheetScript.currentGold -= statCost * costIncreaseMultiplier;
+
+                if (!playIncreaseSound) {
+                    playIncreaseSound = true;
+                    audioManagerScript.Play("UIIncreaseStat");
+                }
+
+                s.source.pitch += 0.005f;
+
+                switch (currentIndex) {
+                    case 0:
+                        float relativeHealth = playerSheetScript.currentHealth / playerSheetScript.maxHealth;
+                        playerSheetScript.currentHealth += relativeHealth * (increaseHealthBy * costIncreaseMultiplier);
+                        playerSheetScript.maxHealth += increaseHealthBy * costIncreaseMultiplier;
+                        break;
+                    case 1:
+                        playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] + (increaseDamageBy * costIncreaseMultiplier);
+                        break;
+                    case 2:
+                        playerSheetScript.moveSpeed += increaseSpeedBy * costIncreaseMultiplier;
+                        break;
+                    case 3:
+                        playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] - (decreaseCooldownBy * costIncreaseMultiplier);
+                        break;
+                }
+            } else {
+                audioManagerScript.Stop("UIIncreaseStat");
             }
 
             DisplayStats();

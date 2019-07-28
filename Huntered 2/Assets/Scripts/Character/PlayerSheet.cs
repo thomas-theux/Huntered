@@ -75,8 +75,8 @@ public class PlayerSheet : MonoBehaviour {
         // MAGE
         weaponMage.Add("ID", 3);
         weaponMage.Add("Name", "Staff");
-        // weaponMage.Add("Damage", 16.0f);
-        weaponMage.Add("Damage", 16000.0f);
+        weaponMage.Add("Damage", 16.0f);
+        // weaponMage.Add("Damage", 16000.0f);
         weaponMage.Add("Cooldown", 0.5f);
         weaponMage.Add("Damage Delay", 0.2f);
         weaponMage.Add("Lifetime", 1.0f);

@@ -19,7 +19,7 @@ public class CharUIManager : MonoBehaviour {
     private float cursorStartX;
 
     // Game language
-    public TMP_Text[] MenuNavTexts;
+    // public TMP_Text[] MenuNavTexts;
 
 
     private void Awake() {
@@ -27,10 +27,10 @@ public class CharUIManager : MonoBehaviour {
         cursorStartX = cursorImage.transform.localPosition.x;
 
         // Set language
-        MenuNavTexts[0].text = TextsUI.CharMenuSkills[GameSettings.language];
-        MenuNavTexts[1].text = TextsUI.CharMenuHero[GameSettings.language];
-        MenuNavTexts[2].text = TextsUI.CharMenuGhosts[GameSettings.language];
-        MenuNavTexts[3].text = TextsUI.CharMenuQuests[GameSettings.language];
+        NavTexts[0].text = TextsUI.CharMenuHero[GameSettings.language];
+        NavTexts[1].text = TextsUI.CharMenuSkills[GameSettings.language];
+        NavTexts[2].text = TextsUI.CharMenuGear[GameSettings.language];
+        NavTexts[3].text = TextsUI.CharMenuGhosts[GameSettings.language];
     }
 
 
