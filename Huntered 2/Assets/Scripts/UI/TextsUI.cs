@@ -144,4 +144,159 @@ public class TextsUI {
         "Fiaß"
     };
 
+
+    //////////////////////////////
+    // GHOST EFFECTS TEXTS
+    //////////////////////////////
+
+    public static string[] EffectStrengthA = {
+        "Deal more damage",
+        "Deal more damage",
+        "Deal more damage"
+    };
+
+    public static string[] EffectStrengthB = {
+        "Receive less damage",
+        "Receive less damage",
+        "Receive less damage"
+    };
+
+    public static string[] EffectStrengthC = {
+        "Increase being-hit-heal chance",
+        "Increase being-hit-heal chance",
+        "Increase being-hit-heal chance"
+    };
+
+    public static string[] EffectStrengthD = {
+        "Gain 1% health every 1000 steps",
+        "Gain 1% health every 1000 steps",
+        "Gain 1% health every 1000 steps"
+    };
+
+    public static string[] EffectStrengthE = {
+        "Increase hit-heal chance",
+        "Increase hit-heal chance",
+        "Increase hit-heal chance"
+    };
+
+    //////////////////////////////
+
+    public static string[] EffectSpeedA = {
+        "Increase attack speed",
+        "Increase attack speed",
+        "Increase attack speed"
+    };
+
+    public static string[] EffectSpeedB = {
+        "Shorten respawn delay",
+        "Shorten respawn delay",
+        "Shorten respawn delay"
+    };
+
+    public static string[] EffectSpeedC = {
+        "Increase move speed",
+        "Increase move speed",
+        "Increase move speed"
+    };
+
+    public static string[] EffectSpeedD = {
+        "Shorten skill cooldown",
+        "Shorten skill cooldown",
+        "Shorten skill cooldown"
+    };
+
+    //////////////////////////////
+
+    public static string[] EffectLuckA = {
+        "Increase dodge heal",
+        "Increase dodge heal",
+        "Increase dodge heal"
+    };
+
+    public static string[] EffectLuckB = {
+        "Increase crit hit chance",
+        "Increase crit hit chance",
+        "Increase crit hit chance"
+    };
+
+    public static string[] EffectLuckC = {
+        "Increase dodge-heal chance",
+        "Increase dodge-heal chance",
+        "Increase dodge-heal chance"
+    };
+
+    public static string[] EffectLuckD = {
+        "Increase crit-hit-heal chance",
+        "Increase crit-hit-heal chance",
+        "Increase crit-hit-heal chance"
+    };
+
+    public static string[] EffectLuckE = {
+        "Increase dodge chance",
+        "Increase dodge chance",
+        "Increase dodge chance"
+    };
+
+    public static string[] EffectLuckF = {
+        "Increase crit hit damage",
+        "Increase crit hit damage",
+        "Increase crit hit damage"
+    };
+
+    public static string[] EffectLuckG = {
+        "Increase crit hit heal",
+        "Increase crit hit heal",
+        "Increase crit hit heal"
+    };
+
+    //////////////////////////////
+
+    public static string[] EffectWisdomA = {
+        "Increase gold pickup radius",
+        "Increase gold pickup radius",
+        "Increase gold pickup radius"
+    };
+
+    public static string[] EffectWisdomB = {
+        "Increase XP gain",
+        "Increase XP gain",
+        "Increase XP gain"
+    };
+
+    public static string[] EffectWisdomC = {
+        "Gain gold when leveling up",
+        "Gain gold when leveling up",
+        "Gain gold when leveling up"
+    };
+
+    public static string[] EffectWisdomD = {
+        "Increase collect-double-gold chance",
+        "Increase collect-double-gold chance",
+        "Increase collect-double-gold chance"
+    };
+
+    public static string[] EffectWisdomE = {
+        "Gain 1% gold every 1000 steps",
+        "Gain 1% gold every 1000 steps",
+        "Gain 1% gold every 1000 steps"
+    };
+
+    public static string[] EffectWisdomF = {
+        "Gain 1% XP every 1000 steps",
+        "Gain 1% XP every 1000 steps",
+        "Gain 1% XP every 1000 steps"
+    };
+
+    public static string[] EffectWisdomG = {
+        "Increase gold drop",
+        "Increase gold drop",
+        "Increase gold drop"
+    };
+
+    public static string[] EffectWisdomH = {
+        "Increase Ghost drop chance",
+        "Increase Ghost drop chance",
+        "Increase Ghost drop chance"
+    };
+
 }

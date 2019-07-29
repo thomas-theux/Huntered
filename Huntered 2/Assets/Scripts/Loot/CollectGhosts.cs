@@ -15,6 +15,10 @@ public class CollectGhosts : MonoBehaviour {
 
     public int enemyLevel;
     private int levelModifier;
+    private int rndType;
+    private int rndLevel;
+    private int rndEffect;
+    private float rndEffectValue;
 
     private int[] modifierTiers = {
         0,
@@ -31,20 +35,71 @@ public class CollectGhosts : MonoBehaviour {
         3
     };
 
+    // BASIC VALUES
+    private float _thousand = 1000;
+    private float _hundred = 100;
+    private float _ten = 10;
+    private float _nine = 9;
+    private float _eight = 8;
+    private float _five = 5;
+    private float _four = 4;
+    private float _threePointFive = 3.5f;
+    private float _three = 3;
+    private float _twoPointFive = 2.5f;
+    private float _two = 2;
+    private float _one = 1;
+    private float _zeroPointFive = 0.5f;
+
 
     public void InitializeGhost() {
         // TYPES
+
         // 0 = Strength
         // 1 = Speed
         // 2 = Luck
         // 3 = Wisdom
 
+        ///////////////////////////////////////////////////////////
+
+        // IDENTIFIER
+
+        // 00 = Deal more damage
+        // 01 = Receive less damage
+        // 02 = Increase being-hit-heal chance
+        // 03 = Gain 1% health every 1000 steps
+        // 04 = Increase hit-heal chance
+
+        // 05 = Increase attack speed
+        // 06 = Shorten respawn delay
+        // 07 = Increase move speed
+        // 08 = Shorten skill cooldown
+
+        // 09 = Increase dodge heal
+        // 10 = Increase crit hit chance
+        // 11 = Increase dodge-heal chance
+        // 12 = Increase crit-hit-heal chance
+        // 13 = Increase dodge chance
+        // 14 = Increase crit hit damage
+        // 15 = Increase crit hit heal
+
+        // 16 = Increase gold pickup radius
+        // 17 = Increase XP gain
+        // 18 = Gain gold when leveling up
+        // 19 = Increase collect-double-gold chance
+        // 20 = Gain 1% gold every 1000 steps
+        // 21 = Gain 1% XP every 1000 steps
+        // 22 = Increase gold drop
+        // 23 = Increase Ghost drop chance
+
+        ///////////////////////////////////////////////////////////
+
         // Randomize attributes
         string rndName = RandomizeName();
         int ghostUID = GameManager.GhostUID;
-        int rndType = Random.Range(0, 4);
-        int rndLevel = RandomizeLevel();
-        int rndEffect = Random.Range(0, 2);
+        rndType = Random.Range(0, 4);
+        rndLevel = RandomizeLevel();
+        rndEffect = RandomizeIdentifier();
+        string effectText = BuildDescription();
         int rndChance = Random.Range(1, 101);
         int rndValue = Random.Range(
             GameSettings.minGhostValue * rndLevel,
@@ -57,6 +112,8 @@ public class CollectGhosts : MonoBehaviour {
         GhostData.Add("Type", rndType);                     // What stat type does the Ghost have? (see above)
         GhostData.Add("Level", rndLevel);                   // What level does the Ghost have? Ranging from 1-10
         GhostData.Add("Effect", rndEffect);                 // What effect does this Ghost apply? Move Speed, Damage, ..
+        GhostData.Add("Description", effectText);           // Which effect does this Ghost carry?
+        GhostData.Add("EffectValue", rndEffectValue);       // What's the value the effect gives (e.g. +10% damage)
         GhostData.Add("Chance", rndChance);                 // The chance to link a Ghost to your equipment
         GhostData.Add("Value", rndValue);                   // How much gold do you get for this Ghost?
         GhostData.Add("Player Access", 0);                  // Which player can pick it up?
@@ -174,6 +231,143 @@ public class CollectGhosts : MonoBehaviour {
         }
 
         return ghostLevel;
+    }
+
+
+    private int RandomizeIdentifier() {
+        int ghostIdentifier = 0;
+
+        switch (rndType) {
+            case 0:
+                ghostIdentifier = Random.Range(0, 5);
+                break;
+            case 1:
+                ghostIdentifier = Random.Range(5, 9);
+                break;
+            case 2:
+                ghostIdentifier = Random.Range(9, 16);
+                break;
+            case 3:
+                ghostIdentifier = Random.Range(16, 24);
+                break;
+        }
+
+        return ghostIdentifier;
+    }
+
+
+    private string BuildDescription() {
+        string effectDescription = "";
+
+        switch (rndEffect) {
+            case 0:
+                rndEffectValue = _five + _three * (rndLevel - 1);
+                effectDescription = TextsUI.EffectStrengthA + " " + rndEffectValue;
+                break;
+            case 1:
+                rndEffectValue = -_two - _threePointFive * (rndLevel - 1);
+                effectDescription = TextsUI.EffectStrengthB + " " + rndEffectValue;
+                break;
+            case 2:
+                rndEffectValue = _two + _two * (rndLevel - 1);
+                effectDescription = TextsUI.EffectStrengthC + " " + rndEffectValue;
+                break;
+            case 3:
+                rndEffectValue = _thousand - _hundred * (rndLevel - 1);
+                effectDescription = TextsUI.EffectStrengthD + " " + rndEffectValue;
+                break;
+            case 4:
+                rndEffectValue = _two + _two * (rndLevel - 1);
+                effectDescription = TextsUI.EffectStrengthE + " " + rndEffectValue;
+                break;
+
+
+
+            case 5:
+                rndEffectValue = _five + _four * (rndLevel - 1);
+                effectDescription = TextsUI.EffectSpeedA + " " + rndEffectValue;
+                break;
+            case 6:
+                rndEffectValue = -_five - _twoPointFive * (rndLevel - 1);
+                effectDescription = TextsUI.EffectSpeedB + " " + rndEffectValue;
+                break;
+            case 7:
+                rndEffectValue = _five + _four * (rndLevel - 1);
+                effectDescription = TextsUI.EffectSpeedC + " " + rndEffectValue;
+                break;
+            case 8:
+                rndEffectValue = -_five - _two * (rndLevel - 1);
+                effectDescription = TextsUI.EffectSpeedD + " " + rndEffectValue;
+                break;
+
+
+
+            case 9:
+                rndEffectValue = _one + _two * (rndLevel - 1);
+                effectDescription = TextsUI.EffectLuckA + " " + rndEffectValue;
+                break;
+            case 10:
+                rndEffectValue = _zeroPointFive + _one * (rndLevel - 1);
+                effectDescription = TextsUI.EffectLuckB + " " + rndEffectValue;
+                break;
+            case 11:
+                rndEffectValue = _two + _nine * (rndLevel - 1);
+                effectDescription = TextsUI.EffectLuckD + " " + rndEffectValue;
+                break;
+            case 12:
+                rndEffectValue = _two + _eight * (rndLevel - 1);
+                effectDescription = TextsUI.EffectLuckE + " " + rndEffectValue;
+                break;
+            case 13:
+                rndEffectValue = _two + _two * (rndLevel - 1);
+                effectDescription = TextsUI.EffectLuckC + " " + rndEffectValue;
+                break;
+            case 14:
+                rndEffectValue = _two + _three * (rndLevel - 1);
+                effectDescription = TextsUI.EffectLuckF + " " + rndEffectValue;
+                break;
+            case 15:
+                rndEffectValue = _one + _two * (rndLevel - 1);
+                effectDescription = TextsUI.EffectLuckG + " " + rndEffectValue;
+                break;
+
+
+
+            case 16:
+                rndEffectValue = _zeroPointFive + _zeroPointFive * (rndLevel - 1);
+                effectDescription = TextsUI.EffectWisdomA + " " + rndEffectValue;
+                break;
+            case 17:
+                rndEffectValue = _five + _ten * (rndLevel - 1);
+                effectDescription = TextsUI.EffectWisdomB + " " + rndEffectValue;
+                break;
+            case 18:
+                rndEffectValue = _one + _two * (rndLevel - 1);
+                effectDescription = TextsUI.EffectWisdomC + " " + rndEffectValue;
+                break;
+            case 19:
+                rndEffectValue = _two + _two * (rndLevel - 1);
+                effectDescription = TextsUI.EffectWisdomD + " " + rndEffectValue;
+                break;
+            case 20:
+                rndEffectValue = _thousand - _hundred * (rndLevel - 1);
+                effectDescription = TextsUI.EffectWisdomE + " " + rndEffectValue;
+                break;
+            case 21:
+                rndEffectValue = _thousand - _hundred * (rndLevel - 1);
+                effectDescription = TextsUI.EffectWisdomF + " " + rndEffectValue;
+                break;
+            case 22:
+                rndEffectValue = _five + _ten * (rndLevel - 1);
+                effectDescription = TextsUI.EffectWisdomG + " " + rndEffectValue;
+                break;
+            case 23:
+                rndEffectValue = _five + _five * (rndLevel - 1);
+                effectDescription = TextsUI.EffectWisdomH + " " + rndEffectValue;
+                break;
+        }
+
+        return effectDescription;
     }
 
 }

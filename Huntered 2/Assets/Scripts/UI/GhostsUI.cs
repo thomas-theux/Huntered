@@ -242,6 +242,8 @@ public class GhostsUI : MonoBehaviour {
             GhostNavCursor.transform.localPosition.x,
             initialCursorPos - (cursorIndex * listItemHeight)
         );
+
+        print((string)PlayerInventoryScript.AllGhosts[cursorIndex]["Description"]);
     }
 
 
@@ -249,10 +251,10 @@ public class GhostsUI : MonoBehaviour {
     private void DisplayLinkChance() {
         displayedGhosts[cursorIndex-1].transform.GetChild(2).gameObject.SetActive(true);
         displayedGhosts[cursorIndex-1].transform.GetChild(5).gameObject.SetActive(false);
-        
+
         displayedGhosts[cursorIndex+1].transform.GetChild(2).gameObject.SetActive(true);
         displayedGhosts[cursorIndex+1].transform.GetChild(5).gameObject.SetActive(false);
-        
+
         displayedGhosts[cursorIndex].transform.GetChild(2).gameObject.SetActive(false);
         displayedGhosts[cursorIndex].transform.GetChild(5).gameObject.SetActive(true);
     }
