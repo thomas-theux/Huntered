@@ -45,21 +45,20 @@ public class GameSettings {
     public static float enemyDamageMultiplier = 0.3f;
 
     // Min values for hero's stats
-    // public static float MinHealthStat = 50.0f;
-    // public static float MinDamageStat = 16.0f;
-    // public static float MinSpeedStat = 6.0f;
-    public static float MinCooldownStat = 1000.0f;
+    public static float MinHealthStat = 50.0f;
+    public static float MinDamageStat = 16.0f;
+    public static float MinSpeedStat = 6.0f;
+    public static float MinCooldownStat = 600.0f;
 
     // Max values for hero's stats
-    public static float MaxHealthStat = 1000.0f;
-    public static float MaxDamageStat = 500.0f;
+    public static float MaxHealthStat = 5000.0f;
+    public static float MaxDamageStat = 1000.0f;
     public static float MaxSpeedStat = 22.0f;
-    public static float MaxCooldownStat = 200.0f;
+    public static float MaxCooldownStat = 150.0f;
 
     // ALTERNATE VALUES FOR DEV TESTING
     // public static float MaxHealthStat = 60.0f;
     // public static float MaxDamageStat = 18.0f;
     // public static float MaxSpeedStat = 8.0f;
     // public static float MaxCooldownStat = 450.0f;
-
 }

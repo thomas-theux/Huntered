@@ -20,10 +20,10 @@ public class ColorManager {
 
 
     public static Color32[] GhostColors = {
-        new Color32(213, 0, 43, 255),
-        new Color32(237, 165, 11, 255),
-        new Color32(2, 214, 114, 255),
-        new Color32(12, 17, 237, 255)
+        new Color32(240, 48, 87, 255),
+        new Color32(237, 212, 71, 255),
+        new Color32(43, 214, 133, 255),
+        new Color32(51, 56, 255, 255)
     };
 
 }

@@ -51,7 +51,8 @@ public class StatsUI : MonoBehaviour {
     private int statCost = 10;
     private int costIncreaseMultiplierDef = 1;
     private int costIncreaseMultiplier = 1;
-    private float costIncreaseDelay = 1.0f;
+    private int costIncreaseValue = 2;
+    private float costIncreaseDelay = 0.75f;
     private float t = 0;
 
     private bool playIncreaseSound = false;
@@ -210,16 +211,22 @@ public class StatsUI : MonoBehaviour {
 
 
         // Adjust the sliders values
-        float currentHealthValue = 1 / (GameSettings.MaxHealthStat / playerSheetScript.maxHealth);
+        // Basic formula: (current - min) / (max - min)
+        float currentHealthValue = (playerSheetScript.maxHealth - GameSettings.MinHealthStat) / (GameSettings.MaxHealthStat - GameSettings.MinHealthStat);
         StatsSliders[0].value = currentHealthValue;
 
-        float currentDamageValue = 1 / (GameSettings.MaxDamageStat / (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"]);
+        // Basic formula: (current - min) / (max - min)
+        float currentDamage = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"];
+        float currentDamageValue = (currentDamage - GameSettings.MinDamageStat) / (GameSettings.MaxDamageStat - GameSettings.MinDamageStat);
         StatsSliders[1].value = currentDamageValue;
 
-        float currentSpeedValue = 1 / (GameSettings.MaxSpeedStat / playerSheetScript.moveSpeed);
+        // Basic formula: (current - min) / (max - min)
+        float currentSpeedValue = (playerSheetScript.moveSpeed - GameSettings.MinSpeedStat) / (GameSettings.MaxSpeedStat - GameSettings.MinSpeedStat);
         StatsSliders[2].value = currentSpeedValue;
 
-        float currentCooldownValue = 1 / (((float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] * 1000) / GameSettings.MaxCooldownStat);
+        // Basic formula: 1 - ((current - max) / (min - max))
+        float currentCooldown = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] * 1000;
+        float currentCooldownValue = 1 - ((currentCooldown - GameSettings.MaxCooldownStat) / (GameSettings.MinCooldownStat - GameSettings.MaxCooldownStat));
         StatsSliders[3].value = currentCooldownValue;
     }
 
@@ -252,7 +259,7 @@ public class StatsUI : MonoBehaviour {
             t -= Time.deltaTime;
 
             if (t <= 0) {
-                costIncreaseMultiplier++;
+                costIncreaseMultiplier += costIncreaseValue;
                 t = costIncreaseDelay;
             }
         }

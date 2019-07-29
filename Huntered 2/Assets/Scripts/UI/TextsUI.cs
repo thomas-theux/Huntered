@@ -92,27 +92,27 @@ public class TextsUI {
     //////////////////////////////
 
     public static string[] GhostsTypeStrength = {
-        "Strength",
-        "Stärke",
-        "Gwalt"
+        "STR",
+        "STR",
+        "STR"
     };
 
     public static string[] GhostsTypeSpeed = {
-        "Speed",
-        "Geschwindigkeit",
-        "Gschwindigkeit"
+        "SPD",
+        "SPD",
+        "SPD"
     };
 
     public static string[] GhostsTypeLuck = {
-        "Luck",
-        "Glück",
-        "Dusel"
+        "LUC",
+        "LUC",
+        "LUC"
     };
 
     public static string[] GhostsTypeWisdom = {
-        "Wisdom",
-        "Weisheit",
-        "Gscheitheit"
+        "WIS",
+        "WIS",
+        "WIS"
     };
 
 }

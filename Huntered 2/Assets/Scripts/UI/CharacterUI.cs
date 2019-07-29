@@ -67,7 +67,9 @@ public class CharacterUI : MonoBehaviour {
 
 
     private void UpdateGold() {
-        CurrentGoldText.text = playerSheetScript.currentGold + "";
+        // CurrentGoldText.text = playerSheetScript.currentGold + "";
+        string formattedGold = playerSheetScript.currentGold.ToString("N0");
+        CurrentGoldText.text = formattedGold;
     }
 
     private void UpdatePotionCooldown() {

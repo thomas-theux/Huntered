@@ -21,7 +21,7 @@ public class GhostsUI : MonoBehaviour {
 
     private float initialCursorPos;
 
-    private int listItemHeight = 100;
+    private int listItemHeight = 110;
     private int childrenCount = 0;
 
     private int currentIndex = 0;
@@ -29,6 +29,8 @@ public class GhostsUI : MonoBehaviour {
     private int cursorPos = 0;
     private int minCursorIndex = 1;
     private int maxCursorIndex = 4;
+
+    private float basicYPos = 10.0f;
 
     private bool scrollIsDelayed = false;
     private float tDef = 0.15f;
@@ -189,6 +191,7 @@ public class GhostsUI : MonoBehaviour {
             if (cursorIndex > 0) {
                 cursorIndex--;
                 MoveCursor();
+                // DisplayLinkChance();
                 audioManagerScript.Play("UINavigateMenu");
 
                 // Delay scrolling to prevent that scrolling is too fast
@@ -211,6 +214,7 @@ public class GhostsUI : MonoBehaviour {
             if (cursorIndex < childrenCount - 1) {
                 cursorIndex++;
                 MoveCursor();
+                // DisplayLinkChance();
                 audioManagerScript.Play("UINavigateMenu");
 
                 // Delay scrolling to prevent that scrolling is too fast
@@ -241,6 +245,19 @@ public class GhostsUI : MonoBehaviour {
     }
 
 
+    // Display link chance when hovering
+    private void DisplayLinkChance() {
+        displayedGhosts[cursorIndex-1].transform.GetChild(2).gameObject.SetActive(true);
+        displayedGhosts[cursorIndex-1].transform.GetChild(5).gameObject.SetActive(false);
+        
+        displayedGhosts[cursorIndex+1].transform.GetChild(2).gameObject.SetActive(true);
+        displayedGhosts[cursorIndex+1].transform.GetChild(5).gameObject.SetActive(false);
+        
+        displayedGhosts[cursorIndex].transform.GetChild(2).gameObject.SetActive(false);
+        displayedGhosts[cursorIndex].transform.GetChild(5).gameObject.SetActive(true);
+    }
+
+
     private void ScrollContent(int scrollDirection) {
         ContentContainer.transform.localPosition = new Vector2(
             ContentContainer.transform.localPosition.x,
@@ -267,7 +284,7 @@ public class GhostsUI : MonoBehaviour {
             newGhost.transform.SetParent(GhostsContainer.transform);
             newGhost.transform.localPosition = new Vector2(
                 0,
-                0 - (listItemHeight * j)
+                basicYPos - (listItemHeight * j)
             );
 
             // Check for types and apply language
@@ -290,11 +307,16 @@ public class GhostsUI : MonoBehaviour {
             }
 
             newGhost.transform.GetChild(1).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
-            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = typeText;
-            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().color = ColorManager.GhostColors[ghostType];
+
+            newGhost.transform.GetChild(2).transform.GetChild(0).GetComponent<TMP_Text>().text = typeText;
+            newGhost.transform.GetChild(2).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
+
             newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.AllGhosts[j]["Name"];
-            newGhost.transform.GetChild(4).GetComponent<TMP_Text>().text = "LVL " + (int)PlayerInventoryScript.AllGhosts[j]["Level"];
+
+            newGhost.transform.GetChild(4).transform.GetChild(0).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Level"] + "";
+
             newGhost.transform.GetChild(5).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Chance"] + "%";
+            newGhost.transform.GetChild(5).gameObject.SetActive(false);
         }
     }
 
@@ -306,7 +328,7 @@ public class GhostsUI : MonoBehaviour {
             newGhost.transform.SetParent(GhostsContainer.transform);
             newGhost.transform.localPosition = new Vector2(
                 0,
-                0 - (listItemHeight * k)
+                basicYPos - (listItemHeight * k)
             );
 
             // Check for types and apply language
@@ -329,11 +351,16 @@ public class GhostsUI : MonoBehaviour {
             }
 
             newGhost.transform.GetChild(1).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
-            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = typeText;
-            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().color = ColorManager.GhostColors[ghostType];
+
+            newGhost.transform.GetChild(2).transform.GetChild(0).GetComponent<TMP_Text>().text = typeText;
+            newGhost.transform.GetChild(2).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
+
             newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Name"];
-            newGhost.transform.GetChild(4).GetComponent<TMP_Text>().text = "LVL " + (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Level"];
+
+            newGhost.transform.GetChild(4).transform.GetChild(0).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Level"] + "";
+
             newGhost.transform.GetChild(5).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Chance"] + "%";
+            newGhost.transform.GetChild(5).gameObject.SetActive(false);
         }
     }
 
