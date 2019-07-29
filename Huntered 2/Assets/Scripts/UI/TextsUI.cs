@@ -115,4 +115,33 @@ public class TextsUI {
         "WIS"
     };
 
+
+    //////////////////////////////
+    // CHAR GEAR TEXTS
+    //////////////////////////////
+
+    public static string[] GearTitleHead = {
+        "Head",
+        "Kopf",
+        "Deckel"
+    };
+
+    public static string[] GearTitleTorso = {
+        "Torso",
+        "Körper",
+        "Ranza"
+    };
+
+    public static string[] GearTitleWeapon = {
+        "Weapon",
+        "Waffe",
+        "Knüppel"
+    };
+
+    public static string[] GearTitleLegs = {
+        "Legs",
+        "Beine",
+        "Fiaß"
+    };
+
 }

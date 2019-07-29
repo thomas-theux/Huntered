@@ -3127,6 +3127,11 @@ PrefabInstance:
       propertyPath: PlayerSheetScript
       value: 
       objectReference: {fileID: 6737107886738630158}
+    - target: {fileID: 8152563377081794195, guid: 8d00a58a8f39c4acdbf69423a2fe3333,
+        type: 3}
+      propertyPath: PlayerSheetScript
+      value: 
+      objectReference: {fileID: 6737107886738630158}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d00a58a8f39c4acdbf69423a2fe3333, type: 3}
 --- !u!1 &2956583496443776784 stripped
