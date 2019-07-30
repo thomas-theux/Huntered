@@ -4726,7 +4726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5702502601346783072
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4828,6 +4828,7 @@ MonoBehaviour:
   - {fileID: 8054832494002085497}
   - {fileID: 4709225252453410986}
   ImprovementTextsParent: {fileID: 1241126443842690824}
+  GhostImage: {fileID: 21300000, guid: 2dcc393e21cef4430a8ef0ca65c60d0a, type: 3}
 --- !u!1 &3300921971437094721
 GameObject:
   m_ObjectHideFlags: 0

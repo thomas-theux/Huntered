@@ -33,11 +33,19 @@ public class PlayerSheet : MonoBehaviour {
     public float PotionCooldownTimeDef = 10.0f;
     public float PotionCooldownTime;
 
+    public int UnlockedSlots = 5;
+
     public List<Hashtable> weaponDataDict = new List<Hashtable>();
     private Hashtable weaponBasic = new Hashtable();
     private Hashtable weaponTank = new Hashtable();
     private Hashtable weaponRanged = new Hashtable();
     private Hashtable weaponMage = new Hashtable();
+
+    // All equipment arrays for Ghosts
+    public List<Hashtable> SlottedGhostsHead = new List<Hashtable>();
+    public List<Hashtable> SlottedGhostsTorso = new List<Hashtable>();
+    public List<Hashtable> SlottedGhostsWeapon = new List<Hashtable>();
+    public List<Hashtable> SlottedGhostsLegs = new List<Hashtable>();
 
 
     private void Awake() {
@@ -87,6 +95,14 @@ public class PlayerSheet : MonoBehaviour {
         weaponDataDict.Add(weaponTank);
         weaponDataDict.Add(weaponRanged);
         weaponDataDict.Add(weaponMage);
+
+        // Initialize equipment arrays with the first slot available for players to link a Ghost
+        for (int i = 0; i < UnlockedSlots; i++) {
+            SlottedGhostsHead.Add(new Hashtable());
+            SlottedGhostsTorso.Add(new Hashtable());
+            SlottedGhostsWeapon.Add(new Hashtable());
+            SlottedGhostsLegs.Add(new Hashtable());
+        }
     }
 
 }

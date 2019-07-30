@@ -18,6 +18,8 @@ public class GearUI : MonoBehaviour {
     private List<Image> GhostSlotsArr = new List<Image>();
     private List<TMP_Text> ImprovementTextsArr = new List<TMP_Text>();
 
+    public Sprite GhostImage;
+
     private int cursorIndex = 0;
     private int initialCursorPos = -90;
     private int listItemHeight = 110;
@@ -30,6 +32,11 @@ public class GearUI : MonoBehaviour {
     private void Awake() {
         DisplayCursor();
         DisplayGearTitle();
+    }
+
+
+    private void OnEnable() {
+        DisplayGhostSlots();
     }
 
 
@@ -91,6 +98,43 @@ public class GearUI : MonoBehaviour {
 
 
     private void DisplayGearTexts() {
+    }
+
+
+    private void DisplayGhostSlots() {
+        for (int i = 0; i < PlayerSheetScript.SlottedGhostsHead.Count; i++) {
+            if (PlayerSheetScript.SlottedGhostsHead[i].Contains("Name")) {
+                int ghostType = (int)PlayerSheetScript.SlottedGhostsHead[i]["Type"];
+                GhostSlotsParent[0].transform.GetChild(i).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
+                GhostSlotsParent[0].transform.GetChild(i).GetComponent<Image>().sprite = GhostImage;
+            } else {
+                GhostSlotsParent[0].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
+            }
+        }
+
+        for (int i = 0; i < PlayerSheetScript.SlottedGhostsTorso.Count; i++) {
+            if (PlayerSheetScript.SlottedGhostsTorso[i].Contains("Name")) {
+                // Show proper Ghost
+            } else {
+                GhostSlotsParent[1].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
+            }
+        }
+
+        for (int i = 0; i < PlayerSheetScript.SlottedGhostsWeapon.Count; i++) {
+            if (PlayerSheetScript.SlottedGhostsWeapon[i].Contains("Name")) {
+                // Show proper Ghost
+            } else {
+                GhostSlotsParent[2].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
+            }
+        }
+
+        for (int i = 0; i < PlayerSheetScript.SlottedGhostsLegs.Count; i++) {
+            if (PlayerSheetScript.SlottedGhostsLegs[i].Contains("Name")) {
+                // Show proper Ghost
+            } else {
+                GhostSlotsParent[3].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
+            }
+        }
     }
 
 }

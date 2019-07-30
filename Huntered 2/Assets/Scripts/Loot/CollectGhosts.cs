@@ -17,7 +17,7 @@ public class CollectGhosts : MonoBehaviour {
     private int levelModifier;
     private int rndType;
     private int rndLevel;
-    private int rndEffect;
+    private int rndIdentifier;
     private float rndEffectValue;
 
     private int[] modifierTiers = {
@@ -98,8 +98,8 @@ public class CollectGhosts : MonoBehaviour {
         int ghostUID = GameManager.GhostUID;
         rndType = Random.Range(0, 4);
         rndLevel = RandomizeLevel();
-        rndEffect = RandomizeIdentifier();
-        string effectText = BuildDescription();
+        rndIdentifier = RandomizeIdentifier();
+        string identifierDescr = BuildDescription();
         int rndChance = Random.Range(1, 101);
         int rndValue = Random.Range(
             GameSettings.minGhostValue * rndLevel,
@@ -111,9 +111,9 @@ public class CollectGhosts : MonoBehaviour {
         GhostData.Add("UID", ghostUID);                     // The unique ID for the Ghost
         GhostData.Add("Type", rndType);                     // What stat type does the Ghost have? (see above)
         GhostData.Add("Level", rndLevel);                   // What level does the Ghost have? Ranging from 1-10
-        GhostData.Add("Effect", rndEffect);                 // What effect does this Ghost apply? Move Speed, Damage, ..
-        GhostData.Add("Description", effectText);           // Which effect does this Ghost carry?
-        GhostData.Add("EffectValue", rndEffectValue);       // What's the value the effect gives (e.g. +10% damage)
+        GhostData.Add("Effect", rndIdentifier);             // What effect does this Ghost apply? Move Speed, Damage, ..
+        GhostData.Add("Description", identifierDescr);      // Which effect does this Ghost carry?
+        GhostData.Add("Effect Value", rndEffectValue);      // What's the value/number the effect improves (e.g. +10% damage)
         GhostData.Add("Chance", rndChance);                 // The chance to link a Ghost to your equipment
         GhostData.Add("Value", rndValue);                   // How much gold do you get for this Ghost?
         GhostData.Add("Player Access", 0);                  // Which player can pick it up?
@@ -259,111 +259,111 @@ public class CollectGhosts : MonoBehaviour {
     private string BuildDescription() {
         string effectDescription = "";
 
-        switch (rndEffect) {
+        switch (rndIdentifier) {
             case 0:
                 rndEffectValue = _five + _three * (rndLevel - 1);
-                effectDescription = TextsUI.EffectStrengthA + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectStrengthA[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 1:
                 rndEffectValue = -_two - _threePointFive * (rndLevel - 1);
-                effectDescription = TextsUI.EffectStrengthB + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectStrengthB[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 2:
                 rndEffectValue = _two + _two * (rndLevel - 1);
-                effectDescription = TextsUI.EffectStrengthC + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectStrengthC[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 3:
                 rndEffectValue = _thousand - _hundred * (rndLevel - 1);
-                effectDescription = TextsUI.EffectStrengthD + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectStrengthD[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 4:
                 rndEffectValue = _two + _two * (rndLevel - 1);
-                effectDescription = TextsUI.EffectStrengthE + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectStrengthE[GameSettings.language] + " " + rndEffectValue;
                 break;
 
 
 
             case 5:
                 rndEffectValue = _five + _four * (rndLevel - 1);
-                effectDescription = TextsUI.EffectSpeedA + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectSpeedA[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 6:
                 rndEffectValue = -_five - _twoPointFive * (rndLevel - 1);
-                effectDescription = TextsUI.EffectSpeedB + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectSpeedB[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 7:
                 rndEffectValue = _five + _four * (rndLevel - 1);
-                effectDescription = TextsUI.EffectSpeedC + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectSpeedC[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 8:
                 rndEffectValue = -_five - _two * (rndLevel - 1);
-                effectDescription = TextsUI.EffectSpeedD + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectSpeedD[GameSettings.language] + " " + rndEffectValue;
                 break;
 
 
 
             case 9:
                 rndEffectValue = _one + _two * (rndLevel - 1);
-                effectDescription = TextsUI.EffectLuckA + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectLuckA[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 10:
                 rndEffectValue = _zeroPointFive + _one * (rndLevel - 1);
-                effectDescription = TextsUI.EffectLuckB + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectLuckB[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 11:
                 rndEffectValue = _two + _nine * (rndLevel - 1);
-                effectDescription = TextsUI.EffectLuckD + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectLuckD[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 12:
                 rndEffectValue = _two + _eight * (rndLevel - 1);
-                effectDescription = TextsUI.EffectLuckE + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectLuckE[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 13:
                 rndEffectValue = _two + _two * (rndLevel - 1);
-                effectDescription = TextsUI.EffectLuckC + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectLuckC[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 14:
                 rndEffectValue = _two + _three * (rndLevel - 1);
-                effectDescription = TextsUI.EffectLuckF + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectLuckF[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 15:
                 rndEffectValue = _one + _two * (rndLevel - 1);
-                effectDescription = TextsUI.EffectLuckG + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectLuckG[GameSettings.language] + " " + rndEffectValue;
                 break;
 
 
 
             case 16:
                 rndEffectValue = _zeroPointFive + _zeroPointFive * (rndLevel - 1);
-                effectDescription = TextsUI.EffectWisdomA + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectWisdomA[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 17:
                 rndEffectValue = _five + _ten * (rndLevel - 1);
-                effectDescription = TextsUI.EffectWisdomB + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectWisdomB[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 18:
                 rndEffectValue = _one + _two * (rndLevel - 1);
-                effectDescription = TextsUI.EffectWisdomC + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectWisdomC[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 19:
                 rndEffectValue = _two + _two * (rndLevel - 1);
-                effectDescription = TextsUI.EffectWisdomD + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectWisdomD[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 20:
                 rndEffectValue = _thousand - _hundred * (rndLevel - 1);
-                effectDescription = TextsUI.EffectWisdomE + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectWisdomE[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 21:
                 rndEffectValue = _thousand - _hundred * (rndLevel - 1);
-                effectDescription = TextsUI.EffectWisdomF + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectWisdomF[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 22:
                 rndEffectValue = _five + _ten * (rndLevel - 1);
-                effectDescription = TextsUI.EffectWisdomG + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectWisdomG[GameSettings.language] + " " + rndEffectValue;
                 break;
             case 23:
                 rndEffectValue = _five + _five * (rndLevel - 1);
-                effectDescription = TextsUI.EffectWisdomH + " " + rndEffectValue;
+                effectDescription = TextsUI.EffectWisdomH[GameSettings.language] + " " + rndEffectValue;
                 break;
         }
 

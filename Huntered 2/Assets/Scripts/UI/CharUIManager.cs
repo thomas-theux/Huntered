@@ -65,7 +65,7 @@ public class CharUIManager : MonoBehaviour {
             if (currentIndex == i) {
                 NavTexts[i].color = ColorManager.KeyGold50;
             } else {
-                NavTexts[i].color = ColorManager.KeyWhite50t;
+                NavTexts[i].color = ColorManager.KeyWhite50t5;
             }
         }
     }

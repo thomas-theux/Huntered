@@ -242,8 +242,6 @@ public class GhostsUI : MonoBehaviour {
             GhostNavCursor.transform.localPosition.x,
             initialCursorPos - (cursorIndex * listItemHeight)
         );
-
-        print((string)PlayerInventoryScript.AllGhosts[cursorIndex]["Description"]);
     }
 
 
