@@ -30,8 +30,18 @@ public class GearUI : MonoBehaviour {
 
 
     private void Awake() {
+        InitializeTexts();
+
         DisplayCursor();
         DisplayGearTitle();
+        DisplayGearTexts();
+    }
+
+
+    private void InitializeTexts() {
+        for (int i = 0; i < ImprovementTextsParent.transform.childCount; i++) {
+            ImprovementTextsArr.Add(ImprovementTextsParent.transform.GetChild(i).GetComponent<TMP_Text>());
+        }
     }
 
 
@@ -58,6 +68,7 @@ public class GearUI : MonoBehaviour {
                 cursorIndex--;
                 DisplayCursor();
                 DisplayGearTitle();
+                DisplayGearTexts();
             }
         }
 
@@ -66,6 +77,7 @@ public class GearUI : MonoBehaviour {
                 cursorIndex++;
                 DisplayCursor();
                 DisplayGearTitle();
+                DisplayGearTexts();
             }
         }
     }
@@ -98,6 +110,47 @@ public class GearUI : MonoBehaviour {
 
 
     private void DisplayGearTexts() {
+        switch (cursorIndex) {
+            case 0:
+                for (int i = 0; i < PlayerSheetScript.SlottedGhostsHead.Count; i++) {
+                    if (PlayerSheetScript.SlottedGhostsHead[i].Contains("Name")) {
+                        ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsHead[i]["Description"];
+                    } else {
+                        ImprovementTextsArr[i].text = "—";
+                    }
+                }
+                break;
+
+            case 1:
+                for (int i = 0; i < PlayerSheetScript.SlottedGhostsTorso.Count; i++) {
+                    if (PlayerSheetScript.SlottedGhostsTorso[i].Contains("Name")) {
+                        ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsTorso[i]["Description"];
+                    } else {
+                        ImprovementTextsArr[i].text = "—";
+                    }
+                }
+                break;
+
+            case 2:
+                for (int i = 0; i < PlayerSheetScript.SlottedGhostsWeapon.Count; i++) {
+                    if (PlayerSheetScript.SlottedGhostsWeapon[i].Contains("Name")) {
+                        ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsWeapon[i]["Description"];
+                    } else {
+                        ImprovementTextsArr[i].text = "—";
+                    }
+                }
+                break;
+
+            case 3:
+                for (int i = 0; i < PlayerSheetScript.SlottedGhostsLegs.Count; i++) {
+                    if (PlayerSheetScript.SlottedGhostsLegs[i].Contains("Name")) {
+                        ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsLegs[i]["Description"];
+                    } else {
+                        ImprovementTextsArr[i].text = "—";
+                    }
+                }
+                break;
+        }
     }
 
 

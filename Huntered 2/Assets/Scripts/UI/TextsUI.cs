@@ -150,21 +150,21 @@ public class TextsUI {
     //////////////////////////////
 
     public static string[] EffectStrengthA = {
-        "Deal more damage",
-        "Deal more damage",
-        "Deal more damage"
+        "Damage +",
+        "Damage +",
+        "Damage +"
     };
 
     public static string[] EffectStrengthB = {
-        "Receive less damage",
-        "Receive less damage",
-        "Receive less damage"
+        "Damage received ",
+        "Damage received ",
+        "Damage received "
     };
 
     public static string[] EffectStrengthC = {
-        "Increase being-hit-heal chance",
-        "Increase being-hit-heal chance",
-        "Increase being-hit-heal chance"
+        "Being-hit-heal chance +",
+        "Being-hit-heal chance +",
+        "Being-hit-heal chance +"
     };
 
     public static string[] EffectStrengthD = {
@@ -174,105 +174,105 @@ public class TextsUI {
     };
 
     public static string[] EffectStrengthE = {
-        "Increase hit-heal chance",
-        "Increase hit-heal chance",
-        "Increase hit-heal chance"
+        "Hit-heal chance +",
+        "Hit-heal chance +",
+        "Hit-heal chance +"
     };
 
     //////////////////////////////
 
     public static string[] EffectSpeedA = {
-        "Increase attack speed",
-        "Increase attack speed",
-        "Increase attack speed"
+        "Attack speed +",
+        "Attack speed +",
+        "Attack speed +"
     };
 
     public static string[] EffectSpeedB = {
-        "Shorten respawn delay",
-        "Shorten respawn delay",
-        "Shorten respawn delay"
+        "Respawn delay ",
+        "Respawn delay ",
+        "Respawn delay "
     };
 
     public static string[] EffectSpeedC = {
-        "Increase move speed",
-        "Increase move speed",
-        "Increase move speed"
+        "Move speed +",
+        "Move speed +",
+        "Move speed +"
     };
 
     public static string[] EffectSpeedD = {
-        "Shorten skill cooldown",
-        "Shorten skill cooldown",
-        "Shorten skill cooldown"
+        "Skill cooldown ",
+        "Skill cooldown ",
+        "Skill cooldown "
     };
 
     //////////////////////////////
 
     public static string[] EffectLuckA = {
-        "Increase dodge heal",
-        "Increase dodge heal",
-        "Increase dodge heal"
+        "Dodge heal +",
+        "Dodge heal +",
+        "Dodge heal +"
     };
 
     public static string[] EffectLuckB = {
-        "Increase crit hit chance",
-        "Increase crit hit chance",
-        "Increase crit hit chance"
+        "Crit hit chance +",
+        "Crit hit chance +",
+        "Crit hit chance +"
     };
 
     public static string[] EffectLuckC = {
-        "Increase dodge-heal chance",
-        "Increase dodge-heal chance",
-        "Increase dodge-heal chance"
+        "Dodge-heal chance +",
+        "Dodge-heal chance +",
+        "Dodge-heal chance +"
     };
 
     public static string[] EffectLuckD = {
-        "Increase crit-hit-heal chance",
-        "Increase crit-hit-heal chance",
-        "Increase crit-hit-heal chance"
+        "Crit-hit-heal chance +",
+        "Crit-hit-heal chance +",
+        "Crit-hit-heal chance +"
     };
 
     public static string[] EffectLuckE = {
-        "Increase dodge chance",
-        "Increase dodge chance",
-        "Increase dodge chance"
+        "Dodge chance +",
+        "Dodge chance +",
+        "Dodge chance +"
     };
 
     public static string[] EffectLuckF = {
-        "Increase crit hit damage",
-        "Increase crit hit damage",
-        "Increase crit hit damage"
+        "Crit hit damage +",
+        "Crit hit damage +",
+        "Crit hit damage +"
     };
 
     public static string[] EffectLuckG = {
-        "Increase crit hit heal",
-        "Increase crit hit heal",
-        "Increase crit hit heal"
+        "Crit hit heal +",
+        "Crit hit heal +",
+        "Crit hit heal +"
     };
 
     //////////////////////////////
 
     public static string[] EffectWisdomA = {
-        "Increase gold pickup radius",
-        "Increase gold pickup radius",
-        "Increase gold pickup radius"
+        "Gold pickup radius +",
+        "Gold pickup radius +",
+        "Gold pickup radius +"
     };
 
     public static string[] EffectWisdomB = {
-        "Increase XP gain",
-        "Increase XP gain",
-        "Increase XP gain"
+        "XP gain +",
+        "XP gain +",
+        "XP gain +"
     };
 
     public static string[] EffectWisdomC = {
-        "Gain gold when leveling up",
-        "Gain gold when leveling up",
-        "Gain gold when leveling up"
+        "Gold when leveling up +",
+        "Gold when leveling up +",
+        "Gold when leveling up +"
     };
 
     public static string[] EffectWisdomD = {
-        "Increase collect-double-gold chance",
-        "Increase collect-double-gold chance",
-        "Increase collect-double-gold chance"
+        "Collect-double-gold chance +",
+        "Collect-double-gold chance +",
+        "Collect-double-gold chance +"
     };
 
     public static string[] EffectWisdomE = {
@@ -288,15 +288,15 @@ public class TextsUI {
     };
 
     public static string[] EffectWisdomG = {
-        "Increase gold drop",
-        "Increase gold drop",
-        "Increase gold drop"
+        "Gold drop +",
+        "Gold drop +",
+        "Gold drop +"
     };
 
     public static string[] EffectWisdomH = {
-        "Increase Ghost drop chance",
-        "Increase Ghost drop chance",
-        "Increase Ghost drop chance"
+        "Ghost drop chance +",
+        "Ghost drop chance +",
+        "Ghost drop chance +"
     };
 
 }
