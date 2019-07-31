@@ -17,7 +17,7 @@ public class CollectGhosts : MonoBehaviour {
     private int levelModifier;
     private int rndType;
     private int rndLevel;
-    private int rndIdentifier;
+    private int rndEffect;
     private float rndEffectValue;
 
     private int[] modifierTiers = {
@@ -98,8 +98,8 @@ public class CollectGhosts : MonoBehaviour {
         int ghostUID = GameManager.GhostUID;
         rndType = Random.Range(0, 4);
         rndLevel = RandomizeLevel();
-        rndIdentifier = RandomizeIdentifier();
-        string identifierDescr = BuildDescription();
+        rndEffect = RandomizeEffect();
+        string effectDescr = BuildDescription();
         int rndChance = Random.Range(1, 101);
         int rndValue = Random.Range(
             GameSettings.minGhostValue * rndLevel,
@@ -111,11 +111,11 @@ public class CollectGhosts : MonoBehaviour {
         GhostData.Add("UID", ghostUID);                     // The unique ID for the Ghost
         GhostData.Add("Type", rndType);                     // What stat type does the Ghost have? (see above)
         GhostData.Add("Level", rndLevel);                   // What level does the Ghost have? Ranging from 1-10
-        GhostData.Add("Effect", rndIdentifier);             // What effect does this Ghost apply? Move Speed, Damage, ..
-        GhostData.Add("Description", identifierDescr);      // Which effect does this Ghost carry?
+        GhostData.Add("Effect", rndEffect);                 // What effect does this Ghost apply? Move Speed, Damage, ..
+        GhostData.Add("Description", effectDescr);          // Which effect does this Ghost carry?
         GhostData.Add("Effect Value", rndEffectValue);      // What's the value/number the effect improves (e.g. +10% damage)
         GhostData.Add("Chance", rndChance);                 // The chance to link a Ghost to your equipment
-        GhostData.Add("Value", rndValue);                   // How much gold do you get for this Ghost?
+        GhostData.Add("Value", rndValue);                   // How much gold do you get for selling this Ghost?
         GhostData.Add("Player Access", 0);                  // Which player can pick it up?
 
         // Increment UID for Ghosts
@@ -234,7 +234,7 @@ public class CollectGhosts : MonoBehaviour {
     }
 
 
-    private int RandomizeIdentifier() {
+    private int RandomizeEffect() {
         int ghostIdentifier = 0;
 
         switch (rndType) {
@@ -259,7 +259,7 @@ public class CollectGhosts : MonoBehaviour {
     private string BuildDescription() {
         string effectDescription = "";
 
-        switch (rndIdentifier) {
+        switch (rndEffect) {
             case 0:
                 rndEffectValue = _five + _three * (rndLevel - 1);
                 effectDescription = TextsUI.EffectStrengthA[GameSettings.language] + rndEffectValue;
