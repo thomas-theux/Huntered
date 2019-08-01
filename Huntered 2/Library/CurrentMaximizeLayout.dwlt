@@ -22,8 +22,8 @@ MonoBehaviour:
     y: 30
     width: 1680
     height: 956
-  m_MinSize: {x: 709, y: 494}
-  m_MaxSize: {x: 18006, y: 14044}
+  m_MinSize: {x: 713, y: 494}
+  m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
   controlID: 119
 --- !u!114 &2
@@ -128,8 +128,8 @@ MonoBehaviour:
     y: 0
     width: 1021
     height: 956
-  m_MinSize: {x: 200, y: 322}
-  m_MaxSize: {x: 4002, y: 8022}
+  m_MinSize: {x: 202, y: 344}
+  m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
   controlID: 120
 --- !u!114 &4
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 494}
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
-  controlID: 61
+  controlID: 55
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -513,7 +513,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 46f7ffff
+      m_ExpandedIDs: 3ef7ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -605,14 +605,14 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: /Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2
+  m_LastProjectPath: /Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: fa080000
     m_LastClickedID: 2298
-    m_ExpandedIDs: 000000003845000092450000c2450000224600005e460000a0460000f446000086470000fc4700009c480000ea480000ea490000064a00000a4a00000c4a0000164a00005e4a00003a4b0000904b0000504d00005e4d00009a4d00001c4e0000364e00003c4e0000304f0000564f0000864f00009e670000a0670000
+    m_ExpandedIDs: 00000000344500008e450000be450000204600005e460000a0460000f446000086470000fc4700009c480000ea480000ea490000064a00000a4a00000c4a0000164a00005e4a00003a4b0000904b0000504d00005e4d00009a4d00001c4e0000364e00003c4e0000304f0000564f0000864f0000a0670000a2670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -638,9 +638,9 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 12510000
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000003845000092450000c2450000224600005e460000a0460000f446000086470000fc4700009c480000ea480000ea490000064a00000a4a00000c4a0000164a00005e4a00003a4b0000904b0000504d00005e4d00009a4d00001c4e0000364e00003c4e0000304f0000564f0000864f00009e670000a0670000
+    m_ExpandedIDs: ffffffff00000000344500008e450000be450000204600005e460000a0460000f446000086470000fc4700009c480000ea480000ea490000064a00000a4a00000c4a0000164a00005e4a00003a4b0000904b0000504d00005e4d00009a4d00001c4e0000364e00003c4e0000304f0000564f0000864f0000a0670000a2670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -665,8 +665,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 12510000
+    m_LastClickedInstanceID: 20754
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
