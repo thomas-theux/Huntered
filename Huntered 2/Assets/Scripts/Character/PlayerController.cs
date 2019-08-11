@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour {
     private bool menuBtn;
     private bool attackBtn;
     private bool potionBtn;
+    private bool cancelBtn;
 
 
     public void InitializeCharacter() {
@@ -48,6 +49,16 @@ public class PlayerController : MonoBehaviour {
 
         if (menuBtn) {
             OpenCharMenu();
+        }
+
+        if (cancelBtn) {
+            if (playerSheetScript.CharMenuUI) {
+                OpenCharMenu();
+            }
+
+            if (playerSheetScript.LinkingMenuUI) {
+                OpenLinkingMenu();
+            }
         }
 
         if (attackBtn) {
@@ -85,13 +96,17 @@ public class PlayerController : MonoBehaviour {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void GetInput() {
-        if (!playerSheetScript.CharMenuUI) {
+        if (!playerSheetScript.CharMenuUI && !playerSheetScript.LinkingMenuUI) {
             interactBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("R1");
             attackBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButton("X");
             potionBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("L1");
         }
 
-        menuBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("Triangle");
+        cancelBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("Circle");
+
+        if (!playerSheetScript.LinkingMenuUI) {
+            menuBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("Main Right");
+        }
     }
 
 

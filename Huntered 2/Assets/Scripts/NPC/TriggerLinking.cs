@@ -7,7 +7,10 @@ public class TriggerLinking : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if (other.tag == "Player") {
             if (other.GetComponent<PlayerController>().interactBtn) {
-                other.GetComponent<PlayerController>().OpenLinkingMenu();
+                if (!other.GetComponent<PlayerSheet>().LinkingMenuUI) {
+                    other.GetComponent<PlayerController>().interactBtn = false;
+                    other.GetComponent<PlayerController>().OpenLinkingMenu();
+                }
             }
         }
     }

@@ -664,7 +664,7 @@ namespace ECM.Controllers
         protected virtual void HandleInput()
         {
             // OWN CODE
-            if (!playerSheetScript.CharMenuUI && !playerSheetScript.isDead) {
+            if (!playerSheetScript.CharMenuUI && !playerSheetScript.isDead && !playerSheetScript.LinkingMenuUI) {
                 moveHorizontal = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Horizontal");
                 moveVertical = ReInput.players.GetPlayer(playerSheetScript.playerID).GetAxis("LS Vertical");
 

@@ -40,6 +40,7 @@ public class GhostsUI : MonoBehaviour {
     // public Image ButtonDownImage;
 
     // REWIRED
+    private bool interactBtn = false;
     private bool navigateLeft = false;
     private bool navigateRight = false;
     private bool scrollUp = false;
@@ -64,6 +65,14 @@ public class GhostsUI : MonoBehaviour {
         //     }
         // }
 
+        InitializeGhosts();
+
+        ResetGhostCursor();
+        MoveCursor();
+    }
+
+
+    private void InitializeGhosts() {
         if (currentIndex == 0) {
             DisplayAllGhosts();
         } else {
@@ -72,15 +81,16 @@ public class GhostsUI : MonoBehaviour {
 
         UpdateIconTransparency();
         AdjustScrollView();
-
-        ResetGhostCursor();
-        MoveCursor();
     }
 
 
     private void Update() {
         GetInput();
         UpdateIndex();
+
+        if (interactBtn) {
+            ReleaseGhost();
+        }
 
         if (!scrollIsDelayed) {
             ContentNavigation();
@@ -95,11 +105,33 @@ public class GhostsUI : MonoBehaviour {
 
 
     private void GetInput() {
+        if (PlayerSheetScript.LinkingMenuUI) {
+            interactBtn = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("X");
+        }
+
         navigateLeft = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Left");
         navigateRight = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Right");
 
         scrollUp = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButton("DPad Up");
         scrollDown = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButton("DPad Down");
+    }
+
+
+    private void ReleaseGhost() {
+        int releaseeUID = (int)PlayerInventoryScript.AllGhosts[cursorIndex]["UID"];
+        int releaseeType = (int)PlayerInventoryScript.AllGhosts[cursorIndex]["Type"];
+        PlayerInventoryScript.AllGhosts.RemoveAt(cursorIndex);
+
+        PlayerSheetScript.currentGold += (int)PlayerInventoryScript.AllGhosts[cursorIndex]["Value"];
+
+        RemoveListedGhosts();
+        if (cursorIndex == PlayerInventoryScript.AllGhosts.Count) {
+            if (cursorIndex > 0) {
+                cursorIndex--;
+            }
+        }
+        InitializeGhosts();
+        MoveCursor();
     }
 
 
@@ -245,19 +277,6 @@ public class GhostsUI : MonoBehaviour {
     }
 
 
-    // Display link chance when hovering
-    private void DisplayLinkChance() {
-        displayedGhosts[cursorIndex-1].transform.GetChild(2).gameObject.SetActive(true);
-        displayedGhosts[cursorIndex-1].transform.GetChild(5).gameObject.SetActive(false);
-
-        displayedGhosts[cursorIndex+1].transform.GetChild(2).gameObject.SetActive(true);
-        displayedGhosts[cursorIndex+1].transform.GetChild(5).gameObject.SetActive(false);
-
-        displayedGhosts[cursorIndex].transform.GetChild(2).gameObject.SetActive(false);
-        displayedGhosts[cursorIndex].transform.GetChild(5).gameObject.SetActive(true);
-    }
-
-
     private void ScrollContent(int scrollDirection) {
         ContentContainer.transform.localPosition = new Vector2(
             ContentContainer.transform.localPosition.x,
@@ -267,10 +286,9 @@ public class GhostsUI : MonoBehaviour {
 
 
     private void AdjustScrollView() {
-        cursorIndex = 0;
         childrenCount = displayedGhosts.Count;
 
-        // Set the height of cthe ontainer depending on the Ghost count
+        // Set the height of the container depending on the Ghost count
         float newHeight = childrenCount * listItemHeight;
         GhostsContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(100, newHeight);
     }
