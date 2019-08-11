@@ -12,6 +12,8 @@ public class CollectGhosts : MonoBehaviour {
     public GameObject CollectGhostSound;
 
     private int articleDrawChance = 40;
+    private int roundValueBy = 100;
+    private int roundChanceBy = 5;
 
     public int enemyLevel;
     private int levelModifier;
@@ -100,11 +102,8 @@ public class CollectGhosts : MonoBehaviour {
         rndLevel = RandomizeLevel();
         rndEffect = RandomizeEffect();
         string effectDescr = BuildDescription();
-        int rndChance = Random.Range(1, 101);
-        int rndValue = Random.Range(
-            GameSettings.minGhostValue * rndLevel,
-            GameSettings.maxGhostValue * rndLevel
-        );
+        int rndChance = RandomizeChance();
+        int rndValue = RandomizeValue();
 
         // Add data to dictionary
         GhostData.Add("Name", rndName);                     // The randomly generated name of the Ghost
@@ -114,7 +113,7 @@ public class CollectGhosts : MonoBehaviour {
         GhostData.Add("Effect", rndEffect);                 // What effect does this Ghost apply? Move Speed, Damage, ..
         GhostData.Add("Description", effectDescr);          // Which effect does this Ghost carry?
         GhostData.Add("Effect Value", rndEffectValue);      // What's the value/number the effect improves (e.g. +10% damage)
-        GhostData.Add("Chance", rndChance);                 // The chance to link a Ghost to your equipment
+        GhostData.Add("Link Chance", rndChance);            // The chance to link a Ghost to your equipment
         GhostData.Add("Value", rndValue);                   // How much gold do you get for selling this Ghost?
         GhostData.Add("Player Access", 0);                  // Which player can pick it up?
 
@@ -368,6 +367,39 @@ public class CollectGhosts : MonoBehaviour {
         }
 
         return effectDescription;
+    }
+
+
+    private int RandomizeChance() {
+        int newChance = 0;
+
+        newChance = Random.Range(1, 101);
+
+        float calcChance = newChance / roundChanceBy;
+        newChance = Mathf.RoundToInt(calcChance);
+        newChance *= roundChanceBy;
+
+        return newChance;
+    }
+
+
+    private int RandomizeValue() {
+        int newValue = 0;
+
+        newValue = Random.Range(
+            GameSettings.minGhostValue * rndLevel,
+            GameSettings.maxGhostValue * rndLevel
+        );
+
+        float calcValue = newValue / roundValueBy;
+        newValue = Mathf.RoundToInt(calcValue);
+        newValue *= roundValueBy;
+
+        if (newValue == 0) {
+            newValue = 5;
+        }
+
+        return newValue;
     }
 
 }

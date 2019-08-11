@@ -191,52 +191,52 @@
      <None Include="Assets\Easy Character Movement\README.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Editor">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-weaver.Editor">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.XR.LegacyInputHelpers">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.SpatialTracking">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProBuilder.AddOns.Editor">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.XR.LegacyInputHelpers">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Runtime">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.1.8f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -422,19 +422,19 @@
  <HintPath>/Applications/Unity/Hub/Editor/2019.1.8f1/Unity.app/Contents/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="Rewired_Core">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
  </Reference>
  <Reference Include="Rewired_OSX">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Assets/Rewired/Internal/Libraries/Runtime/Rewired_OSX.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Assets/Rewired/Internal/Libraries/Runtime/Rewired_OSX.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>/Users/thomasgr/Design/Feierabend Crew/Huntered/Huntered 2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>/Users/thomas_ge/Design/Feierabend Crew/Huntered/Huntered 2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/Applications/Unity/Hub/Editor/2019.1.8f1/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

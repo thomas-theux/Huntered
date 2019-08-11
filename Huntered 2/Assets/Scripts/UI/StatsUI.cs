@@ -16,6 +16,7 @@ public class StatsUI : MonoBehaviour {
 
     public TMP_Text StatsTitle;
     public TMP_Text StatsText;
+    public TMP_Text[] StatsTitles;
 
     public Slider[] StatsSliders;
 
@@ -23,6 +24,7 @@ public class StatsUI : MonoBehaviour {
     // public TMP_Text[] StatsTexts;
     public GameObject[] StatMenuItems;
     private List<Image> StatIcons = new List<Image>();
+    private List<TMP_Text> StatTitles = new List<TMP_Text>();
     private List<TMP_Text> StatValues = new List<TMP_Text>();
 
     // public TMP_Text healthStat;
@@ -32,7 +34,7 @@ public class StatsUI : MonoBehaviour {
 
     public Image UICursor;
     private Vector2 initialCursorPos;
-    private float menuItemDistance = 110.0f;
+    private float menuItemDistance = 100.0f;
 
     private int currentIndex = 0;
     private int maxIndex = 3;
@@ -77,9 +79,16 @@ public class StatsUI : MonoBehaviour {
 
         // Get all stats texts
         for (int i = 0; i < StatMenuItems.Length; i++) {
-            StatIcons.Add(StatMenuItems[i].transform.GetChild(0).GetComponent<Image>());
-            StatValues.Add(StatMenuItems[i].transform.GetChild(1).GetComponent<TMP_Text>());
+            StatTitles.Add(StatMenuItems[i].transform.GetChild(0).GetComponent<TMP_Text>());
+            StatIcons.Add(StatMenuItems[i].transform.GetChild(1).GetComponent<Image>());
+            StatValues.Add(StatMenuItems[i].transform.GetChild(2).GetComponent<TMP_Text>());
         }
+
+        // Set stat title language
+        StatsTitles[0].text = TextsUI.StatsTitleHealth[GameSettings.language];
+        StatsTitles[1].text = TextsUI.StatsTitleDamage[GameSettings.language];
+        StatsTitles[2].text = TextsUI.StatsTitleSpeed[GameSettings.language];
+        StatsTitles[3].text = TextsUI.StatsTitleCooldown[GameSettings.language];
     }
 
 
@@ -159,15 +168,19 @@ public class StatsUI : MonoBehaviour {
 
         // UI navigation with the dpad
         if (dpadUp) {
-            if (currentIndex > 0) currentIndex--;
-            DisplayCursor();
-            DisplayTexts();
+            if (currentIndex > 0) {
+                currentIndex--;
+                DisplayCursor();
+                DisplayTexts();
+            }
         }
 
         if (dpadDown) {
-            if (currentIndex < maxIndex) currentIndex++;
-            DisplayCursor();
-            DisplayTexts();
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                DisplayCursor();
+                DisplayTexts();
+            }
         }
     }
 
@@ -181,12 +194,14 @@ public class StatsUI : MonoBehaviour {
         for (int i = 0; i < StatMenuItems.Length; i++) {
             if (currentIndex == i) {
                 // StatsTexts[i].color = ColorManager.KeyBlue10;
-                StatValues[i].color = ColorManager.KeyGold50;
+                StatTitles[i].color = ColorManager.KeyGold50;
                 StatIcons[i].color = ColorManager.KeyGold50;
+                StatValues[i].color = ColorManager.KeyGold50;
             } else {
                 // StatsTexts[i].color = ColorManager.KeyWhite50;
-                StatValues[i].color = ColorManager.KeyWhite40;
+                StatTitles[i].color = ColorManager.KeyWhite40;
                 StatIcons[i].color = ColorManager.KeyWhite40;
+                StatValues[i].color = ColorManager.KeyWhite40;
             }
         }
     }

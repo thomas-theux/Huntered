@@ -21,7 +21,7 @@ public class GhostsUI : MonoBehaviour {
 
     private float initialCursorPos;
 
-    private int listItemHeight = 110;
+    private int listItemHeight = 100;
     private int childrenCount = 0;
 
     private int currentIndex = 0;
@@ -308,15 +308,20 @@ public class GhostsUI : MonoBehaviour {
 
             newGhost.transform.GetChild(1).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
 
-            newGhost.transform.GetChild(2).transform.GetChild(0).GetComponent<TMP_Text>().text = typeText;
-            newGhost.transform.GetChild(2).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
+            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Level"] + "";
 
             newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.AllGhosts[j]["Name"];
 
-            newGhost.transform.GetChild(4).transform.GetChild(0).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Level"] + "";
+            newGhost.transform.GetChild(4).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.AllGhosts[j]["Description"];
 
-            newGhost.transform.GetChild(5).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Chance"] + "%";
-            newGhost.transform.GetChild(5).gameObject.SetActive(false);
+            newGhost.transform.GetChild(5).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Value"] + "●";
+
+            newGhost.transform.GetChild(6).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Link Chance"] + "%";
+
+
+            newGhost.transform.GetChild(7).transform.GetChild(0).GetComponent<TMP_Text>().text = typeText;
+            newGhost.transform.GetChild(7).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
+
         }
     }
 
@@ -352,15 +357,19 @@ public class GhostsUI : MonoBehaviour {
 
             newGhost.transform.GetChild(1).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
 
-            newGhost.transform.GetChild(2).transform.GetChild(0).GetComponent<TMP_Text>().text = typeText;
-            newGhost.transform.GetChild(2).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
+            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Level"] + "";
 
             newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Name"];
 
-            newGhost.transform.GetChild(4).transform.GetChild(0).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Level"] + "";
+            newGhost.transform.GetChild(4).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Description"];
 
-            newGhost.transform.GetChild(5).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Chance"] + "%";
-            newGhost.transform.GetChild(5).gameObject.SetActive(false);
+            newGhost.transform.GetChild(5).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Value"] + "●";
+
+            newGhost.transform.GetChild(6).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Link Chance"] + "%";
+
+
+            newGhost.transform.GetChild(7).transform.GetChild(0).GetComponent<TMP_Text>().text = typeText;
+            newGhost.transform.GetChild(7).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
         }
     }
 

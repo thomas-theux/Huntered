@@ -8,6 +8,7 @@ using Rewired;
 public class GearUI : MonoBehaviour {
 
     public PlayerSheet PlayerSheetScript;
+    private AudioManager audioManagerScript;
 
     public Image GearNavCursor;
     public TMP_Text GearTitle;
@@ -21,8 +22,8 @@ public class GearUI : MonoBehaviour {
     public Sprite GhostImage;
 
     private int cursorIndex = 0;
-    private int initialCursorPos = -90;
-    private int listItemHeight = 110;
+    private int initialCursorPos = -70;
+    private int listItemHeight = 100;
 
     // REWIRED
     private bool navigateUp = false;
@@ -30,11 +31,13 @@ public class GearUI : MonoBehaviour {
 
 
     private void Awake() {
+        audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
         InitializeTexts();
 
-        DisplayCursor();
-        DisplayGearTitle();
-        DisplayGearTexts();
+        // DisplayCursor();
+        // DisplayGearTitle();
+        // DisplayGearTexts();
     }
 
 
@@ -47,6 +50,10 @@ public class GearUI : MonoBehaviour {
 
     private void OnEnable() {
         DisplayGhostSlots();
+
+        DisplayCursor();
+        DisplayGearTitle();
+        DisplayGearTexts();
     }
 
 
@@ -84,6 +91,8 @@ public class GearUI : MonoBehaviour {
 
 
     private void DisplayCursor() {
+        audioManagerScript.Play("UINavigateMenu");
+
         GearNavCursor.transform.localPosition = new Vector2(
             GearNavCursor.transform.localPosition.x,
             initialCursorPos - (cursorIndex * listItemHeight)
@@ -114,9 +123,12 @@ public class GearUI : MonoBehaviour {
             case 0:
                 for (int i = 0; i < PlayerSheetScript.SlottedGhostsHead.Count; i++) {
                     if (PlayerSheetScript.SlottedGhostsHead[i].Contains("Name")) {
+                        int ghostType = (int)PlayerSheetScript.SlottedGhostsHead[i]["Type"];
                         ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsHead[i]["Description"];
+                        ImprovementTextsArr[i].color = ColorManager.GhostColors[ghostType];
                     } else {
                         ImprovementTextsArr[i].text = "—";
+                        ImprovementTextsArr[i].color = ColorManager.KeyWhite10;
                     }
                 }
                 break;
@@ -124,9 +136,12 @@ public class GearUI : MonoBehaviour {
             case 1:
                 for (int i = 0; i < PlayerSheetScript.SlottedGhostsTorso.Count; i++) {
                     if (PlayerSheetScript.SlottedGhostsTorso[i].Contains("Name")) {
+                        int ghostType = (int)PlayerSheetScript.SlottedGhostsHead[i]["Type"];
                         ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsTorso[i]["Description"];
+                        ImprovementTextsArr[i].color = ColorManager.GhostColors[ghostType];
                     } else {
                         ImprovementTextsArr[i].text = "—";
+                        ImprovementTextsArr[i].color = ColorManager.KeyWhite10;
                     }
                 }
                 break;
@@ -134,9 +149,12 @@ public class GearUI : MonoBehaviour {
             case 2:
                 for (int i = 0; i < PlayerSheetScript.SlottedGhostsWeapon.Count; i++) {
                     if (PlayerSheetScript.SlottedGhostsWeapon[i].Contains("Name")) {
+                        int ghostType = (int)PlayerSheetScript.SlottedGhostsHead[i]["Type"];
                         ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsWeapon[i]["Description"];
+                        ImprovementTextsArr[i].color = ColorManager.GhostColors[ghostType];
                     } else {
                         ImprovementTextsArr[i].text = "—";
+                        ImprovementTextsArr[i].color = ColorManager.KeyWhite10;
                     }
                 }
                 break;
@@ -144,9 +162,12 @@ public class GearUI : MonoBehaviour {
             case 3:
                 for (int i = 0; i < PlayerSheetScript.SlottedGhostsLegs.Count; i++) {
                     if (PlayerSheetScript.SlottedGhostsLegs[i].Contains("Name")) {
+                        int ghostType = (int)PlayerSheetScript.SlottedGhostsHead[i]["Type"];
                         ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsLegs[i]["Description"];
+                        ImprovementTextsArr[i].color = ColorManager.GhostColors[ghostType];
                     } else {
                         ImprovementTextsArr[i].text = "—";
+                        ImprovementTextsArr[i].color = ColorManager.KeyWhite10;
                     }
                 }
                 break;
@@ -158,16 +179,19 @@ public class GearUI : MonoBehaviour {
         for (int i = 0; i < PlayerSheetScript.SlottedGhostsHead.Count; i++) {
             if (PlayerSheetScript.SlottedGhostsHead[i].Contains("Name")) {
                 int ghostType = (int)PlayerSheetScript.SlottedGhostsHead[i]["Type"];
+                int ghostLevel = (int)PlayerSheetScript.SlottedGhostsHead[i]["Level"];
                 GhostSlotsParent[0].transform.GetChild(i).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
+                GhostSlotsParent[0].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = ghostLevel + "";
                 GhostSlotsParent[0].transform.GetChild(i).GetComponent<Image>().sprite = GhostImage;
             } else {
                 GhostSlotsParent[0].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
+                GhostSlotsParent[0].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = "";
             }
         }
 
         for (int i = 0; i < PlayerSheetScript.SlottedGhostsTorso.Count; i++) {
             if (PlayerSheetScript.SlottedGhostsTorso[i].Contains("Name")) {
-                // Show proper Ghost
+                // Show proper Ghost — copy code from above
             } else {
                 GhostSlotsParent[1].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
             }
@@ -175,7 +199,7 @@ public class GearUI : MonoBehaviour {
 
         for (int i = 0; i < PlayerSheetScript.SlottedGhostsWeapon.Count; i++) {
             if (PlayerSheetScript.SlottedGhostsWeapon[i].Contains("Name")) {
-                // Show proper Ghost
+                // Show proper Ghost — copy code from above
             } else {
                 GhostSlotsParent[2].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
             }
@@ -183,7 +207,7 @@ public class GearUI : MonoBehaviour {
 
         for (int i = 0; i < PlayerSheetScript.SlottedGhostsLegs.Count; i++) {
             if (PlayerSheetScript.SlottedGhostsLegs[i].Contains("Name")) {
-                // Show proper Ghost
+                // Show proper Ghost — copy code from above
             } else {
                 GhostSlotsParent[3].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
             }

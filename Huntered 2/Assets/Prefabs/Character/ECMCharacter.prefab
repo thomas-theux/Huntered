@@ -1291,6 +1291,7 @@ MonoBehaviour:
   PotionCooldownActive: 0
   PotionCooldownTimeDef: 10
   PotionCooldownTime: 0
+  UnlockedSlots: 5
 --- !u!114 &8351684276295381811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3117,17 +3118,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8152563377081794195, guid: 8d00a58a8f39c4acdbf69423a2fe3333,
+        type: 3}
+      propertyPath: PlayerSheetScript
+      value: 
+      objectReference: {fileID: 6737107886738630158}
     - target: {fileID: 6120258569016262028, guid: 8d00a58a8f39c4acdbf69423a2fe3333,
         type: 3}
       propertyPath: PlayerInventoryScript
       value: 
       objectReference: {fileID: 4030324524943935684}
     - target: {fileID: 6120258569016262028, guid: 8d00a58a8f39c4acdbf69423a2fe3333,
-        type: 3}
-      propertyPath: PlayerSheetScript
-      value: 
-      objectReference: {fileID: 6737107886738630158}
-    - target: {fileID: 8152563377081794195, guid: 8d00a58a8f39c4acdbf69423a2fe3333,
         type: 3}
       propertyPath: PlayerSheetScript
       value: 

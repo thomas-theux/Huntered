@@ -9,6 +9,7 @@ public class ColorManager {
 
     public static Color32 KeyBlue10 = new Color32(15, 25, 40, 255);
 
+    public static Color32 KeyWhite10 = new Color32(85, 99, 112, 255);
     public static Color32 KeyWhite40 = new Color32(193, 206, 219, 255);
     public static Color32 KeyWhite50 = new Color32(235, 245, 255, 255);
     public static Color32 KeyWhite50t5 = new Color32(235, 245, 255, 128);
