@@ -27,6 +27,7 @@ public class PlayerSheet : MonoBehaviour {
     public bool isIdle = false;
     public bool isWalking = false;
     public bool isAttacking = false;
+    public bool isLinking = false;
     public bool isTalking = false;      // If player talks to an NPC – we need this for auto follow so that the player doesn't start following the other player
 
     public bool PotionCooldownActive = false;

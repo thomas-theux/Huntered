@@ -15,7 +15,7 @@ public class ColorManager {
     public static Color32 KeyWhite50t5 = new Color32(235, 245, 255, 128);
 
     public static Color32 ImageTransparent0 = new Color32(255, 255, 255, 255);
-    public static Color32 ImageTransparent50 = new Color32(255, 255, 255, 80);
+    public static Color32 ImageTransparent30 = new Color32(255, 255, 255, 80);
     public static Color32 ImageTransparent100 = new Color32(255, 255, 255, 0);
 
     public static Color32 Whitet8 = new Color32(255, 255, 255, 200);

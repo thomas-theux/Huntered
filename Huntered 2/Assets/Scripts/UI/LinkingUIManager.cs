@@ -21,6 +21,10 @@ public class LinkingUIManager : MonoBehaviour {
     // Game language
     // public TMP_Text[] MenuNavTexts;
 
+    // REWIRED
+    private bool navigateLeft = false;
+    private bool navigateRight = false;
+
 
     private void Awake() {
         audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
@@ -30,11 +34,6 @@ public class LinkingUIManager : MonoBehaviour {
         NavTexts[0].text = TextsUI.CharMenuGear[GameSettings.language];
         NavTexts[1].text = TextsUI.CharMenuGhosts[GameSettings.language];
     }
-
-
-    // REWIRED
-    private bool navigateLeft = false;
-    private bool navigateRight = false;
 
 
     private void OnEnable() {

@@ -13,6 +13,9 @@ public class GearUI : MonoBehaviour {
     public Image GearNavCursor;
     public TMP_Text GearTitle;
 
+    public GameObject[] GearArray;
+    public Image GhostCursor;
+
     public GameObject[] GhostSlotsParent;
     public GameObject ImprovementTextsParent;
 
@@ -21,13 +24,22 @@ public class GearUI : MonoBehaviour {
 
     public Sprite GhostImage;
 
+    private float ghostDistance = 47;
+    private float ghostCursorPosX;
+    private float ghostCursorPosY;
+
     private int cursorIndex = 0;
+    private int ghostNavIndex = 0;
     private int initialCursorPos = -70;
     private int listItemHeight = 100;
 
     // REWIRED
     private bool navigateUp = false;
     private bool navigateDown = false;
+    private bool navigateGhostsLeft = false;
+    private bool navigateGhostsRight = false;
+    private bool interactBtn = false;
+    private bool cancelBtn = false;
 
 
     private void Awake() {
@@ -49,6 +61,8 @@ public class GearUI : MonoBehaviour {
 
 
     private void OnEnable() {
+        cursorIndex = 0;
+
         DisplayGhostSlots();
 
         DisplayCursor();
@@ -60,12 +74,32 @@ public class GearUI : MonoBehaviour {
     private void Update() {
         GetInput();
         UpdateIndex();
+
+        if (interactBtn && !PlayerSheetScript.isLinking) {
+            EnableGhostNavigation();
+        }
+
+        if (PlayerSheetScript.isLinking) {
+            if (cancelBtn) {
+                DisableGhostNavigation();
+            }
+
+            UpdateGhostNav();
+        }
     }
 
 
     private void GetInput() {
-        navigateUp = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Up");
-        navigateDown = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Down");
+        if (!PlayerSheetScript.isLinking) {
+            navigateUp = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Up");
+            navigateDown = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Down");
+        } else {
+            navigateGhostsLeft = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Left");
+            navigateGhostsRight = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Right");
+            cancelBtn = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("Circle");
+        }
+
+        interactBtn = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("X");
     }
 
 
@@ -100,6 +134,17 @@ public class GearUI : MonoBehaviour {
     }
 
 
+    private void DisplayGhostNavCursor() {
+        // Cursor position
+        GhostCursor.transform.localPosition = new Vector2(
+            (ghostCursorPosX + (ghostDistance * ghostNavIndex)) - 7,
+            ghostCursorPosY + 7
+        );
+
+        audioManagerScript.Play("UINavigateMenu");
+    }
+
+
     private void DisplayGearTitle() {
         switch (cursorIndex) {
             case 0:
@@ -114,6 +159,73 @@ public class GearUI : MonoBehaviour {
             case 3:
                 GearTitle.text = TextsUI.GearTitleLegs[GameSettings.language];
                 break;
+        }
+    }
+
+
+    private void DisplayGhostTitle() {
+        int ghostType = 0;
+
+        switch (cursorIndex) {
+            case 0:
+                if (PlayerSheetScript.SlottedGhostsHead[ghostNavIndex].Contains("Name")) {
+                    GearTitle.text = (string)PlayerSheetScript.SlottedGhostsHead[ghostNavIndex]["Name"];
+                    ImprovementTextsArr[0].text = (string)PlayerSheetScript.SlottedGhostsHead[ghostNavIndex]["Description"];
+
+                    ghostType = (int)PlayerSheetScript.SlottedGhostsHead[ghostNavIndex]["Type"];
+                    ImprovementTextsArr[0].color = ColorManager.GhostColors[ghostType];
+                } else {
+                    GearTitle.text = TextsUI.GearSlotEmptyTitle[GameSettings.language];
+                    ImprovementTextsArr[0].text = "<i>" + TextsUI.GearSlotEmptyText[GameSettings.language] + "</i>";
+                    ImprovementTextsArr[0].color = ColorManager.KeyWhite40;
+                }
+                break;
+            case 1:
+                if (PlayerSheetScript.SlottedGhostsTorso[ghostNavIndex].Contains("Name")) {
+                    GearTitle.text = (string)PlayerSheetScript.SlottedGhostsTorso[ghostNavIndex]["Name"];
+                    ImprovementTextsArr[0].text = (string)PlayerSheetScript.SlottedGhostsTorso[ghostNavIndex]["Description"];
+
+                    ghostType = (int)PlayerSheetScript.SlottedGhostsTorso[ghostNavIndex]["Type"];
+                    ImprovementTextsArr[0].color = ColorManager.GhostColors[ghostType];
+                } else {
+                    GearTitle.text = TextsUI.GearSlotEmptyTitle[GameSettings.language];
+                    ImprovementTextsArr[0].text = "<i>" + TextsUI.GearSlotEmptyText[GameSettings.language] + "</i>";
+                    ImprovementTextsArr[0].color = ColorManager.KeyWhite40;
+                }
+                break;
+            case 2:
+                if (PlayerSheetScript.SlottedGhostsWeapon[ghostNavIndex].Contains("Name")) {
+                    GearTitle.text = (string)PlayerSheetScript.SlottedGhostsWeapon[ghostNavIndex]["Name"];
+                    ImprovementTextsArr[0].text = (string)PlayerSheetScript.SlottedGhostsWeapon[ghostNavIndex]["Description"];
+
+                    ghostType = (int)PlayerSheetScript.SlottedGhostsWeapon[ghostNavIndex]["Type"];
+                    ImprovementTextsArr[0].color = ColorManager.GhostColors[ghostType];
+                } else {
+                    GearTitle.text = TextsUI.GearSlotEmptyTitle[GameSettings.language];
+                    ImprovementTextsArr[0].text = "<i>" + TextsUI.GearSlotEmptyText[GameSettings.language] + "</i>";
+                    ImprovementTextsArr[0].color = ColorManager.KeyWhite40;
+                }
+                break;
+            case 3:
+                if (PlayerSheetScript.SlottedGhostsLegs[ghostNavIndex].Contains("Name")) {
+                    GearTitle.text = (string)PlayerSheetScript.SlottedGhostsLegs[ghostNavIndex]["Name"];
+                    ImprovementTextsArr[0].text = (string)PlayerSheetScript.SlottedGhostsLegs[ghostNavIndex]["Description"];
+
+                    ghostType = (int)PlayerSheetScript.SlottedGhostsLegs[ghostNavIndex]["Type"];
+                    ImprovementTextsArr[0].color = ColorManager.GhostColors[ghostType];
+                } else {
+                    GearTitle.text = TextsUI.GearSlotEmptyTitle[GameSettings.language];
+                    ImprovementTextsArr[0].text = "<i>" + TextsUI.GearSlotEmptyText[GameSettings.language] + "</i>";
+                    ImprovementTextsArr[0].color = ColorManager.KeyWhite40;
+                }
+                break;
+        }
+    }
+
+
+    private void SetGhostTextsEmpty() {
+        for (int i = 1; i < ImprovementTextsParent.transform.childCount; i++) {
+            ImprovementTextsArr[i].text = "";
         }
     }
 
@@ -210,6 +322,53 @@ public class GearUI : MonoBehaviour {
                 // Show proper Ghost — copy code from above
             } else {
                 GhostSlotsParent[3].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
+            }
+        }
+    }
+
+
+    private void EnableGhostNavigation() {
+        PlayerSheetScript.isLinking = true;
+
+        // Reset Ghost nav cursor to the left
+        ghostNavIndex = 0;
+
+        GhostCursor.transform.SetParent(GearArray[cursorIndex].transform);
+
+        ghostCursorPosX = GearArray[cursorIndex].transform.GetChild(1).localPosition.x;
+        ghostCursorPosY = GearArray[cursorIndex].transform.GetChild(1).localPosition.y;
+
+        DisplayGhostNavCursor();
+        DisplayGhostTitle();
+        SetGhostTextsEmpty();
+
+        GhostCursor.color = ColorManager.ImageTransparent0;
+    }
+
+
+    private void DisableGhostNavigation() {
+        cancelBtn = false;
+        PlayerSheetScript.isLinking = false;
+        GhostCursor.color = ColorManager.ImageTransparent100;
+
+        DisplayGearTitle();
+    }
+
+
+    private void UpdateGhostNav() {
+        if (navigateGhostsLeft) {
+            if (ghostNavIndex > 0) {
+                ghostNavIndex--;
+                DisplayGhostNavCursor();
+                DisplayGhostTitle();
+            }
+        }
+
+        if (navigateGhostsRight) {
+            if (ghostNavIndex < PlayerSheetScript.UnlockedSlots-1) {
+                ghostNavIndex++;
+                DisplayGhostNavCursor();
+                DisplayGhostTitle();
             }
         }
     }

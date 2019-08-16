@@ -224,7 +224,7 @@ public class GhostsUI : MonoBehaviour {
             if (currentIndex == i) {
                 GhostFilters[i].color = ColorManager.ImageTransparent0;
             } else {
-                GhostFilters[i].color = ColorManager.ImageTransparent50;
+                GhostFilters[i].color = ColorManager.ImageTransparent30;
             }
         }
     }

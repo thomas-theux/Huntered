@@ -144,6 +144,20 @@ public class TextsUI {
         "Fiaß"
     };
 
+    //////////////////////////////
+
+    public static string[] GearSlotEmptyTitle = {
+        "Empty slot",
+        "Empty slot",
+        "Empty slot"
+    };
+
+    public static string[] GearSlotEmptyText = {
+        "Select to link a Ghost",
+        "Select to link a Ghost",
+        "Select to link a Ghost"
+    };
+
 
     //////////////////////////////
     // GHOST EFFECTS TEXTS
