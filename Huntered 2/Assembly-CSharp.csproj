@@ -144,6 +144,7 @@
      <Compile Include="Assets\Scripts\Loot\CollectGold.cs" />
      <Compile Include="Assets\Scripts\Loot\CollectRadius.cs" />
      <Compile Include="Assets\Scripts\Loot\GainRep.cs" />
+     <Compile Include="Assets\Scripts\Loot\GhostSheet.cs" />
      <Compile Include="Assets\Scripts\Manager\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Manager\ColorManager.cs" />
      <Compile Include="Assets\Scripts\Manager\GameManager.cs" />

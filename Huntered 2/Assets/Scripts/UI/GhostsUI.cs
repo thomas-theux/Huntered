@@ -31,6 +31,7 @@ public class GhostsUI : MonoBehaviour {
     private int maxCursorIndex = 4;
 
     private float basicYPos = 10.0f;
+    private int listPos = 0;
 
     private bool scrollIsDelayed = false;
     private float tDef = 0.15f;
@@ -73,11 +74,12 @@ public class GhostsUI : MonoBehaviour {
 
 
     private void InitializeGhosts() {
-        if (currentIndex == 0) {
-            DisplayAllGhosts();
-        } else {
-            DisplayFilteredGhosts();
-        }
+        // if (currentIndex == 0) {
+        //     DisplayAllGhosts();
+        // } else {
+        //     DisplayFilteredGhosts();
+        // }
+        DisplayAllGhosts();
 
         UpdateIconTransparency();
         AdjustScrollView();
@@ -118,11 +120,19 @@ public class GhostsUI : MonoBehaviour {
 
 
     private void ReleaseGhost() {
-        int releaseeUID = (int)PlayerInventoryScript.AllGhosts[cursorIndex]["UID"];
-        int releaseeType = (int)PlayerInventoryScript.AllGhosts[cursorIndex]["Type"];
-        PlayerInventoryScript.AllGhosts.RemoveAt(cursorIndex);
+        int releaseeUID = (int)displayedGhosts[cursorIndex].GetComponent<GhostSheet>().GhostStats["UID"];
+        int removeGhostIndex = 0;
 
-        PlayerSheetScript.currentGold += (int)PlayerInventoryScript.AllGhosts[cursorIndex]["Value"];
+        for (int i = 0; i < PlayerInventoryScript.AllGhosts.Count; i++) {
+            int properGhostUID = (int)PlayerInventoryScript.AllGhosts[i]["UID"];
+
+            if (properGhostUID == releaseeUID) {
+                removeGhostIndex = i;
+            }
+        }
+
+        PlayerSheetScript.currentGold += (int)PlayerInventoryScript.AllGhosts[removeGhostIndex]["Value"];
+        PlayerInventoryScript.AllGhosts.RemoveAt(removeGhostIndex);
 
         RemoveListedGhosts();
         if (cursorIndex == PlayerInventoryScript.AllGhosts.Count) {
@@ -130,6 +140,7 @@ public class GhostsUI : MonoBehaviour {
                 cursorIndex--;
             }
         }
+
         InitializeGhosts();
         MoveCursor();
     }
@@ -193,11 +204,12 @@ public class GhostsUI : MonoBehaviour {
         RemoveListedGhosts();
 
         // Display the right Ghosts
-        if (currentIndex == 0) {
-            DisplayAllGhosts();
-        } else {
-            DisplayFilteredGhosts();
-        }
+        // if (currentIndex == 0) {
+        //     DisplayAllGhosts();
+        // } else {
+        //     DisplayFilteredGhosts();
+        // }
+        DisplayAllGhosts();
 
         AdjustScrollView();
         ResetGhostCursor();
@@ -295,100 +307,37 @@ public class GhostsUI : MonoBehaviour {
 
 
     private void DisplayAllGhosts() {
+        // Reset list position index
+        listPos = 0;
+
         // Instantiate Ghosts with proper position
         for (int j = 0; j < PlayerInventoryScript.AllGhosts.Count; j++) {
-            Image newGhost = Instantiate(ListedGhost, GhostsContainer.transform);
-            displayedGhosts.Add(newGhost.gameObject);
-            newGhost.transform.SetParent(GhostsContainer.transform);
-            newGhost.transform.localPosition = new Vector2(
-                0,
-                basicYPos - (listItemHeight * j)
-            );
 
-            // Check for types and apply language
-            string typeText = "";
             int ghostType = (int)PlayerInventoryScript.AllGhosts[j]["Type"];
 
-            switch (ghostType) {
-                case 0:
-                    typeText = TextsUI.GhostsTypeStrength[GameSettings.language];
-                    break;
-                case 1:
-                    typeText = TextsUI.GhostsTypeSpeed[GameSettings.language];
-                    break;
-                case 2:
-                    typeText = TextsUI.GhostsTypeLuck[GameSettings.language];
-                    break;
-                case 3:
-                    typeText = TextsUI.GhostsTypeWisdom[GameSettings.language];
-                    break;
+            if (currentIndex > 0) {
+                if (ghostType == currentIndex-1) {
+                    AddNewGhost(ghostType, j);
+                }
+            } else {
+                AddNewGhost(ghostType, j);
             }
-
-            newGhost.transform.GetChild(1).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
-
-            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Level"] + "";
-
-            newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.AllGhosts[j]["Name"];
-
-            newGhost.transform.GetChild(4).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.AllGhosts[j]["Description"];
-
-            newGhost.transform.GetChild(5).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Value"] + "●";
-
-            newGhost.transform.GetChild(6).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.AllGhosts[j]["Link Chance"] + "%";
-
-
-            newGhost.transform.GetChild(7).transform.GetChild(0).GetComponent<TMP_Text>().text = typeText;
-            newGhost.transform.GetChild(7).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
-
         }
     }
 
 
-    private void DisplayFilteredGhosts() {
-        for (int k = 0; k < PlayerInventoryScript.GhostsInventory[currentIndex-1].Count; k++) {
-            Image newGhost = Instantiate(ListedGhost, GhostsContainer.transform);
-            displayedGhosts.Add(newGhost.gameObject);
-            newGhost.transform.SetParent(GhostsContainer.transform);
-            newGhost.transform.localPosition = new Vector2(
-                0,
-                basicYPos - (listItemHeight * k)
-            );
+    private void AddNewGhost(int ghostType, int arrIndex) {
+        Image newGhost = Instantiate(ListedGhost, GhostsContainer.transform);
+        displayedGhosts.Add(newGhost.gameObject);
+        newGhost.transform.SetParent(GhostsContainer.transform);
+        newGhost.transform.localPosition = new Vector2(
+            0,
+            basicYPos - (listItemHeight * listPos)
+        );
 
-            // Check for types and apply language
-            string typeText = "";
-            int ghostType = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Type"];
+        newGhost.GetComponent<GhostSheet>().GhostStats = PlayerInventoryScript.AllGhosts[arrIndex];
 
-            switch (ghostType) {
-                case 0:
-                    typeText = TextsUI.GhostsTypeStrength[GameSettings.language];
-                    break;
-                case 1:
-                    typeText = TextsUI.GhostsTypeSpeed[GameSettings.language];
-                    break;
-                case 2:
-                    typeText = TextsUI.GhostsTypeLuck[GameSettings.language];
-                    break;
-                case 3:
-                    typeText = TextsUI.GhostsTypeWisdom[GameSettings.language];
-                    break;
-            }
-
-            newGhost.transform.GetChild(1).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
-
-            newGhost.transform.GetChild(2).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Level"] + "";
-
-            newGhost.transform.GetChild(3).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Name"];
-
-            newGhost.transform.GetChild(4).GetComponent<TMP_Text>().text = (string)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Description"];
-
-            newGhost.transform.GetChild(5).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Value"] + "●";
-
-            newGhost.transform.GetChild(6).GetComponent<TMP_Text>().text = (int)PlayerInventoryScript.GhostsInventory[currentIndex-1][k]["Link Chance"] + "%";
-
-
-            newGhost.transform.GetChild(7).transform.GetChild(0).GetComponent<TMP_Text>().text = typeText;
-            newGhost.transform.GetChild(7).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
-        }
+        listPos++;
     }
 
 

@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 212599020050516476}
   - component: {fileID: 190558330073811846}
   m_Layer: 5
-  m_Name: Type
+  m_Name: GhostType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,6 +556,7 @@ GameObject:
   - component: {fileID: 842140143099325592}
   - component: {fileID: 1543351922242784517}
   - component: {fileID: 4468393526815404699}
+  - component: {fileID: 7770097434687524496}
   m_Layer: 5
   m_Name: ListedGhost
   m_TagString: Untagged
@@ -627,6 +628,26 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &7770097434687524496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742254002789794556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b24ab223d459401da1de01988fd8bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GhostImage: {fileID: 3263301963577202781}
+  GhostTypeTag: {fileID: 5642501286965092870}
+  GhostLevel: {fileID: 2262589836042583209}
+  GhostName: {fileID: 1794990272997331205}
+  GhostDescription: {fileID: 3947837087994055763}
+  GhostValue: {fileID: 1951759153643046788}
+  GhostLinkChance: {fileID: 5731620573312771690}
+  GhostType: {fileID: 190558330073811846}
 --- !u!1 &4902805162723616334
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,7 +974,7 @@ GameObject:
   - component: {fileID: 8541541070414681668}
   - component: {fileID: 5642501286965092870}
   m_Layer: 5
-  m_Name: GhostType
+  m_Name: GhostTypeTag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
