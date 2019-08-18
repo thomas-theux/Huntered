@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour {
             potionBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("L1");
         }
 
-        if (!playerSheetScript.isLinking) {
+        if (playerSheetScript.linkingPhase == 0) {
             cancelBtn = ReInput.players.GetPlayer(playerSheetScript.playerID).GetButtonDown("Circle");
         }
 

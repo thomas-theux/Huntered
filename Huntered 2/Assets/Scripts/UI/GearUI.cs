@@ -75,27 +75,45 @@ public class GearUI : MonoBehaviour {
         GetInput();
         UpdateIndex();
 
-        if (interactBtn && !PlayerSheetScript.isLinking) {
-            EnableGhostNavigation();
-        }
-
-        if (PlayerSheetScript.isLinking) {
-            if (cancelBtn) {
-                DisableGhostNavigation();
+        if (interactBtn) {
+            if (PlayerSheetScript.linkingPhase == 0) {
+                EnableSlotNavigation();
+                return;
             }
 
+            if (PlayerSheetScript.linkingPhase == 1) {
+                EnableGhostSelection();
+                return;
+            }
+        }
+
+        if (cancelBtn) {
+            if (PlayerSheetScript.linkingPhase == 1) {
+                DisableSlotNavigation();
+                return;
+            }
+            if (PlayerSheetScript.linkingPhase == 2) {
+                DisableGhostSelection();
+                return;
+            }
+        }
+
+        if (PlayerSheetScript.linkingPhase == 1) {
             UpdateGhostNav();
         }
     }
 
 
     private void GetInput() {
-        if (!PlayerSheetScript.isLinking) {
+        if (PlayerSheetScript.linkingPhase == 0) {
             navigateUp = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Up");
             navigateDown = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Down");
-        } else {
+        }
+        if (PlayerSheetScript.linkingPhase == 1) {
             navigateGhostsLeft = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Left");
             navigateGhostsRight = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Right");
+        }
+        if (PlayerSheetScript.linkingPhase > 0) {
             cancelBtn = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("Circle");
         }
 
@@ -327,8 +345,8 @@ public class GearUI : MonoBehaviour {
     }
 
 
-    private void EnableGhostNavigation() {
-        PlayerSheetScript.isLinking = true;
+    private void EnableSlotNavigation() {
+        PlayerSheetScript.linkingPhase = 1;
 
         // Reset Ghost nav cursor to the left
         ghostNavIndex = 0;
@@ -346,9 +364,9 @@ public class GearUI : MonoBehaviour {
     }
 
 
-    private void DisableGhostNavigation() {
-        cancelBtn = false;
-        PlayerSheetScript.isLinking = false;
+    private void DisableSlotNavigation() {
+        PlayerSheetScript.linkingPhase = 0;
+
         GhostCursor.color = ColorManager.ImageTransparent100;
 
         DisplayGearTitle();
@@ -371,6 +389,16 @@ public class GearUI : MonoBehaviour {
                 DisplayGhostTitle();
             }
         }
+    }
+
+
+    private void EnableGhostSelection() {
+        PlayerSheetScript.linkingPhase = 2;
+    }
+
+
+    private void DisableGhostSelection() {
+        PlayerSheetScript.linkingPhase = 1;
     }
 
 }
