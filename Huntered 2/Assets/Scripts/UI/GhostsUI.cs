@@ -91,7 +91,9 @@ public class GhostsUI : MonoBehaviour {
         UpdateIndex();
 
         if (interactBtn) {
-            ReleaseGhost();
+            if (PlayerSheetScript.linkingPhase == 0) {
+                ReleaseGhost();
+            }
         }
 
         if (!scrollIsDelayed) {
@@ -111,11 +113,13 @@ public class GhostsUI : MonoBehaviour {
             interactBtn = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("X");
         }
 
-        navigateLeft = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Left");
-        navigateRight = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Right");
+        if (PlayerSheetScript.linkingPhase < 3) {
+            navigateLeft = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Left");
+            navigateRight = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButtonDown("DPad Right");
 
-        scrollUp = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButton("DPad Up");
-        scrollDown = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButton("DPad Down");
+            scrollUp = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButton("DPad Up");
+            scrollDown = ReInput.players.GetPlayer(PlayerSheetScript.playerID).GetButton("DPad Down");
+        }
     }
 
 

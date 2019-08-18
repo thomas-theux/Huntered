@@ -19,6 +19,10 @@ public class GearUI : MonoBehaviour {
     public GameObject[] GhostSlotsParent;
     public GameObject ImprovementTextsParent;
 
+    public GameObject GhostSelection;
+    public GameObject GearInterface;
+    public GameObject MenuNav;
+
     private List<Image> GhostSlotsArr = new List<Image>();
     private List<TMP_Text> ImprovementTextsArr = new List<TMP_Text>();
 
@@ -85,6 +89,12 @@ public class GearUI : MonoBehaviour {
                 EnableGhostSelection();
                 return;
             }
+
+            if (PlayerSheetScript.linkingPhase == 2) {
+                print("show dialog");
+                StartLinkingProcess();
+                return;
+            }
         }
 
         if (cancelBtn) {
@@ -94,6 +104,11 @@ public class GearUI : MonoBehaviour {
             }
             if (PlayerSheetScript.linkingPhase == 2) {
                 DisableGhostSelection();
+                return;
+            }
+            if (PlayerSheetScript.linkingPhase == 3) {
+                print("kill dialog");
+                StopLinkingProcess();
                 return;
             }
         }
@@ -394,11 +409,27 @@ public class GearUI : MonoBehaviour {
 
     private void EnableGhostSelection() {
         PlayerSheetScript.linkingPhase = 2;
+        GhostSelection.SetActive(true);
+        GearInterface.SetActive(false);
+        MenuNav.SetActive(false);
     }
 
 
     private void DisableGhostSelection() {
         PlayerSheetScript.linkingPhase = 1;
+        GhostSelection.SetActive(false);
+        GearInterface.SetActive(true);
+        MenuNav.SetActive(true);
+    }
+
+
+    private void StartLinkingProcess() {
+        PlayerSheetScript.linkingPhase = 3;
+    }
+
+
+    private void StopLinkingProcess() {
+        PlayerSheetScript.linkingPhase = 2;
     }
 
 }
