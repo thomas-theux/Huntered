@@ -158,6 +158,26 @@ public class TextsUI {
         "Select to link a Ghost"
     };
 
+    //////////////////////////////
+
+    public static string[] DialogTitle = {
+        "Link this Ghost?",
+        "Diesen Ghost linken?",
+        "Diesen Ghost linken?"
+    };
+
+    public static string[] DialogIntro = {
+        "You have a",
+        "Du hast eine",
+        "Du hast eine"
+    };
+
+    public static string[] DialogEnd = {
+        "to link this Ghost to your equipment.",
+        "diesen Ghost in dein Equipment zu linken.",
+        "diesen Ghost in dein Equipment zu linken."
+    };
+
 
     //////////////////////////////
     // GHOST EFFECTS TEXTS

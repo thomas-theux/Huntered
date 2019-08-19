@@ -239,7 +239,6 @@ public class GhostsUI : MonoBehaviour {
             if (cursorIndex > 0) {
                 cursorIndex--;
                 MoveCursor();
-                // DisplayLinkChance();
                 audioManagerScript.Play("UINavigateMenu");
 
                 // Delay scrolling to prevent that scrolling is too fast
@@ -262,7 +261,6 @@ public class GhostsUI : MonoBehaviour {
             if (cursorIndex < childrenCount - 1) {
                 cursorIndex++;
                 MoveCursor();
-                // DisplayLinkChance();
                 audioManagerScript.Play("UINavigateMenu");
 
                 // Delay scrolling to prevent that scrolling is too fast
@@ -357,6 +355,58 @@ public class GhostsUI : MonoBehaviour {
         }
 
         displayedGhosts.Clear();
+    }
+
+
+    public string GetGhostEffect() {
+        int toLinkUID = (int)displayedGhosts[cursorIndex].GetComponent<GhostSheet>().GhostStats["UID"];
+        int linkGhostIndex = 0;
+
+        for (int i = 0; i < PlayerInventoryScript.AllGhosts.Count; i++) {
+            int matchingUID = (int)PlayerInventoryScript.AllGhosts[i]["UID"];
+
+            if (matchingUID == toLinkUID) {
+                linkGhostIndex = i;
+            }
+        }
+
+        string newEffect = (string)PlayerInventoryScript.AllGhosts[linkGhostIndex]["Description"];
+
+        return newEffect;
+    }
+
+
+    public int GetGhostType() {
+        int newType = (int)displayedGhosts[cursorIndex].GetComponent<GhostSheet>().GhostStats["Type"];
+        return newType;
+    }
+
+
+    public int GetLinkChance() {
+        int newLinkChance = (int)displayedGhosts[cursorIndex].GetComponent<GhostSheet>().GhostStats["Link Chance"];
+        return newLinkChance;
+    }
+
+
+    public void DestroyGhost() {
+        int releaseeUID = (int)displayedGhosts[cursorIndex].GetComponent<GhostSheet>().GhostStats["UID"];
+        int removeGhostIndex = 0;
+
+        for (int i = 0; i < PlayerInventoryScript.AllGhosts.Count; i++) {
+            int properGhostUID = (int)PlayerInventoryScript.AllGhosts[i]["UID"];
+
+            if (properGhostUID == releaseeUID) {
+                removeGhostIndex = i;
+            }
+        }
+
+        PlayerInventoryScript.AllGhosts.RemoveAt(removeGhostIndex);
+    }
+
+
+    public GameObject GetGhostGO() {
+        GameObject linkedGhostGO = displayedGhosts[cursorIndex];
+        return linkedGhostGO;
     }
 
 }
