@@ -34,7 +34,7 @@ public class AutoFollow : MonoBehaviour {
 
             if (!playerAgent.enabled) {
                 playerAgent.enabled = true;
-                playerAgent.speed = playerSheetScript.moveSpeed;
+                playerAgent.speed = playerSheetScript.moveSpeedOverall;
             }
 
             float distanceToPlayer = Vector3.Distance(this.transform.position, otherPlayerGO.transform.position);

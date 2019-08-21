@@ -10,8 +10,11 @@ public class PlayerSheet : MonoBehaviour {
 
     public float currentHealth = 0;
     public float maxHealth = 50.0f;
-    public float moveSpeedInit = 6.0f;
-    public float moveSpeed = 6.0f;
+
+    public float moveSpeedBase = 6.0f;
+    public float moveSpeedAdded = 0.0f;
+    public float moveSpeedOverall = 6.0f;
+
     public int critChance = 2;
     public float critDamage = 1.5f;
 
@@ -104,13 +107,26 @@ public class PlayerSheet : MonoBehaviour {
         SlottedGhostsArr.Add(SlottedGhostsTorso);
         SlottedGhostsArr.Add(SlottedGhostsWeapon);
         SlottedGhostsArr.Add(SlottedGhostsLegs);
-        
+
         for (int i = 0; i < UnlockedSlots; i++) {
             for (int j = 0; j < 4; j++) {
                 SlottedGhostsArr[j].Add(new Hashtable());
             }
         }
+    }
 
+
+    public void UpdateMainStats() {
+        // Calculate Health
+        // Calculate Damage
+        CalculateMoveSpeed();
+        // Calculate Attack Speed
+    }
+
+
+    private void CalculateMoveSpeed() {
+        float addedMoveSpeed = moveSpeedBase * (moveSpeedAdded / 100);
+        moveSpeedOverall = moveSpeedBase + addedMoveSpeed;
     }
 
 }

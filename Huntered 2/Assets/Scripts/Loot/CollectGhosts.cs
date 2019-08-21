@@ -242,7 +242,8 @@ public class CollectGhosts : MonoBehaviour {
                 ghostIdentifier = Random.Range(0, 5);
                 break;
             case 1:
-                ghostIdentifier = Random.Range(5, 9);
+                // ghostIdentifier = Random.Range(5, 9);
+                ghostIdentifier = Random.Range(7, 8);
                 break;
             case 2:
                 ghostIdentifier = Random.Range(9, 16);

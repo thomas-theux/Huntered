@@ -834,7 +834,7 @@ namespace ECM.Controllers
             // OWN CODE
             // Check if this gameobject is a player or an enemy
             if (this.gameObject.tag == "Player") {
-                speed = playerSheetScript.moveSpeed;
+                speed = playerSheetScript.moveSpeedOverall;
             } else if (this.gameObject.tag == "Enemy") {
                 speed = (float)enemySheetScript.classDataDict[enemySheetScript.enemyClassID]["Move Speed"];
             }

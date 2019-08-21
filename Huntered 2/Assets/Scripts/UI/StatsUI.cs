@@ -217,7 +217,7 @@ public class StatsUI : MonoBehaviour {
         StatValues[1].text = damage.ToString("F2");
 
         // speedStat.text = playerSheetScript.moveSpeed.ToString("F2");
-        StatValues[2].text = playerSheetScript.moveSpeed.ToString("F2");
+        StatValues[2].text = playerSheetScript.moveSpeedBase.ToString("F2");
 
         float cooldown = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"];
         cooldown *= 1000;
@@ -236,7 +236,7 @@ public class StatsUI : MonoBehaviour {
         StatsSliders[1].value = currentDamageValue;
 
         // Basic formula: (current - min) / (max - min)
-        float currentSpeedValue = (playerSheetScript.moveSpeed - GameSettings.MinSpeedStat) / (GameSettings.MaxSpeedStat - GameSettings.MinSpeedStat);
+        float currentSpeedValue = (playerSheetScript.moveSpeedBase - GameSettings.MinSpeedStat) / (GameSettings.MaxSpeedStat - GameSettings.MinSpeedStat);
         StatsSliders[2].value = currentSpeedValue;
 
         // Basic formula: 1 - ((current - max) / (min - max))
@@ -301,7 +301,7 @@ public class StatsUI : MonoBehaviour {
                         canIncrease = false;
                     break;
                 case 2:
-                    if (playerSheetScript.moveSpeed >= GameSettings.MaxSpeedStat)
+                    if (playerSheetScript.moveSpeedBase >= GameSettings.MaxSpeedStat)
                         canIncrease = false;
                     break;
                 case 3:
@@ -330,7 +330,7 @@ public class StatsUI : MonoBehaviour {
                         playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Damage"] + (increaseDamageBy * costIncreaseMultiplier);
                         break;
                     case 2:
-                        playerSheetScript.moveSpeed += increaseSpeedBy * costIncreaseMultiplier;
+                        playerSheetScript.moveSpeedBase += increaseSpeedBy * costIncreaseMultiplier;
                         break;
                     case 3:
                         playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] = (float)playerSheetScript.weaponDataDict[playerSheetScript.playerWeaponID]["Cooldown"] - (decreaseCooldownBy * costIncreaseMultiplier);
@@ -341,6 +341,10 @@ public class StatsUI : MonoBehaviour {
             }
 
             DisplayStats();
+
+            // Update the current stats with the added/removed effects from Ghosts
+            playerSheetScript.UpdateMainStats();
+
         } else {
             if (playIncreaseSound) {
                 playIncreaseSound = false;

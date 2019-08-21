@@ -238,7 +238,7 @@ public class GearUI : MonoBehaviour {
         for (int i = 0; i < PlayerSheetScript.SlottedGhostsArr[cursorIndex].Count; i++) {
             if (PlayerSheetScript.SlottedGhostsArr[cursorIndex][i].Contains("Name")) {
                 int ghostType = (int)PlayerSheetScript.SlottedGhostsArr[cursorIndex][i]["Type"];
-                ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsArr[0][i]["Description"];
+                ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsArr[cursorIndex][i]["Description"];
                 ImprovementTextsArr[i].color = ColorManager.GhostColors[ghostType];
             } else {
                 ImprovementTextsArr[i].text = "—";
@@ -366,6 +366,9 @@ public class GearUI : MonoBehaviour {
 
             DisplayGhostSlots();
 
+            // Add the effect from the new Ghost
+            GhostLinkSheetScript.UpdateLinkedGhosts(effectID);
+            // Remove the effect from the replaced Ghost
             GhostLinkSheetScript.UpdateLinkedGhosts(effectID);
         } else {
             // Fail linking!

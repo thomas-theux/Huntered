@@ -47,7 +47,7 @@ public class GhostLinkSheet : MonoBehaviour {
                 break;
             // Increase move speed
             case 07:
-                GoThroughLinkedGhosts(addedEffect);
+                GetOverallPercentage(addedEffect);
                 break;
             // Shorten skill cooldown
             case 08:
@@ -108,24 +108,28 @@ public class GhostLinkSheet : MonoBehaviour {
             case 23:
                 break;
         }
+
+        // Update the current main stats with the added/removed effects from Ghosts
+        playerSheetScript.UpdateMainStats();
     }
 
 
-    private void GoThroughLinkedGhosts(int addedEffect) {
-        float newMoveSpeed = playerSheetScript.moveSpeed;
+    private void GetOverallPercentage(int addedEffect) {
+        float addMoveSpeedPercentage = 0;
 
-        for (int i = 0; i < playerSheetScript.UnlockedSlots; i++) {
-            if (playerSheetScript.SlottedGhostsArr[0][i].Contains("Effect")) {
-                int getEffectID = (int)playerSheetScript.SlottedGhostsArr[0][i]["Effect"];
+        for (int h = 0; h < 4; h++) {
+            for (int i = 0; i < playerSheetScript.UnlockedSlots; i++) {
+                if (playerSheetScript.SlottedGhostsArr[h][i].Contains("Effect")) {
+                    int getEffectID = (int)playerSheetScript.SlottedGhostsArr[h][i]["Effect"];
 
-                if (getEffectID == addedEffect) {
-                    float addSpeed = newMoveSpeed * ((float)playerSheetScript.SlottedGhostsArr[0][i]["Effect Value"] / 100);
-                    newMoveSpeed += addSpeed;
+                    if (getEffectID == addedEffect) {
+                        addMoveSpeedPercentage += (float)playerSheetScript.SlottedGhostsArr[h][i]["Effect Value"];
+                    }
                 }
             }
         }
 
-        playerSheetScript.moveSpeed = newMoveSpeed;
+        playerSheetScript.moveSpeedAdded = addMoveSpeedPercentage;
     }
 
 }
