@@ -2476,6 +2476,7 @@ GameObject:
   - component: {fileID: 7601328539445459833}
   - component: {fileID: 820977794550903096}
   - component: {fileID: 6737107886738630158}
+  - component: {fileID: 5184872710095044055}
   - component: {fileID: 8351684276295381811}
   - component: {fileID: 4475628731200101332}
   - component: {fileID: 4030324524943935684}
@@ -2653,6 +2654,7 @@ MonoBehaviour:
   currentGold: 10000000
   currentHealth: 0
   maxHealth: 50
+  moveSpeedInit: 6
   moveSpeed: 6
   critChance: 2
   critDamage: 1.5
@@ -2672,6 +2674,18 @@ MonoBehaviour:
   PotionCooldownTimeDef: 10
   PotionCooldownTime: 0
   UnlockedSlots: 5
+--- !u!114 &5184872710095044055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898870989050275549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664372e5c44e446c69e4162ce0bd6cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8351684276295381811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12699,6 +12713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerSheetScript: {fileID: 6737107886738630158}
+  GhostLinkSheetScript: {fileID: 5184872710095044055}
   GhostsUIScript: {fileID: 8166209368533896551}
   GearNavCursor: {fileID: 4187781107899468682}
   GearTitle: {fileID: 718594885042842768}

@@ -98,7 +98,8 @@ public class CollectGhosts : MonoBehaviour {
         // Randomize attributes
         string rndName = RandomizeName();
         int ghostUID = GameManager.GhostUID;
-        rndType = Random.Range(0, 4);
+        // rndType = Random.Range(0, 4);
+        rndType = Random.Range(1, 2);
         rndLevel = RandomizeLevel();
         rndEffect = RandomizeEffect();
         string effectDescr = BuildDescription();

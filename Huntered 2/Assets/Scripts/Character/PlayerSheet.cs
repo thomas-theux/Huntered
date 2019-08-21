@@ -10,6 +10,7 @@ public class PlayerSheet : MonoBehaviour {
 
     public float currentHealth = 0;
     public float maxHealth = 50.0f;
+    public float moveSpeedInit = 6.0f;
     public float moveSpeed = 6.0f;
     public int critChance = 2;
     public float critDamage = 1.5f;
@@ -43,6 +44,7 @@ public class PlayerSheet : MonoBehaviour {
     private Hashtable weaponMage = new Hashtable();
 
     // All equipment arrays for Ghosts
+    public List<List<Hashtable>> SlottedGhostsArr = new List<List<Hashtable>>();
     public List<Hashtable> SlottedGhostsHead = new List<Hashtable>();
     public List<Hashtable> SlottedGhostsTorso = new List<Hashtable>();
     public List<Hashtable> SlottedGhostsWeapon = new List<Hashtable>();
@@ -98,12 +100,17 @@ public class PlayerSheet : MonoBehaviour {
         weaponDataDict.Add(weaponMage);
 
         // Initialize equipment arrays with the first slot available for players to link a Ghost
+        SlottedGhostsArr.Add(SlottedGhostsHead);
+        SlottedGhostsArr.Add(SlottedGhostsTorso);
+        SlottedGhostsArr.Add(SlottedGhostsWeapon);
+        SlottedGhostsArr.Add(SlottedGhostsLegs);
+        
         for (int i = 0; i < UnlockedSlots; i++) {
-            SlottedGhostsHead.Add(new Hashtable());
-            SlottedGhostsTorso.Add(new Hashtable());
-            SlottedGhostsWeapon.Add(new Hashtable());
-            SlottedGhostsLegs.Add(new Hashtable());
+            for (int j = 0; j < 4; j++) {
+                SlottedGhostsArr[j].Add(new Hashtable());
+            }
         }
+
     }
 
 }

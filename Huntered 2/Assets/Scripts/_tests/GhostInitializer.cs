@@ -16,7 +16,7 @@ public class GhostInitializer : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
-            other.GetComponent<PlayerSheet>().SlottedGhostsHead[GhostSlot] = collectGhostsScript.GhostData;
+            other.GetComponent<PlayerSheet>().SlottedGhostsArr[0][GhostSlot] = collectGhostsScript.GhostData;
         }
     }
 

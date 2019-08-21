@@ -8,6 +8,7 @@ using Rewired;
 public class GearUI : MonoBehaviour {
 
     public PlayerSheet PlayerSheetScript;
+    public GhostLinkSheet GhostLinkSheetScript;
     public GhostsUI GhostsUIScript;
     private AudioManager audioManagerScript;
 
@@ -212,59 +213,16 @@ public class GearUI : MonoBehaviour {
     private void DisplayGhostTitle() {
         int ghostType = 0;
 
-        switch (cursorIndex) {
-            case 0:
-                if (PlayerSheetScript.SlottedGhostsHead[ghostNavIndex].Contains("Name")) {
-                    GearTitle.text = (string)PlayerSheetScript.SlottedGhostsHead[ghostNavIndex]["Name"];
-                    ImprovementTextsArr[0].text = (string)PlayerSheetScript.SlottedGhostsHead[ghostNavIndex]["Description"];
+        if (PlayerSheetScript.SlottedGhostsArr[cursorIndex][ghostNavIndex].Contains("Name")) {
+            GearTitle.text = (string)PlayerSheetScript.SlottedGhostsArr[cursorIndex][ghostNavIndex]["Name"];
+            ImprovementTextsArr[0].text = (string)PlayerSheetScript.SlottedGhostsArr[cursorIndex][ghostNavIndex]["Description"];
 
-                    ghostType = (int)PlayerSheetScript.SlottedGhostsHead[ghostNavIndex]["Type"];
-                    ImprovementTextsArr[0].color = ColorManager.GhostColors[ghostType];
-                } else {
-                    GearTitle.text = TextsUI.GearSlotEmptyTitle[GameSettings.language];
-                    ImprovementTextsArr[0].text = "<i>" + TextsUI.GearSlotEmptyText[GameSettings.language] + "</i>";
-                    ImprovementTextsArr[0].color = ColorManager.KeyWhite40;
-                }
-                break;
-            case 1:
-                if (PlayerSheetScript.SlottedGhostsTorso[ghostNavIndex].Contains("Name")) {
-                    GearTitle.text = (string)PlayerSheetScript.SlottedGhostsTorso[ghostNavIndex]["Name"];
-                    ImprovementTextsArr[0].text = (string)PlayerSheetScript.SlottedGhostsTorso[ghostNavIndex]["Description"];
-
-                    ghostType = (int)PlayerSheetScript.SlottedGhostsTorso[ghostNavIndex]["Type"];
-                    ImprovementTextsArr[0].color = ColorManager.GhostColors[ghostType];
-                } else {
-                    GearTitle.text = TextsUI.GearSlotEmptyTitle[GameSettings.language];
-                    ImprovementTextsArr[0].text = "<i>" + TextsUI.GearSlotEmptyText[GameSettings.language] + "</i>";
-                    ImprovementTextsArr[0].color = ColorManager.KeyWhite40;
-                }
-                break;
-            case 2:
-                if (PlayerSheetScript.SlottedGhostsWeapon[ghostNavIndex].Contains("Name")) {
-                    GearTitle.text = (string)PlayerSheetScript.SlottedGhostsWeapon[ghostNavIndex]["Name"];
-                    ImprovementTextsArr[0].text = (string)PlayerSheetScript.SlottedGhostsWeapon[ghostNavIndex]["Description"];
-
-                    ghostType = (int)PlayerSheetScript.SlottedGhostsWeapon[ghostNavIndex]["Type"];
-                    ImprovementTextsArr[0].color = ColorManager.GhostColors[ghostType];
-                } else {
-                    GearTitle.text = TextsUI.GearSlotEmptyTitle[GameSettings.language];
-                    ImprovementTextsArr[0].text = "<i>" + TextsUI.GearSlotEmptyText[GameSettings.language] + "</i>";
-                    ImprovementTextsArr[0].color = ColorManager.KeyWhite40;
-                }
-                break;
-            case 3:
-                if (PlayerSheetScript.SlottedGhostsLegs[ghostNavIndex].Contains("Name")) {
-                    GearTitle.text = (string)PlayerSheetScript.SlottedGhostsLegs[ghostNavIndex]["Name"];
-                    ImprovementTextsArr[0].text = (string)PlayerSheetScript.SlottedGhostsLegs[ghostNavIndex]["Description"];
-
-                    ghostType = (int)PlayerSheetScript.SlottedGhostsLegs[ghostNavIndex]["Type"];
-                    ImprovementTextsArr[0].color = ColorManager.GhostColors[ghostType];
-                } else {
-                    GearTitle.text = TextsUI.GearSlotEmptyTitle[GameSettings.language];
-                    ImprovementTextsArr[0].text = "<i>" + TextsUI.GearSlotEmptyText[GameSettings.language] + "</i>";
-                    ImprovementTextsArr[0].color = ColorManager.KeyWhite40;
-                }
-                break;
+            ghostType = (int)PlayerSheetScript.SlottedGhostsArr[cursorIndex][ghostNavIndex]["Type"];
+            ImprovementTextsArr[0].color = ColorManager.GhostColors[ghostType];
+        } else {
+            GearTitle.text = TextsUI.GearSlotEmptyTitle[GameSettings.language];
+            ImprovementTextsArr[0].text = "<i>" + TextsUI.GearSlotEmptyText[GameSettings.language] + "</i>";
+            ImprovementTextsArr[0].color = ColorManager.KeyWhite40;
         }
     }
 
@@ -277,112 +235,32 @@ public class GearUI : MonoBehaviour {
 
 
     private void DisplayGearTexts() {
-        switch (cursorIndex) {
-            case 0:
-                for (int i = 0; i < PlayerSheetScript.SlottedGhostsHead.Count; i++) {
-                    if (PlayerSheetScript.SlottedGhostsHead[i].Contains("Name")) {
-                        int ghostType = (int)PlayerSheetScript.SlottedGhostsHead[i]["Type"];
-                        ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsHead[i]["Description"];
-                        ImprovementTextsArr[i].color = ColorManager.GhostColors[ghostType];
-                    } else {
-                        ImprovementTextsArr[i].text = "—";
-                        ImprovementTextsArr[i].color = ColorManager.KeyWhite10;
-                    }
-                }
-                break;
-
-            case 1:
-                for (int i = 0; i < PlayerSheetScript.SlottedGhostsTorso.Count; i++) {
-                    if (PlayerSheetScript.SlottedGhostsTorso[i].Contains("Name")) {
-                        int ghostType = (int)PlayerSheetScript.SlottedGhostsTorso[i]["Type"];
-                        ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsTorso[i]["Description"];
-                        ImprovementTextsArr[i].color = ColorManager.GhostColors[ghostType];
-                    } else {
-                        ImprovementTextsArr[i].text = "—";
-                        ImprovementTextsArr[i].color = ColorManager.KeyWhite10;
-                    }
-                }
-                break;
-
-            case 2:
-                for (int i = 0; i < PlayerSheetScript.SlottedGhostsWeapon.Count; i++) {
-                    if (PlayerSheetScript.SlottedGhostsWeapon[i].Contains("Name")) {
-                        int ghostType = (int)PlayerSheetScript.SlottedGhostsWeapon[i]["Type"];
-                        ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsWeapon[i]["Description"];
-                        ImprovementTextsArr[i].color = ColorManager.GhostColors[ghostType];
-                    } else {
-                        ImprovementTextsArr[i].text = "—";
-                        ImprovementTextsArr[i].color = ColorManager.KeyWhite10;
-                    }
-                }
-                break;
-
-            case 3:
-                for (int i = 0; i < PlayerSheetScript.SlottedGhostsLegs.Count; i++) {
-                    if (PlayerSheetScript.SlottedGhostsLegs[i].Contains("Name")) {
-                        int ghostType = (int)PlayerSheetScript.SlottedGhostsLegs[i]["Type"];
-                        ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsLegs[i]["Description"];
-                        ImprovementTextsArr[i].color = ColorManager.GhostColors[ghostType];
-                    } else {
-                        ImprovementTextsArr[i].text = "—";
-                        ImprovementTextsArr[i].color = ColorManager.KeyWhite10;
-                    }
-                }
-                break;
+        for (int i = 0; i < PlayerSheetScript.SlottedGhostsArr[cursorIndex].Count; i++) {
+            if (PlayerSheetScript.SlottedGhostsArr[cursorIndex][i].Contains("Name")) {
+                int ghostType = (int)PlayerSheetScript.SlottedGhostsArr[cursorIndex][i]["Type"];
+                ImprovementTextsArr[i].text = (string)PlayerSheetScript.SlottedGhostsArr[0][i]["Description"];
+                ImprovementTextsArr[i].color = ColorManager.GhostColors[ghostType];
+            } else {
+                ImprovementTextsArr[i].text = "—";
+                ImprovementTextsArr[i].color = ColorManager.KeyWhite10;
+            }
         }
     }
 
 
     private void DisplayGhostSlots() {
-        for (int i = 0; i < PlayerSheetScript.SlottedGhostsHead.Count; i++) {
-            if (PlayerSheetScript.SlottedGhostsHead[i].Contains("Name")) {
-                int ghostType = (int)PlayerSheetScript.SlottedGhostsHead[i]["Type"];
-                int ghostLevel = (int)PlayerSheetScript.SlottedGhostsHead[i]["Level"];
-                GhostSlotsParent[0].transform.GetChild(i).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
-                GhostSlotsParent[0].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = ghostLevel + "";
-                GhostSlotsParent[0].transform.GetChild(i).GetComponent<Image>().sprite = GhostImage;
-            } else {
-                GhostSlotsParent[0].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
-                GhostSlotsParent[0].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = "";
-            }
-        }
-
-        for (int i = 0; i < PlayerSheetScript.SlottedGhostsTorso.Count; i++) {
-            if (PlayerSheetScript.SlottedGhostsTorso[i].Contains("Name")) {
-                int ghostType = (int)PlayerSheetScript.SlottedGhostsTorso[i]["Type"];
-                int ghostLevel = (int)PlayerSheetScript.SlottedGhostsTorso[i]["Level"];
-                GhostSlotsParent[1].transform.GetChild(i).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
-                GhostSlotsParent[1].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = ghostLevel + "";
-                GhostSlotsParent[1].transform.GetChild(i).GetComponent<Image>().sprite = GhostImage;
-            } else {
-                GhostSlotsParent[1].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
-                GhostSlotsParent[1].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = "";
-            }
-        }
-
-        for (int i = 0; i < PlayerSheetScript.SlottedGhostsWeapon.Count; i++) {
-            if (PlayerSheetScript.SlottedGhostsWeapon[i].Contains("Name")) {
-                int ghostType = (int)PlayerSheetScript.SlottedGhostsWeapon[i]["Type"];
-                int ghostLevel = (int)PlayerSheetScript.SlottedGhostsWeapon[i]["Level"];
-                GhostSlotsParent[2].transform.GetChild(i).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
-                GhostSlotsParent[2].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = ghostLevel + "";
-                GhostSlotsParent[2].transform.GetChild(i).GetComponent<Image>().sprite = GhostImage;
-            } else {
-                GhostSlotsParent[2].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
-                GhostSlotsParent[2].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = "";
-            }
-        }
-
-        for (int i = 0; i < PlayerSheetScript.SlottedGhostsLegs.Count; i++) {
-            if (PlayerSheetScript.SlottedGhostsLegs[i].Contains("Name")) {
-                int ghostType = (int)PlayerSheetScript.SlottedGhostsLegs[i]["Type"];
-                int ghostLevel = (int)PlayerSheetScript.SlottedGhostsLegs[i]["Level"];
-                GhostSlotsParent[3].transform.GetChild(i).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
-                GhostSlotsParent[3].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = ghostLevel + "";
-                GhostSlotsParent[3].transform.GetChild(i).GetComponent<Image>().sprite = GhostImage;
-            } else {
-                GhostSlotsParent[3].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
-                GhostSlotsParent[3].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = "";
+        for (int h = 0; h < 4; h++) {
+            for (int i = 0; i < PlayerSheetScript.SlottedGhostsArr[h].Count; i++) {
+                if (PlayerSheetScript.SlottedGhostsArr[h][i].Contains("Name")) {
+                    int ghostType = (int)PlayerSheetScript.SlottedGhostsArr[h][i]["Type"];
+                    int ghostLevel = (int)PlayerSheetScript.SlottedGhostsArr[h][i]["Level"];
+                    GhostSlotsParent[h].transform.GetChild(i).GetComponent<Image>().color = ColorManager.GhostColors[ghostType];
+                    GhostSlotsParent[h].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = ghostLevel + "";
+                    GhostSlotsParent[h].transform.GetChild(i).GetComponent<Image>().sprite = GhostImage;
+                } else {
+                    GhostSlotsParent[h].transform.GetChild(i).GetComponent<Image>().color = ColorManager.Whitet8;
+                    GhostSlotsParent[h].transform.GetChild(i).transform.GetChild(0).GetComponent<TMP_Text>().text = "";
+                }
             }
         }
     }
@@ -480,27 +358,15 @@ public class GearUI : MonoBehaviour {
         if (rndChance < linkChance) {
             // Success linking!
             GameObject linkedGhostGO = GhostsUIScript.GetGhostGO();
+            
+            int effectID = 0;
 
-            switch (cursorIndex) {
-                case 0:
-                    // Link to head
-                    PlayerSheetScript.SlottedGhostsHead[ghostNavIndex] = linkedGhostGO.GetComponent<GhostSheet>().GhostStats;
-                    break;
-                case 1:
-                    // Link to torso
-                    PlayerSheetScript.SlottedGhostsTorso[ghostNavIndex] = linkedGhostGO.GetComponent<GhostSheet>().GhostStats;
-                    break;
-                case 2:
-                    // Link to weapon
-                    PlayerSheetScript.SlottedGhostsWeapon[ghostNavIndex] = linkedGhostGO.GetComponent<GhostSheet>().GhostStats;
-                    break;
-                case 3:
-                    // Link to legs
-                    PlayerSheetScript.SlottedGhostsLegs[ghostNavIndex] = linkedGhostGO.GetComponent<GhostSheet>().GhostStats;
-                    break;
-            }
+            PlayerSheetScript.SlottedGhostsArr[cursorIndex][ghostNavIndex] = linkedGhostGO.GetComponent<GhostSheet>().GhostStats;
+            effectID = (int)PlayerSheetScript.SlottedGhostsArr[cursorIndex][ghostNavIndex]["Effect"];
 
             DisplayGhostSlots();
+
+            GhostLinkSheetScript.UpdateLinkedGhosts(effectID);
         } else {
             // Fail linking!
         }
